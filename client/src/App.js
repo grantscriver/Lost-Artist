@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Body from './components/Body';
-
+import Body from './components/Body/Body';
+import Navbar from './components/Navbar/Navbar';
 import './App.css';
 
 
@@ -11,10 +11,11 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
+      <Navbar>
       <Switch>
         <Route exact path="/" component={Body} />
       </Switch>
-      
+      </Navbar>
     </BrowserRouter>
   )
 }
