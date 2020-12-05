@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar';
 function Body() {
     return (
         <div>
-            <Navbar />
+            <h1> hello </h1>
         </div>
     )
 }
