@@ -25,22 +25,22 @@ function Navbar() {
                             </a>
 
                             <div className="navbar-dropdown">
-                                <a class="navbar-dropdown-item">
+                                <a class="dropdown-item">
                                     IA
                                 </a>
-                                <a className="navbar-dropdown-item">
+                                <a className="dropdown-item">
                                     MI
                                 </a>
-                                <a className="navbar-dropdown-item">
+                                <a className="dropdown-item">
                                     MN
                                 </a>
-                                <a className="navbar-dropdown-item">
+                                <a className="dropdown-item">
                                     ND
                                 </a>
-                                <a className="navbar-dropdown-item">
+                                <a className="dropdown-item">
                                     SD
                                 </a>
-                                <a className="navbar-dropdown-item">
+                                <a className="dropdown-item">
                                     WI
                                 </a>
                             </div>
@@ -53,49 +53,43 @@ function Navbar() {
                         <a className="navbar-item" href="#link-shop-page">
                             Shop
                         </a>
-
-                        <div className="navbar-item has-dropdown is-hoverable"> 
-                            <div className="field has-addons">
-                                <input className="input" type="text" placeholder="Search for..."></input>                               
-                            </div>
-                            <div className="control">
-                                <a className="button is-info">
-                                    Search
-                                </a>
-                            </div>
-                        </div>
-
+                    
                         <div className="navbar-item has-dropdown is-hoverable">
-                            <a className="navbar-item">
+                            <a className="navbar-link">
                                 Login
                             </a>
-                            <div className="field">
-                                <p className="control has-icons-left">
-                                    <input className="input" type="email" placeholder="Username">
-                                    </input>
-                                </p>
-                            </div>
-                            <div className="field">
-                                <p className="control has-icons-left">
-                                    <input className="input" type="text" placeholder="Password">
-                                    </input>
-                                </p>
-                            </div>
-                            <div className="field">
-                                <p className="control">
-                                    <button className="button is-success">
-                                        Login
-                                    </button>
-                                </p>
-                            </div>
-                            <div className="field">
-                            <p className="control">
-                                    <button className="button" href="#link-to-register-page">
-                                        Register
-                                    </button>
-                                </p>
-                            </div>
+
+                            <div className="navbar-dropdown">
+                                <a className="field">
+                                    <p class="control">
+                                        <input class="input" type="username" placeholder="Username"></input>
+                                    </p>   
+                                </a>
+
+                                <a className="field">
+                                    <p class="control">
+                                        <input class="input" type="password" placeholder="Password"></input>
+                                    </p>   
+                                </a>
+
+                                <a className="field">
+                                    <p className="control">
+                                        <button className="button is-link"> Login </button>
+                                    </p>
+                                </a>
+
+                                <a className="field">
+                                    <p className="control">
+                                        <button className="button is-link"> Register </button>
+                                    </p>
+                                </a>
+                            </div>                                  
                         </div>
+                        
+
+
+
+                        
                     </div>
                 </div>
            </nav>
