@@ -1,0 +1,21 @@
+//SHOPPER ROUTING
+    //homepage     path="/"
+        //state & creators page (same page)  "/creators"
+            //if "state" is selected, query to database to navigate to creators page with filtered returns by state /creators/:state
+                // view creator --> /creators/:state/:creator
+
+//-----------------------------------------------------------------
+    //shop     path="/shop"
+        // filter by item category  /shop/:category
+            // filter by selected item in category  /shop/:category/:item(id)
+
+
+
+
+
+
+
+
+
+//CREATOR ROUTING
+    //homepage      "/"
