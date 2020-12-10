@@ -78,9 +78,9 @@ function Navbar() {
                                     </p>
                                 </a>
 
-                                <a className="field">
+                                <a href="/register" className="field">
                                     <p className="control">
-                                        <button className="button is-link"> Register </button>
+                                        <button className="button is-link" > Register </button>
                                     </p>
                                 </a>
                             </div>                                  
