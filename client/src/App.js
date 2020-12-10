@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Body from './components/Body/Body';
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
+import Register from './components/Register/Register';
 
 
 
@@ -11,11 +12,12 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-      <Navbar>
+      <Navbar />
       <Switch>
-        <Route exact path="/" component={Body} />
+        <Route exact path="/" component={Body} /> 
+        <Route exact path="/register" component={Register} />
       </Switch>
-      </Navbar>
+      
     </BrowserRouter>
   )
 }
