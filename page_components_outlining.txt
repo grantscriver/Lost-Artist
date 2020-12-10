@@ -1,0 +1,57 @@
+
+SHOPPER ROUTING
+    homepage     path="/"
+        state & creators page (same page)  "/creators"
+            if "state" is selected, query to database to navigate to creators page with filtered returns by state /creators/:state
+                 view creator --> /creators/:state/:creator
+
+-----------------------------------------------------------------
+    shop     path="/shop"
+         filter by item category  /shop/:category
+             filter by selected item in category  /shop/:category/:item(id)
+
+
+
+
+COMPONENTS for SHOPPERS
+            pages = SHOP page
+                1. [4 dropdowns] state, creators, color, size (reuse)
+                2. [1] Left navigation bar (vertical)
+                        //a. [4 list items] Hats, shirts, hoodies, shoes
+                3. [? - photo/cards] Grid for items in database that match CAT_ID
+
+
+            pages = STATE page
+                1. [1 dropdowns] state (reuse)
+                2. [1] Left navigation bar (vertical - reuse)
+                        //a. [4 list items] Hats, shirts, hoodies, shoes
+                3. [? - photo/cards] Grid for items in database that match CAT_ID
+
+
+                
+
+
+
+==================================================================/==================================================================
+
+CREATOR ROUTING
+    homepage      "/"
+
+      components for creator pages
+             pages = Add item collection form
+                1. [3] text inputs (item name, about item, size)
+                2. [1] drop down for category,
+                3. [1] photo uploader(reuse)
+                4. [1] save button
+                5. [1] cancel button
+            
+            
+            Edit Profile page form
+                1. [4] text inputs (name, city, about, email, instagram)
+                2. [1] dropdown for state
+                3. [1] photo uploader(reuse)
+                4. [1] save button
+                5. [1] cancel button
+
+
+
