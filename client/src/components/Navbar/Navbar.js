@@ -4,24 +4,24 @@ function Navbar() {
     return (
         <div>
             <nav className="navbar" role="navigation" aria-label="main navigation">
-               <div className="navbar-brand">
-                   <a className="navbar-item" href="#linktohomepage">
-                       <h1>Lost Artist</h1>
-                       <h3>Clothing Collaborative</h3> 
-                   </a>
+                <div className="navbar-brand">
+                    <a className="navbar-item" href="#linktohomepage">
+                        <h1>Lost Artist</h1>
+                        <h3>Clothing Collaborative</h3>
+                    </a>
 
-                   <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar">
-                       <span aria-hidden="true"></span>
-                       <span aria-hidden="true"></span>
-                       <span aria-hidden="true"></span>
-                   </a>
-               </div>
+                    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
 
                 <div id="navbar" className="navbar-menu">
                     <div className="navbar-start">
                         <div className="navbar-item has-dropdown is-hoverable">
                             <a className="navbar-link">
-                                State 
+                                State
                             </a>
 
                             <div className="navbar-dropdown">
@@ -50,10 +50,10 @@ function Navbar() {
                             Creators
                         </a>
 
-                        <a className="navbar-item" href="#link-shop-page">
+                        <a href="/shop" className="navbar-item">
                             Shop
                         </a>
-                    
+
                         <div className="navbar-item has-dropdown is-hoverable">
                             <a className="navbar-link">
                                 Login
@@ -63,13 +63,13 @@ function Navbar() {
                                 <a className="field">
                                     <p class="control">
                                         <input class="input" type="username" placeholder="Username"></input>
-                                    </p>   
+                                    </p>
                                 </a>
 
                                 <a className="field">
                                     <p class="control">
                                         <input class="input" type="password" placeholder="Password"></input>
-                                    </p>   
+                                    </p>
                                 </a>
 
                                 <a className="field">
@@ -83,16 +83,16 @@ function Navbar() {
                                         <button className="button is-link" > Register </button>
                                     </p>
                                 </a>
-                            </div>                                  
+                            </div>
                         </div>
-                        
 
 
 
-                        
+
+
                     </div>
                 </div>
-           </nav>
+            </nav>
         </div>
     )
 }
