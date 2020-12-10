@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Body from './components/Body/Body';
+import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
 import Register from './components/Register/Register';
@@ -14,10 +14,10 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Body} /> 
+        <Route exact path="/" component={Home} />
         <Route exact path="/register" component={Register} />
       </Switch>
-      
+
     </BrowserRouter>
   )
 }
