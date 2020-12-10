@@ -5,7 +5,7 @@ function Navbar() {
         <div>
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="#linktohomepage">
+                    <a className="navbar-item" href="./">
                         <h1>Lost Artist</h1>
                         <h3>Clothing Collaborative</h3>
                     </a>
@@ -46,11 +46,11 @@ function Navbar() {
                             </div>
                         </div>
 
-                        <a className="navbar-item" href="#link-creators-page">
+                        <a className="navbar-item" href="/creators">
                             Creators
                         </a>
 
-                        <a href="/shop" className="navbar-item">
+                        <a  className="navbar-item" href="/shop">
                             Shop
                         </a>
 

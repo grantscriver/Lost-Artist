@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home/home';
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
-import Register from './components/Register/Register';
+import Register from './pages/Register/register';
 import Shop from './pages/Shop/shop'
 
 
