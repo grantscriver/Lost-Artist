@@ -1,8 +1,8 @@
 import React from 'react';
-
+import HomeImages from '../HomeImages/HomeImages'
 
 //change to class component
-function Body() {
+function Hero({ children }) {
     //Set state for img
     // state = {
     //     img: ""
@@ -24,12 +24,10 @@ function Body() {
     //         });
     //     }
     return (
-        <section class="hero is-success is-fullheight has-background-grey-light">
-            <div class="hero-body">
-                <div class="container">
-                    {/* <figure class=".upload-img">
-                        <img src="https://images.pexels.com/photos/1868475/pexels-photo-1868475.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="dude siting on car"/>
-                    </figure> */}
+        <section className="hero is-success is-fullheight has-background-grey-light">
+            <div className="hero-body">
+                <div className="container">
+                    {children}
                 </div>
             </div>
         </section>
@@ -37,4 +35,4 @@ function Body() {
     )
 }
 
-export default Body
+export default Hero
