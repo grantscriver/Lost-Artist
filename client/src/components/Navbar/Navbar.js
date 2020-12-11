@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import LoginButton from "../../components/Buttons/LoginButton";
-import LogoutButton from "../../components/Buttons/LogoutButton";
 
 function Navbar() {
     const [activeStatus, setStatus] = useState(false);
+   
+
     return (
         <div>
             <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -92,8 +92,10 @@ function Navbar() {
                         <div className="navbar-end">
                             <div className="navbar-item">
                                 <div className="buttons">
-                                <LoginButton />
-                                <LogoutButton />
+                                
+                                    <a className="button is-success"href="http://localhost:8080/login"> Login </a>
+                                    <a className="button is-danger" href="http://localhost:8080/logout"> Logout </a>
+                                
                                 </div>
                             </div>
                         </div>

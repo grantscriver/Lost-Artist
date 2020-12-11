@@ -26,4 +26,5 @@ yarn-error.log*
 # database config
 
 .env
+/config/auth0.config.js
 /client/.eslintcache
