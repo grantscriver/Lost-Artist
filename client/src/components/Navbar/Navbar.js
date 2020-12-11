@@ -1,74 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import LoginButton from "../../components/Buttons/LoginButton";
+import LogoutButton from "../../components/Buttons/LogoutButton";
 
 function Navbar() {
+    const [activeStatus, setStatus] = useState(false);
     return (
         <div>
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="./">
+                    <NavLink className="navbar-item" exact to="/">
                         <h1>Lost Artist</h1>
                         <h3>Clothing Collaborative</h3>
-                    </a>
+                    </NavLink>
 
-                    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+                    <a onClick={()=>{setStatus(!activeStatus)}} role="button" className={`navbar-burger burger ${activeStatus ? "is-active" : ""}`} aria-label="menu" aria-expanded="false" data-target="navbar">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                     </a>
                 </div>
 
-                <div id="navbar" className="navbar-menu">
+                <div id="navbar" className={`navbar-menu ${activeStatus ? "is-active" : ""}`}>
                     <div className="navbar-start">
                         <div className="navbar-item has-dropdown is-hoverable">
-                            <a className="navbar-link">
+                            <NavLink className="navbar-link" exact to="/state">
                                 State
-                            </a>
+                            </NavLink>
 
                             <div className="navbar-dropdown">
-                                <a class="dropdown-item">
+                                <NavLink className="dropdown-item" to="/state/iowa">
                                     IA
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/michigan">
                                     MI
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/minnesota">
                                     MN
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/north-dakota">
                                     ND
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/south-dakota">
                                     SD
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/wisconsin">
                                     WI
-                                </a>
+                                </NavLink>
                             </div>
                         </div>
 
-                        <a className="navbar-item" href="/creators">
+                        <NavLink className="navbar-item" exact to="/creators">
                             Creators
-                        </a>
+                        </NavLink>
 
-                        <a  className="navbar-item" href="/shop">
+                        <NavLink  className="navbar-item" exact to="/shop">
                             Shop
-                        </a>
+                        </NavLink>
 
-                        <div className="navbar-item has-dropdown is-hoverable">
-                            <a className="navbar-link">
-                                Login
-                            </a>
+                    
+                        {/* <div className="navbar-item has-dropdown is-hoverable">
+                            
 
                             <div className="navbar-dropdown">
                                 <a className="field">
-                                    <p class="control">
-                                        <input class="input" type="username" placeholder="Username"></input>
+                                    <p className="control">
+                                        <input className="input" type="username" placeholder="Username"></input>
                                     </p>
                                 </a>
 
                                 <a className="field">
-                                    <p class="control">
-                                        <input class="input" type="password" placeholder="Password"></input>
+                                    <p className="control">
+                                        <input className="input" type="password" placeholder="Password"></input>
                                     </p>
                                 </a>
 
@@ -84,8 +87,16 @@ function Navbar() {
                                     </p>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
 
+                        <div className="navbar-end">
+                            <div className="navbar-item">
+                                <div className="buttons">
+                                <LoginButton />
+                                <LogoutButton />
+                                </div>
+                            </div>
+                        </div>
 
 
 
