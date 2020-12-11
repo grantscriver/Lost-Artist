@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeImages from '../HomeImages/HomeImages'
+
 
 //change to class component
 function Hero({ children }) {
