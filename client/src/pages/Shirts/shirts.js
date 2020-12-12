@@ -1,19 +1,15 @@
 import React from "react";
 import Hero from "../../components/Hero/Hero";
-import {NavLink} from "react-router-dom";
-import ShopSideMenu from "../../components/ShopSideMenu/ShopSideMenu";
+import { NavLink } from "react-router-dom";
 import ShopDropDowns from "../../components/ShopDropDowns/ShopDropDowns";
 import Menu from "../../components/Menu/Menu";
 
 function Shirts() {
     return (
         <>
-            
             <Hero>
-
-              <ShopDropDowns />
+                <ShopDropDowns />
                 <div className="level"></div>
-
                 <div class="columns">
                     <div class="column is-one-fifth">
                         <Menu>
