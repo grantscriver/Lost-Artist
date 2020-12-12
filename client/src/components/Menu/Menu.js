@@ -4,10 +4,10 @@ function Menu({children}) {
     
     
     return (
-        <div className="columns">
-           <aside className="menu left-side">
+       
+           <aside className="menu">
                 
-                <ul className="menu-list">
+                <ul className="menu-list width-100">
                     {children.map((child, i)=> {
                         return child;
                     })}
@@ -15,7 +15,7 @@ function Menu({children}) {
                 
                 
             </aside> 
-        </div>
+       
     )
 }
 

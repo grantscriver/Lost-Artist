@@ -11,19 +11,18 @@ function Shirts() {
             
             <Hero>
 
-                <Menu>
-                    <li><NavLink to="/shop/hats">Hats</NavLink></li>
-                    <li><NavLink to="/shop/shirts">Shirts</NavLink></li>
-                    <li><NavLink to="/shop/hoodies">Hoodies</NavLink></li>
-                    <li><NavLink to="/shop/shoes">Shoes</NavLink></li>
-                </Menu>
-                
+              <ShopDropDowns />
+                <div className="level"></div>
 
                 <div class="columns">
-                    {/* <div class="column">
-                        <ShopSideMenu>
-                        </ShopSideMenu>
-                    </div> */}
+                    <div class="column is-one-fifth">
+                        <Menu>
+                            <li><NavLink to="/shop/hats">Hats</NavLink></li>
+                            <li><NavLink to="/shop/shirts">Shirts</NavLink></li>
+                            <li><NavLink to="/shop/hoodies">Hoodies</NavLink></li>
+                            <li><NavLink to="/shop/shoes">Shoes</NavLink></li>
+                        </Menu>
+                    </div>
                     <div class="column">
                         <p class="title">This is Shirts</p>
                         <p class="subtitle">With an imadge</p>

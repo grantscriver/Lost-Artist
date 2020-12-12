@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+// import LoginButton from "../Buttons/LoginButton";
+// import LogoutButton from "../Buttons/LogoutButton";
 
-function Navbar() {
+function Navbar({children}) {
     const [activeStatus, setStatus] = useState(false);
 
 
@@ -110,8 +112,11 @@ function Navbar() {
                             <div className="navbar-item">
                                 <div className="buttons">
 
-                                    <a className="button is-success" href="http://localhost:8080/login"> Login </a>
-                                    <a className="button is-danger" href="http://localhost:8080/logout"> Logout </a>
+                                    { children }
+                                    {/* <LoginButton />
+                                    <LogoutButton /> */}
+                                    {/* <a className="button is-success" href="http://localhost:8080/login"> Login </a>
+                                    <a className="button is-danger" href="http://localhost:8080/logout"> Logout </a> */}
 
                                 </div>
                             </div>
