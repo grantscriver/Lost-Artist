@@ -3,68 +3,68 @@ import React from "react";
 function ShopDropDowns() {
     return (
         <>
-            <div class="column  notification has-background-grey-light is-full is-offset-3 is-9 ">
+            <div className="column  is-full is-offset-3 is-9 ">
 
-                <div class="columns">
+                <div className="columns">
 
-                    <div class="column has-text-centered">
-                        <div class="dropdown is-hoverable">
-                            <div class="dropdown-trigger">
-                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <div className="column has-text-centered">
+                        <div className="dropdown is-hoverable">
+                            <div className="dropdown-trigger">
+                                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                     <span>State</span>
-                                    <span class="icon is-small">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    <span className="icon is-small">
+                                        <i className="fas fa-angle-down" aria-hidden="true"></i>
                                     </span>
                                 </button>
                             </div>
-                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                                <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item">
+                            <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                                <div className="dropdown-content">
+                                    <a href="#" className="dropdown-item">
                                         IA
-      </a>
-                                    <a href="#" class="dropdown-item">
+                                    </a>
+                                    <a href="#" className="dropdown-item">
                                         MI
-      </a>
-                                    <a href="#" class="dropdown-item">
+                                    </a>
+                                    <a href="#" className="dropdown-item">
                                         MN
-      </a>
-                                    <a href="#" class="dropdown-item">
+                                     </a>
+                                    <a href="#" className="dropdown-item">
                                         ND
-      </a>
-                                    <a href="#" class="dropdown-item">
+                                    </a>
+                                    <a href="#" className="dropdown-item">
                                         SD
-      </a>
-                                    <a href="#" class="dropdown-item">
+                                    </a>
+                                    <a href="#" className="dropdown-item">
                                         WI
-      </a>
+                                    </a>
 
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="column has-text-centered">
-                        <div class="dropdown is-hoverable">
-                            <div class="dropdown-trigger">
-                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <div className="column has-text-centered">
+                        <div className="dropdown is-hoverable">
+                            <div className="dropdown-trigger">
+                                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                     <span>Creators</span>
-                                    <span class="icon is-small">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    <span className="icon is-small">
+                                        <i className="fas fa-angle-down" aria-hidden="true"></i>
                                     </span>
                                 </button>
                             </div>
-                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                                <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item">
+                            <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                                <div className="dropdown-content">
+                                    <a href="#" className="dropdown-item">
                                         Creator Name 1
       </a>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="#" className="dropdown-item">
                                         Creator Name 2
       </a>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="#" className="dropdown-item">
                                         Creator Name 3
       </a>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="#" className="dropdown-item">
                                         ...
       </a>
 
@@ -72,28 +72,28 @@ function ShopDropDowns() {
                             </div>
                         </div>
                     </div>
-                    <div class="column has-text-centered">
-                        <div class="dropdown is-hoverable">
-                            <div class="dropdown-trigger">
-                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <div className="column has-text-centered">
+                        <div className="dropdown is-hoverable">
+                            <div className="dropdown-trigger">
+                                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                     <span>Color</span>
-                                    <span class="icon is-small">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    <span className="icon is-small">
+                                        <i className="fas fa-angle-down" aria-hidden="true"></i>
                                     </span>
                                 </button>
                             </div>
-                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                                <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item">
+                            <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                                <div className="dropdown-content">
+                                    <a href="#" className="dropdown-item">
                                         Black
       </a>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="#" className="dropdown-item">
                                         White
       </a>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="#" className="dropdown-item">
                                         Grey
       </a>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="#" className="dropdown-item">
                                         Beige
       </a>
 
@@ -102,28 +102,28 @@ function ShopDropDowns() {
                         </div>
                     </div>
 
-                    <div class="column has-text-centered">
-                        <div class="dropdown is-hoverable">
-                            <div class="dropdown-trigger">
-                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <div className="column has-text-centered">
+                        <div className="dropdown is-hoverable">
+                            <div className="dropdown-trigger">
+                                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                     <span>Size</span>
-                                    <span class="icon is-small">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    <span className="icon is-small">
+                                        <i className="fas fa-angle-down" aria-hidden="true"></i>
                                     </span>
                                 </button>
                             </div>
-                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                                <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item">
+                            <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                                <div className="dropdown-content">
+                                    <a href="#" className="dropdown-item">
                                         X-Large
       </a>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="#" className="dropdown-item">
                                         Large
       </a>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="#" className="dropdown-item">
                                         Medium
       </a>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="#" className="dropdown-item">
                                         Small
       </a>
 

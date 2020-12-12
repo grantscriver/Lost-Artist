@@ -1,20 +1,29 @@
 import React from "react";
 import Hero from "../../components/Hero/Hero";
+import {NavLink} from "react-router-dom";
 import ShopSideMenu from "../../components/ShopSideMenu/ShopSideMenu";
 import ShopDropDowns from "../../components/ShopDropDowns/ShopDropDowns";
+import Menu from "../../components/Menu/Menu";
 
 function Shirts() {
     return (
         <>
+            
             <Hero>
-                <ShopDropDowns>
-                </ShopDropDowns>
+
+                <Menu>
+                    <li><NavLink to="/shop/hats">Hats</NavLink></li>
+                    <li><NavLink to="/shop/shirts">Shirts</NavLink></li>
+                    <li><NavLink to="/shop/hoodies">Hoodies</NavLink></li>
+                    <li><NavLink to="/shop/shoes">Shoes</NavLink></li>
+                </Menu>
+                
 
                 <div class="columns">
-                    <div class="column">
+                    {/* <div class="column">
                         <ShopSideMenu>
                         </ShopSideMenu>
-                    </div>
+                    </div> */}
                     <div class="column">
                         <p class="title">This is Shirts</p>
                         <p class="subtitle">With an imadge</p>
