@@ -27,7 +27,7 @@ module.exports = function(app) {
 
     //Get all States from States table
     app.get("/api/states", (req, res) => {
-        db.State.findAll{})
+        db.State.findAll({})
         .then(dbStates => {
             console.log(dbStates);
         });
