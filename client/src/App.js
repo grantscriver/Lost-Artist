@@ -11,6 +11,7 @@ import Shirts from './pages/Shirts/shirts'
 import Hoodies from './pages/Hoodies/hoodies'
 import Shoes from './pages/Shoes/shoes'
 import Creators from './pages/Creators/creators'
+import State from './pages/State/state'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/shop/shoes" component={Shoes} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/state" component={State} />
       </Switch>
     </BrowserRouter>
   )
