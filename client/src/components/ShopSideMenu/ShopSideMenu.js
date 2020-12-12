@@ -4,36 +4,35 @@ import { NavLink } from 'react-router-dom';
 function ShopSideMenu() {
     return (
         <>
-            {/* <section class="section"> */}
-            <article class="tile is-child notification is-warning">
-
-                <div class="tile" >
-
-                    <ul>
-                        <NavLink className="link" exact to="/shop/hats">
-                            <li>
-                                Hats
+            <ul>
+                <NavLink className="link" exact to="/shop/hats">
+                    <li class="subtitle">
+                        Hats
            </li>
-                        </NavLink>
-                        <NavLink className="link" exact to="/shop/shirts">
-                            <li>
-                                Shirts
+                    <br></br>
+                </NavLink>
+                <NavLink className="link" exact to="/shop/shirts">
+                    <li class="subtitle">
+                        Shirts
             </li>
-                        </NavLink>
-                        <NavLink className="link" exact to="/shop/hoodies">
-                            <li>
-                                Hoodies
+                    <br></br>
+
+                </NavLink>
+                <NavLink className="link" exact to="/shop/hoodies">
+                    <li class="subtitle">
+                        Hoodies
             </li>
-                        </NavLink>
-                        <NavLink className="link" exact to="/shop/shoes">
-                            <li>
-                                Shoes
+                    <br></br>
+
+                </NavLink>
+                <NavLink className="link" exact to="/shop/shoes">
+                    <li class="subtitle">
+                        Shoes
             </li>
-                        </NavLink>
-                    </ul>
-                </div>
-            </article>
-            {/* </section> */}
+                    <br></br>
+
+                </NavLink>
+            </ul>
         </>
     )
 }
