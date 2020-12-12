@@ -1,75 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
+    const [activeStatus, setStatus] = useState(false);
+
+
     return (
         <div>
             <nav className="navbar" role="navigation" aria-label="main navigation">
-               <div className="navbar-brand">
-                   <a className="navbar-item" href="#linktohomepage">
-                       <h1>Lost Artist</h1>
-                       <h3>Clothing Collaborative</h3> 
-                   </a>
+                <div className="navbar-brand">
+                    <NavLink className="navbar-item" exact to="/">
+                        <h1>Lost Artist</h1>
+                        <h3>Clothing Collaborative</h3>
+                    </NavLink>
 
-                   <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar">
-                       <span aria-hidden="true"></span>
-                       <span aria-hidden="true"></span>
-                       <span aria-hidden="true"></span>
-                   </a>
-               </div>
+                    <a onClick={() => { setStatus(!activeStatus) }} role="button" className={`navbar-burger burger ${activeStatus ? "is-active" : ""}`} aria-label="menu" aria-expanded="false" data-target="navbar">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
 
-                <div id="navbar" className="navbar-menu">
+                <div id="navbar" className={`navbar-menu ${activeStatus ? "is-active" : ""}`}>
                     <div className="navbar-start">
                         <div className="navbar-item has-dropdown is-hoverable">
-                            <a className="navbar-link">
-                                State 
-                            </a>
+                            <NavLink className="navbar-link" exact to="/state">
+                                State
+                            </NavLink>
 
                             <div className="navbar-dropdown">
-                                <a class="dropdown-item">
+                                <NavLink className="dropdown-item" to="/state/iowa">
                                     IA
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/michigan">
                                     MI
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/minnesota">
                                     MN
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/north-dakota">
                                     ND
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/south-dakota">
                                     SD
-                                </a>
-                                <a className="dropdown-item">
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/state/wisconsin">
                                     WI
-                                </a>
+                                </NavLink>
                             </div>
                         </div>
 
-                        <a className="navbar-item" href="#link-creators-page">
+                        <NavLink className="navbar-item" exact to="/creators">
                             Creators
-                        </a>
+                        </NavLink>
 
-                        <a className="navbar-item" href="#link-shop-page">
-                            Shop
-                        </a>
-                    
                         <div className="navbar-item has-dropdown is-hoverable">
-                            <a className="navbar-link">
-                                Login
-                            </a>
+                            <NavLink className="navbar-link" exact to="/shop">
+                                Shop
+                            </NavLink>
+
+                            <div className="navbar-dropdown">
+                                <NavLink className="dropdown-item" to="/shop/hats">
+                                    Hats
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/shop/shirts">
+                                    Shirts
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/shop/hoodies">
+                                    Hoodies
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/shop/shoes">
+                                    Shoes
+                                </NavLink>
+                            </div>
+                        </div>
+
+
+                        {/* <div className="navbar-item has-dropdown is-hoverable">
+                            
 
                             <div className="navbar-dropdown">
                                 <a className="field">
-                                    <p class="control">
-                                        <input class="input" type="username" placeholder="Username"></input>
-                                    </p>   
+                                    <p className="control">
+                                        <input className="input" type="username" placeholder="Username"></input>
+                                    </p>
                                 </a>
 
                                 <a className="field">
-                                    <p class="control">
-                                        <input class="input" type="password" placeholder="Password"></input>
-                                    </p>   
+                                    <p className="control">
+                                        <input className="input" type="password" placeholder="Password"></input>
+                                    </p>
                                 </a>
 
                                 <a className="field">
@@ -83,16 +103,42 @@ function Navbar() {
                                         <button className="button is-link" > Register </button>
                                     </p>
                                 </a>
-                            </div>                                  
+                            </div>
+                        </div> */}
+
+                        <div className="navbar-end">
+                            <div className="navbar-item">
+                                <div className="buttons">
+
+                                    <a className="button is-success" href="http://localhost:8080/login"> Login </a>
+                                    <a className="button is-danger" href="http://localhost:8080/logout"> Logout </a>
+
+                                </div>
+                            </div>
                         </div>
-                        
+                        <div className="navbar-item has-dropdown is-hoverable">
+                            <NavLink className="navbar-link" exact to="/cart">
+                                <span class="icon">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </span>
 
+                            </NavLink>
 
-
-                        
+                            <div className="navbar-dropdown">
+                                <NavLink className="dropdown-item" to="/addtocart">
+                                    Add to cart
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="/item1">
+                                    Item 1
+                                </NavLink>
+                                <NavLink className="dropdown-item" to="item2">
+                                    Item 2
+                                </NavLink>
+                            </div>
+                        </div>
                     </div>
                 </div>
-           </nav>
+            </nav>
         </div>
     )
 }

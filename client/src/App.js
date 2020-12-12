@@ -1,103 +1,37 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Body from './components/Body/Body';
+import Home from './pages/Home/home';
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
-import Register from './components/Register/Register';
-
-
-
-
+import Register from './pages/Register/register';
+import Shop from './pages/Shop/shop'
+import Cart from './pages/Cart/cart'
+import Hats from './pages/Hats/hats'
+import Shirts from './pages/Shirts/shirts'
+import Hoodies from './pages/Hoodies/hoodies'
+import Shoes from './pages/Shoes/shoes'
+import Creators from './pages/Creators/creators'
+import State from './pages/State/state'
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Body} /> 
+        <Route exact path="/" component={Home} />
+        <Route exact path="/creators" component={Creators} />
+        <Route exact path="/shop" component={Shop} />
+        <Route exact path="/shop/hats" component={Hats} />
+        <Route exact path="/shop/shirts" component={Shirts} />
+        <Route exact path="/shop/hoodies" component={Hoodies} />
+        <Route exact path="/shop/shoes" component={Shoes} />
+        <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/state" component={State} />
       </Switch>
-      
     </BrowserRouter>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class App extends Component {
-//   state = {
-//     response: '',
-//     post: '',
-//     responseToPost: '',
-//   };
-//   componentDidMount() {
-//     this.callApi()
-//       .then(res => this.setState({ response: res.express }))
-//       .catch(err => console.log(err));
-//   }
-//   callApi = async () => {
-//     const response = await fetch('/api/hello');
-//     const body = await response.json();
-//     if (response.status !== 200) throw Error(body.message);
-//     return body;
-//   };
-//   handleSubmit = async e => {
-//     e.preventDefault();
-//     const response = await fetch('/api/world', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ post: this.state.post }),
-//     });
-//     const body = await response.text();
-//     this.setState({ responseToPost: body });
-//   };
-// render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <p>
-//             Edit <code>src/App.js</code> and save to reload.
-//           </p>
-//           <a
-//             className="App-link"
-//             href="https://reactjs.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Learn React
-//           </a>
-//         </header>
-//         <p>{this.state.response}</p>
-//         <form onSubmit={this.handleSubmit}>
-//           <p>
-//             <strong>Post to Server:</strong>
-//           </p>
-//           <input
-//             type="text"
-//             value={this.state.post}
-//             onChange={e => this.setState({ post: e.target.value })}
-//           />
-//           <button type="submit">Submit</button>
-//         </form>
-//         <p>{this.state.responseToPost}</p>
-//       </div>
-//     );
-//   }
-// }
-
 
 export default App;
 
