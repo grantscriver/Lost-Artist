@@ -1,6 +1,21 @@
-import React from 'react';
-import {Input, DropDown, TextArea} from '../../components/Forms/Creatorfile'
+import React, {useState} from 'react';
+import {Input, DropDown, TextArea, FormBtn} from '../../components/Forms/Creatorfile'
+
 function Creators() {
+  const [formObject, setFormObject] = useState({});
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({...formObject, [name]: value})
+  };
+
+  // When the form is submitted, use the API.saveBook method to save the book data
+  // Then reload books from the database
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log(event)
+    
+  };
     return (
         <form>
                          
@@ -48,15 +63,14 @@ function Creators() {
               />
 
               <FormBtn
-                disabled={!(formObject.author && formObject.title)}
+                disabled={!(formObject.itemname && formObject.category)}
                 onClick={handleFormSubmit}
               >
                 Submit Item
-              </FormBtn>
-  
 
-        </form>
+              </FormBtn>
+          </form>
     )
-}
+    }
 
 export default Creators

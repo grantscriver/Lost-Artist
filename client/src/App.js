@@ -11,7 +11,7 @@ import Hats from './pages/Hats/hats'
 import Shirts from './pages/Shirts/shirts'
 import Hoodies from './pages/Hoodies/hoodies'
 import Shoes from './pages/Shoes/shoes'
-import Creators from './pages/Creators/creators'
+import Creators from './pages/Creators/newitemcreator'
 import State from './pages/State/state'
 import LoginButton from './components/Buttons/LoginButton';
 import LogoutButton from './components/Buttons/LogoutButton';
@@ -39,7 +39,7 @@ function App() {
       </Navbar>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/creators" component={Creators} />
+        <Route exact path="/newitemcreator" component={Creators} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/shop/hats" component={Hats} />
         <Route exact path="/shop/shirts" component={Shirts} />
