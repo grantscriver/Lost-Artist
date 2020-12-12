@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -16,6 +17,23 @@ import State from './pages/State/state'
 import LoginButton from './components/Buttons/LoginButton';
 import LogoutButton from './components/Buttons/LogoutButton';
 
+=======
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from "./pages/Home/home";
+import Navbar from "./components/Navbar/Navbar";
+import "./App.css";
+import Register from "./pages/Register/register";
+import Shop from "./pages/Shop/shop";
+import Cart from "./pages/Cart/cart";
+import Hats from "./pages/Hats/hats";
+import Shirts from "./pages/Shirts/shirts";
+import Hoodies from "./pages/Hoodies/hoodies";
+import Shoes from "./pages/Shoes/shoes";
+import Creators from "./pages/Creators/creators";
+import State from "./pages/State/state";
+import AddItem from "./pages/Add-Item/add-Item";
+>>>>>>> Stashed changes
 
 function App() {
   const {user, isAuthenticated, isLoading } = useAuth0();
@@ -48,11 +66,10 @@ function App() {
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/state" component={State} />
+        <Route exact path="/add-item" component={AddItem} />
       </Switch>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;
-
-
