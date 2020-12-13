@@ -20,7 +20,7 @@ import LogoutButton from "./components/Buttons/LogoutButton";
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  console.log(window.location.origin);
+ 
   // If page is loading/transitioning, display "Loading..."
   if (isLoading) {
     return <div>Loading...</div>;

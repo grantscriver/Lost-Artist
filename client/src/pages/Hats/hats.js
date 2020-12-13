@@ -22,7 +22,7 @@ function Hats() {
                     <div className="column">
                         <p className="title">This is Hats</p>
                         <p className="subtitle">With an image</p>
-                        <figure className="image is-4by3">
+                        <figure className="image is-4by3" alt="placeholder">
                             <img src="https://bulma.io/images/placeholders/640x480.png">
                             </img>
                         </figure>
@@ -30,7 +30,7 @@ function Hats() {
                     <div className="column">
                         <p className="title">This is Hats</p>
                         <p className="subtitle">With an image</p>
-                        <figure className="image is-4by3">
+                        <figure className="image is-4by3" alt="placeholder">
                             <img src="https://bulma.io/images/placeholders/640x480.png">
                             </img>
                         </figure>
@@ -38,7 +38,7 @@ function Hats() {
                     <div className="column">
                         <p className="title">This is Hats</p>
                         <p className="subtitle">With an image</p>
-                        <figure className="image is-4by3">
+                        <figure className="image is-4by3" alt="placeholder">
                             <img src="https://bulma.io/images/placeholders/640x480.png">
                             </img>
                         </figure>
