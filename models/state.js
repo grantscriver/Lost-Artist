@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   var State = sequelize.define("State", {
-      state: {
+      state_id: {
           type: DataTypes.STRING,
           allowNull: false
       },

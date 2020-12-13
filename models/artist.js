@@ -4,6 +4,11 @@ module.exports = function (sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNull: false
       },
+      artist_state_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+
       artist_state: {
           type: DataTypes.STRING,
           allowNull: false
