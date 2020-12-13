@@ -1,0 +1,48 @@
+
+
+
+.placeholder-one {
+  height: 480px;
+  width: 320px;
+  border: 3px solid black;
+
+  background-image: url(https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=480&w=320);
+  background-size: cover;
+  box-shadow: 3px 3px 15px 6px rgb(56, 55, 55);
+ 
+  
+}
+
+.placeholder-two {
+  height: 480px;
+  width: 320px;
+  border: 3px solid black;
+  background-image: url(https://images.pexels.com/photos/5303044/pexels-photo-5303044.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: cover;
+  box-shadow: 3px 3px 15px 6px rgb(56, 55, 55);
+ 
+}
+
+
+.placeholder-three {
+  height: 480px;
+  width: 320px;
+  border: 3px solid black;
+  background-image: url(https://images.pexels.com/photos/3026283/pexels-photo-3026283.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: cover;
+  box-shadow: 3px 3px 15px 6px rgb(56, 55, 55);
+ 
+  
+}
+
+.placeholder-four {
+  height: 480px;
+  width: 320px;
+  border: 3px solid black;
+  background-image: url(https://images.pexels.com/photos/2897531/pexels-photo-2897531.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: cover;
+  box-shadow: 3px 3px 15px 6px rgb(56, 55, 55);
+ 
+  
+}
+
