@@ -13,6 +13,7 @@ function Hats() {
                 <div className="columns">
                     <div className="column is-one-fifth">
                         <Menu>
+                            <li><NavLink to="/shop">All</NavLink></li>
                             <li><NavLink to="/shop/hats">Hats</NavLink></li>
                             <li><NavLink to="/shop/shirts">Shirts</NavLink></li>
                             <li><NavLink to="/shop/hoodies">Hoodies</NavLink></li>
