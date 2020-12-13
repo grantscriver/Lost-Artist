@@ -14,17 +14,17 @@ module.exports = function (sequelize, DataTypes) {
           
       },
       cat_id: {
-          type: DataTypes.STRING,
+          type: DataTypes.INTEGER,
           allowNull: false,
           
       },
       color_code: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         
     },
       size_code: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         
   },
@@ -36,8 +36,8 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
 },
-      state: {
-        type: DataTypes.STRING,
+      state_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
 },
       selling_retail: {
@@ -45,13 +45,13 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
 },
      about_item: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
 },
 });
 
 Item.associate = function(models) {
-Item.belongsTo(models.category, models.color, models.size, {
+Item.belongsTo(models.category, models.color, models.size, models.artist, {
     foreignKey: {
       allowNull: false
     }
