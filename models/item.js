@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var Item = sequelize.define("Item", {
+  var Item = sequelize.define("items", {
       style: {
           type: DataTypes.STRING,
           allowNull: false
@@ -51,11 +51,31 @@ module.exports = function (sequelize, DataTypes) {
 });
 
 Item.associate = function(models) {
-Item.belongsTo(models.category, models.color, models.size, models.artist, {
+  Item.belongsTo(models.categories, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+
+  Item.belongsTo(models.colors, {
     foreignKey: {
       allowNull: false
     }
   });
+
+  Item.belongsTo(models.sizes, {
+    foreignKey: {
+      allowNull: false
+    }
+  });
+
+  Item.belongsTo(models.artists, {
+    foreignKey: {
+      allowNull: false
+    }
+  });
+
+
 };
 
   return Item;

@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var Size = sequelize.define("Size", {
+  var Size = sequelize.define("sizes", {
       size_code: {
           type: DataTypes.STRING,
           allowNull: false

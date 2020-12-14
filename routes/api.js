@@ -5,16 +5,16 @@ module.exports = function(app) {
     
     // Get all Artists from table
     app.get("/api/creators", (req, res) => {
-        db.Artist.findAll({})
+        db.artists.findAll({})
         .then(dbArtists => {
-            console.log(dbArtists);
+            res.send(dbArtists);
         });
     });
 
     //Get one Artist by ID
     app.get("/api/creators/:id", (req, res) => {
         let idParam = req.params.id;
-        db.Artist.findOne({
+        db.artists.findOne({
             where: {
                 id: idParam
             }
@@ -27,7 +27,7 @@ module.exports = function(app) {
 
     //Get all States from States table
     app.get("/api/states", (req, res) => {
-        db.State.findAll({})
+        db.states.findAll({})
         .then(dbStates => {
             console.log(dbStates);
         });
@@ -36,7 +36,7 @@ module.exports = function(app) {
     //Get all Artists where State = param
     app.get("/api/creators/:state", (req, res) => {
         let stateParam = req.params.state;
-        db.Artist.findAll({
+        db.artists.findAll({
             where: {
                 artist_state: stateParam
             }
@@ -48,16 +48,17 @@ module.exports = function(app) {
 
     //Get all Items from table
     app.get("/api/items", (req, res) => {
-        db.Item.findAll({})
+        db.items.findAll({})
         .then(dbItems => {
             console.log(dbItems);
+            res.send(dbItems);
         });
     }); 
 
     //Get all Items where color = param
     app.get("/api/items/:color", (req, res) => {
         let colorParam = req.params.color;
-        db.Item.findAll({
+        db.items.findAll({
             where: {
                 color_code: colorParam
             }
@@ -70,7 +71,7 @@ module.exports = function(app) {
     //Get all Items where size = param 
     app.get("/api/items/:size", (req, res) => {
         let sizeParam = req.params.size;
-        db.Item.findAll({
+        db.items.findAll({
             where: {
                 size_code: sizeParam
             }
@@ -83,7 +84,7 @@ module.exports = function(app) {
     //Get One Item where id = param
     app.get("/api/items/:id", (req, res) => {
         let idParam = req.params.id;
-        db.Item.findOne({
+        db.item.findOne({
             where: {
                 id: idParam
             }
@@ -95,7 +96,7 @@ module.exports = function(app) {
 
     //Create New Artist
     app.post("/api/creators", (req, res) => {
-        db.Artist.create({
+        db.artists.create({
             artist_name: req.body.name,
             artist_state: req.body.state,
             artist_email: req.body.email,
@@ -108,7 +109,7 @@ module.exports = function(app) {
 
     // Create New Item
     app.post("/api/items", (req, res) => {
-        db.Item.create({
+        db.items.create({
             style: req.body.style,
             style_name: req.body.style_name,
             item_id: req.body.id,
@@ -129,7 +130,7 @@ module.exports = function(app) {
     //Update Artist
     app.put("/api/creators/:id", (req, res) => {
         let idParam = req.params.id;
-        db.Artist.update(
+        db.artists.update(
             req.body,
             {
                 where: {
@@ -146,7 +147,7 @@ module.exports = function(app) {
     //Update Item 
     app.put("/api/items/:id", (req, res) => {
         let idParam = req.params.id;
-        db.Item.update(
+        db.items.update(
             req.body,
             {
                 where: {
@@ -162,7 +163,7 @@ module.exports = function(app) {
     //Delete Item
     app.delete("/api/items/:id", (req, res) => {
         let idParam = req.params.id;
-        db.Item.destroy({
+        db.items.destroy({
             where: {
                 id: idParam
             }

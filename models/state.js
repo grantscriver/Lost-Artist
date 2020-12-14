@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var State = sequelize.define("State", {
+  var State = sequelize.define("states", {
       state_id: {
           type: DataTypes.STRING,
           allowNull: false
@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
     State.associate = function(models) {
       // Associating Artist with Items
       // When an Author is deleted, also delete any associated Posts
-      State.hasMany(models.Artist, {
+      State.hasMany(models.artists, {
         onDelete: "cascade"
       });
     };

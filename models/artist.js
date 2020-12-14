@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var Artist = sequelize.define("Artist", {
+  var Artist = sequelize.define("artists", {
       artist_name: {
           type: DataTypes.STRING,
           allowNull: false
@@ -14,9 +14,9 @@ module.exports = function (sequelize, DataTypes) {
           allowNull: false
       },
       artist_email: {
-          type: DataTypes.NUMERIC,
+          type: DataTypes.STRING,
           allowNull: false,
-          isEMail: true
+          isEmail: true
       },
       artist_instagram: {
           type: DataTypes.STRING,
@@ -38,7 +38,7 @@ module.exports = function (sequelize, DataTypes) {
   Artist.associate = function(models) {
     // Associating Artist with Items
     // When an Author is deleted, also delete any associated Posts
-    Author.hasMany(models.Item, {
+    Artist.hasMany(models.items, {
       onDelete: "cascade"
     });
   };
