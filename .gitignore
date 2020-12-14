@@ -28,4 +28,4 @@ yarn-error.log*
 .env
 /config/auth0.config.js
 /client/.eslintcache
-config/config.json
+/config/config.json
