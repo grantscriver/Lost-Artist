@@ -1,4 +1,7 @@
-
+.item-image {
+  height: 480px;
+  width: 320px;
+}
 
 
 .placeholder-one {
@@ -46,3 +49,6 @@
   
 }
 
+.full {
+  height: 100vh;
+}
