@@ -16,6 +16,7 @@ import State from "./pages/State/state";
 import AddItem from "./pages/Add-Item/add-item";
 import LoginButton from "./components/Buttons/LoginButton";
 import LogoutButton from "./components/Buttons/LogoutButton";
+import Creator from "./pages/Creators/creatorshomepage";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -44,6 +45,7 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/state" component={State} />
         <Route exact path="/add-item" component={AddItem} />
+        <Route exact path="/creatorshomepage" component={Creator} />
       </Switch>
     </BrowserRouter>
   );
