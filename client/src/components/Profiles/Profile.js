@@ -7,7 +7,7 @@ const Profile = () => {
 
   useEffect(() => {
     const getUserMetadata = async () => {
-      const domain = "dev-enk2ocio.us.auth0.com";
+      const domain = process.env.REACT_APP_AUTH0_DOMAIN;
   
       try {
         const accessToken = await getAccessTokenSilently({
@@ -41,6 +41,7 @@ const Profile = () => {
         <h2>{user.name}</h2>
         <p>{user.email}</p>
         <h3>User Metadata</h3>
+        {console.log(user)}
         {userMetadata ? (
           <pre>{JSON.stringify(userMetadata, null, 2)}</pre>
         ) : (
