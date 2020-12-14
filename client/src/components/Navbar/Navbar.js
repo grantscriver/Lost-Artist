@@ -63,7 +63,7 @@ function Navbar({ children }) {
                 </NavLink>
               </div>
             </div>
-            <NavLink className="navbar-item" exact to="/creatorhomepage">
+            <NavLink className="navbar-item" exact to="/creatorshomepage">
               Creators
             </NavLink>
             <div className="navbar-item has-dropdown is-hoverable">
