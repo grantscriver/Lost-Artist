@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { NavLink } from "react-router-dom";
 import Hero from "../../components/Hero/Hero";
-
+import CreatorColumn from "../../components/column/CreatorColumn";
+import axios from 'axios';
 
 function Creator () {
+    const [creators, setCreators] = useState([]);
+
+    useEffect(() => {
+        axios.get("/api/creators")
+        .then(res => {
+            console.log(res.data);
+            setCreators(res.data);
+        })
+    }, [])
     return (
         <>
             <Hero >
                 
                 {/* <div className="dropdown is-active">
                         <div className="dropdown-trigger">
-                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                 <span>State</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                <span className="icon is-small">
+                                    <i className="fas fa-angle-down" aria-hidden="true"></i>
                                 </span>
                             </button>
                         
@@ -21,19 +32,19 @@ function Creator () {
                                     <a href="#" className="dropdown-item">
                                         MN
                                     </a>
-                                    <hr class="dropdown-divider"></hr>
+                                    <hr className="dropdown-divider"></hr>
                                     <a className="dropdown-item">
                                         ND
                                     </a>
-                                    <hr class="dropdown-divider"></hr>
+                                    <hr className="dropdown-divider"></hr>
                                     <a href="#" className="dropdown-item">
                                         SD
                                     </a>
-                                    <hr class="dropdown-divider"></hr>
+                                    <hr className="dropdown-divider"></hr>
                                     <a href="#" className="dropdown-item">
                                         WI
                                     </a>
-                                    <hr class="dropdown-divider"></hr>
+                                    <hr className="dropdown-divider"></hr>
                                     <a href="#" className="dropdown-item">
                                         IA
                                     </a>
@@ -46,55 +57,97 @@ function Creator () {
                 <div className="columns">
                     <div className="column is-one-fifth has-background-white">
                         <aside className="menu has-text-centered">
-                            <p class="menu-label">
+                            <p className="menu-label">
                                 MN
                             </p>
                                 <ul className="menu-list">
-                                <li><a>Creator Name</a></li>
-                                <li><a>Creator Name</a></li>
+                                {creators.artist_state === 'MN' 
+                                ? creators.map((creator, i) => {
+                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                    })
+                                : null  
+                                }
                                 </ul>
                             <p className="menu-label">
                                 ND
                             </p>
                                 <ul className="menu-list">
-                                <li><a>Creator Name</a></li>
-                                <li><a>Creator Name</a></li>
+                                {creators.artist_state === 'ND' 
+                                ? creators.map((creator, i) => {
+                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                    })
+                                : null  
+                                }
                                 </ul>
                             <p className="menu-label">
                                 SD
                             </p>
                                 <ul className="menu-list">
-                                <li><a>Creator Name</a></li>
-                                <li><a>Creator Name</a></li>
+                                {creators.artist_state === 'SD' 
+                                ? creators.map((creator, i) => {
+                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                    })
+                                : null  
+                                }
                                 </ul>
                             <p className="menu-label">
                                 WI
                             </p>
                                 <ul className="menu-list">
-                                <li><a>Creator Name</a></li>
-                                <li><a>Creator Name</a></li>
+                                {creators.artist_state === 'WI' 
+                                ? creators.map((creator, i) => {
+                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                    })
+                                : null  
+                                }
                                 </ul>
                             <p className="menu-label">
                                 IA
                             </p>
                                 <ul className="menu-list">
-                                <li><a>Creator Name</a></li>
-                                <li><a>Creator Name</a></li>
+                                {creators.artist_state === 'IA' 
+                                ? creators.map((creator, i) => {
+                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                    })
+                                : null  
+                                }
                                 </ul>
                             </aside>
                     </div>
-                    <div className="column">
+                    {creators.length > 0 && 
+                        creators.map((creator, i) => {
+                            console.log(creator);
+                            return <CreatorColumn {...creator} />
+                        })
+                    }
+
+                    {/* <div className="column">
                     <p className="title">Creator Name</p>
                         <p className="subtitle">State</p>
                         <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
                             </img>
                         </figure>
                         <br></br>
                         <p className="title">Creator Name</p>
                         <p className="subtitle">State</p>
                         <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
+                            </img>
+                        </figure>
+                    </div> */}
+                    <div className="column">
+                    <p className="title">Creator Name</p>
+                        <p className="subtitle">State</p>
+                        <figure className="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
+                            </img>
+                        </figure>
+                        <br></br>
+                        <p className="title">Creator Name</p>
+                        <p className="subtitle">State</p>
+                        <figure className="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
                             </img>
                         </figure>
                     </div>
@@ -102,29 +155,14 @@ function Creator () {
                     <p className="title">Creator Name</p>
                         <p className="subtitle">State</p>
                         <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
                             </img>
                         </figure>
                         <br></br>
                         <p className="title">Creator Name</p>
                         <p className="subtitle">State</p>
                         <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
-                            </img>
-                        </figure>
-                    </div>
-                    <div className="column">
-                    <p className="title">Creator Name</p>
-                        <p className="subtitle">State</p>
-                        <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
-                            </img>
-                        </figure>
-                        <br></br>
-                        <p className="title">Creator Name</p>
-                        <p className="subtitle">State</p>
-                        <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
                             </img>
                         </figure>    
                     </div>
