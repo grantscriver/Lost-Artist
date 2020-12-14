@@ -11,20 +11,11 @@ function Shop() {
     useEffect(() => {
         axios.get("/api/items")
         .then(res => {
-            console.log("hello???")
-            setItems(res);
+            console.log(res.data)
+            setItems(res.data);
         });
     }, [])
 
-    function test() {
-        console.log("test?")
-        axios.get("/api/items")
-        .then(res => {
-            console.log("hello???")
-            setItems(res);
-        });
-    }
-    test();
 
     if(items.length > 0) {
         console.log(items);
@@ -110,7 +101,7 @@ function Shop() {
                         </Menu>
                     </div>
 
-                    {
+                    {items.length > 0 &&
                         items.map((item, i) => {
                             return (
                                 <ItemColumn {...item} />
