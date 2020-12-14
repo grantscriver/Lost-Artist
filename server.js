@@ -78,7 +78,7 @@ app.get('/profile', requiresAuth(), (req, res) => {
 });
 
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
