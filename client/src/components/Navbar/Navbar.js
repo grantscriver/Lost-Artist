@@ -20,9 +20,8 @@ function Navbar({ children }) {
               setStatus(!activeStatus);
             }}
             role="button"
-            className={`navbar-burger burger ${
-              activeStatus ? "is-active" : ""
-            }`}
+            className={`navbar-burger burger ${activeStatus ? "is-active" : ""
+              }`}
             aria-label="menu"
             aria-expanded="false"
             data-target="navbar"
@@ -64,16 +63,13 @@ function Navbar({ children }) {
                 </NavLink>
               </div>
             </div>
-
-            <NavLink className="navbar-item" exact to="/creatorshomepage">
+            <NavLink className="navbar-item" exact to="/creatorhomepage">
               Creators
             </NavLink>
-
             <div className="navbar-item has-dropdown is-hoverable">
               <NavLink className="navbar-link" exact to="/shop">
                 Shop
               </NavLink>
-
               <div className="navbar-dropdown">
                 <NavLink className="dropdown-item" to="/shop/hats">
                   Hats
@@ -86,6 +82,9 @@ function Navbar({ children }) {
                 </NavLink>
                 <NavLink className="dropdown-item" to="/shop/shoes">
                   Shoes
+                </NavLink>
+                <NavLink className="dropdown-item" to="/shop/itemdetails">
+                  Item Details
                 </NavLink>
               </div>
             </div>
