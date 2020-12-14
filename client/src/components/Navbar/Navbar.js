@@ -65,7 +65,7 @@ function Navbar({ children }) {
               </div>
             </div>
 
-            <NavLink className="navbar-item" exact to="/newitemcreator">
+            <NavLink className="navbar-item" exact to="/creatorshomepage">
               Creators
             </NavLink>
 
