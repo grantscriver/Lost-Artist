@@ -1,20 +1,18 @@
+require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const app = express();
+const { auth, requiresAuth } = require('express-openid-connect');
+const PORT = process.env.PORT || 8080;
+const auth0Config = require("./config/auth0.config");
 const jwt = require('express-jwt');
 const jwtAuthz = require('express-jwt-authz');
 const jwksRsa = require('jwks-rsa');
-// const cors = require('cors');
-const app = express();
-const { auth } = require('express-openid-connect');
-const PORT = process.env.PORT || 8080;
-const auth0Config = require("./config/auth0.config");
-
 const checkScopes = jwtAuthz([ 'read:messages' ]);
-
-const { requiresAuth } = require('express-openid-connect');
-
 let db = require("./models");
-// app.use(cors(corsOptions));
+
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(auth(auth0Config));
@@ -40,6 +38,9 @@ const checkJwt = jwt({
   algorithms: ['RS256']
 });
 
+
+
+// ROUTES
 require("./routes/api")(app);
 
 app.get('/api/public', function(req, res) {
