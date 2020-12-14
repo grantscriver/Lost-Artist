@@ -11,17 +11,17 @@ import Hats from "./pages/Hats/hats";
 import Shirts from "./pages/Shirts/shirts";
 import Hoodies from "./pages/Hoodies/hoodies";
 import Shoes from "./pages/Shoes/shoes";
-import Creators from "./pages/Creators/creatorhomepage";
+import Creators from "./pages/Creators/newitemcreator";
 import State from "./pages/State/state";
 import AddItem from "./pages/Add-Item/add-item";
 import LoginButton from "./components/Buttons/LoginButton";
 import LogoutButton from "./components/Buttons/LogoutButton";
-import ItemDetails from "./pages/Shop/itemdetails";
+import Creator from "./pages/Creators/creatorshomepage";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-
+ 
   // If page is loading/transitioning, display "Loading..."
   if (isLoading) {
     return <div>Loading...</div>;
@@ -35,17 +35,17 @@ function App() {
       </Navbar>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/creatorhomepage" component={Creators} />
+        <Route exact path="/newitemcreator" component={Creators} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/shop/hats" component={Hats} />
         <Route exact path="/shop/shirts" component={Shirts} />
         <Route exact path="/shop/hoodies" component={Hoodies} />
         <Route exact path="/shop/shoes" component={Shoes} />
-        <Route exact path="/shop/itemdetails" component={ItemDetails} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/state" component={State} />
         <Route exact path="/add-item" component={AddItem} />
+        <Route exact path="/creatorshomepage" component={Creator} />
       </Switch>
     </BrowserRouter>
   );
