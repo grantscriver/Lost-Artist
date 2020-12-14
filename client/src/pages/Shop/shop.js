@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "../../components/Hero/Hero";
 import { NavLink } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
+import axios from "axios";
+import ItemColumn from "../../components/column/ItemColumn";
 
 function Shop() {
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        axios.get("/api/items")
+        .then(res => {
+            console.log("hello???")
+            setItems(res);
+        });
+    }, [])
+
+    function test() {
+        console.log("test?")
+        axios.get("/api/items")
+        .then(res => {
+            console.log("hello???")
+            setItems(res);
+        });
+    }
+    test();
+
+    if(items.length > 0) {
+        console.log(items);
+    }
     return (
         <>
             <Hero>
@@ -84,11 +109,19 @@ function Shop() {
                             <li><NavLink to="/shop/shoes">Shoes</NavLink></li>
                         </Menu>
                     </div>
+
+                    {
+                        items.map((item, i) => {
+                            return (
+                                <ItemColumn {...item} />
+                            )
+                        })
+                    }
                     <div className="column">
                         <p className="title">This is All</p>
                         <p className="subtitle">With an image</p>
                         <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
                             </img>
                         </figure>
                     </div>
@@ -96,7 +129,7 @@ function Shop() {
                         <p className="title">This is All</p>
                         <p className="subtitle">With an image</p>
                         <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
                             </img>
                         </figure>
                     </div>
@@ -104,7 +137,7 @@ function Shop() {
                         <p className="title">This is All</p>
                         <p className="subtitle">With an image</p>
                         <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
                             </img>
                         </figure>
                     </div>
