@@ -11,16 +11,13 @@ const auth0Config = require("./config/auth0.config");
 
 const checkScopes = jwtAuthz([ 'read:messages' ]);
 
-
 const { requiresAuth } = require('express-openid-connect');
 
-
+let db = require("./models");
 // app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(auth(auth0Config));
-
-
 
 
 // Authorization middleware. When used, the
@@ -43,7 +40,7 @@ const checkJwt = jwt({
   algorithms: ['RS256']
 });
 
-
+require("./routes/api")(app);
 
 app.get('/api/public', function(req, res) {
   res.json({
