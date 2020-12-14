@@ -17,11 +17,12 @@ import AddItem from "./pages/Add-Item/add-item";
 import LoginButton from "./components/Buttons/LoginButton";
 import LogoutButton from "./components/Buttons/LogoutButton";
 import Creator from "./pages/Creators/creatorshomepage";
+import ItemDetails from "./pages/Shop/itemdetails"
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
- 
+
   // If page is loading/transitioning, display "Loading..."
   if (isLoading) {
     return <div>Loading...</div>;
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/shop/shirts" component={Shirts} />
         <Route exact path="/shop/hoodies" component={Hoodies} />
         <Route exact path="/shop/shoes" component={Shoes} />
+        <Route exact path="/shop/itemdetails" component={ItemDetails} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/state" component={State} />
