@@ -4,8 +4,10 @@ import { app } from "../../base";
 const db = app.firestore();
 
 function AddPhoto() {
+  const crypto = require("crypto");
+  const id = crypto.randomBytes(16).toString("hex");
   const [fileUrl, setFileUrl] = React.useState(null);
-  const [users, setUsers] = React.useState([]);
+  const [item, setItem] = React.useState([]);
 
   const onFileChange = async (e) => {
     const file = e.target.files[0];
@@ -17,55 +19,58 @@ function AddPhoto() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const username = e.target.username.value;
-    if (!username || !fileUrl) {
+    const itemName = e.target.itemName.value;
+    if (!itemName || !fileUrl) {
       return;
     }
-    await db.collection("users").doc(username).set({
-      name: username,
+    await db.collection("item").doc(itemName).set({
+      id: id,
+      name: itemName,
       pic: fileUrl,
     });
   };
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      const usersCollection = await db.collection("users").get();
-      setUsers(
-        usersCollection.docs.map((doc) => {
+    const fetchItem = async () => {
+      const itemCollection = await db.collection("item").get();
+      setItem(
+        itemCollection.docs.map((doc) => {
           return doc.data();
         })
       );
     };
-    fetchUsers();
+    fetchItem();
   }, []);
 
   return (
     <>
       <div className="columns">
-        {users.map((user) => {
+        {item.map((item) => {
           return (
-            <div className="column is-3" key={user.pic}>
+            <div className="column is-3" key={item.id}>
               <div className="card">
-                <div className="card-image">
-                  <figure className="image is-3by4">
-                    <img src={user.pic} alt={user.name} />
-                  </figure>
-                </div>
-                <div className="card-content">
-                  <div className="media">
-                    <div className="media-content">
-                      <p className="title is-4">{user.name}</p>
+                <a href={item.pic}>
+                  <div className="card-image">
+                    <figure className="image is-3by4">
+                      <img src={item.pic} alt={item.name} />
+                    </figure>
+                  </div>
+                  <div className="card-content">
+                    <div className="media">
+                      <div className="media-content">
+                        <p className="title is-4">{item.name}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           );
         })}
       </div>
       <form onSubmit={onSubmit}>
-        <input type="file" onChange={onFileChange} />
-        <input type="text" name="username" placeholder="NAME" />
+        <input type="file" onChange={onFileChange} accept="image/*" />
+        <input type="text" name="itemName" placeholder="NAME" />
         <button>Submit</button>
       </form>
     </>
