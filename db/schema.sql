@@ -4,7 +4,7 @@ CREATE DATABASE artistdb;
 
 USE artistdb;
 
-CREATE TABLE state
+CREATE TABLE states
 (
 	id int NOT NULL AUTO_INCREMENT,
 	state_id varchar(2) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE state
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE artist
+CREATE TABLE artists
 (
 	id int NOT NULL AUTO_INCREMENT,
 	artist_name varchar(30) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE artist
 );
 
 
-CREATE TABLE color
+CREATE TABLE colors
 (
 	id int NOT NULL AUTO_INCREMENT,
 	color_code varchar(3) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE color
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE size
+CREATE TABLE sizes
 (
 	id int NOT NULL AUTO_INCREMENT,
 	size_code varchar(3) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE size
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE category
+CREATE TABLE categories
 (
 	id int NOT NULL AUTO_INCREMENT,
 	cat_id varchar(15) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE category
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE item
+CREATE TABLE items
 (
 	id int NOT NULL AUTO_INCREMENT,
 	style varchar(25) NOT NULL,
