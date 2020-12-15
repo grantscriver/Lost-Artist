@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Hero from "../../components/Hero/Hero";
 import CreatorColumn from "../../components/column/CreatorColumn";
 import axios from 'axios';
+import Wrapper from '../../components/Wrapper/Wrapper';
 
 function Creator () {
     const [creators, setCreators] = useState([]);
@@ -16,7 +17,7 @@ function Creator () {
     }, [])
     return (
         <>
-            <Hero >
+            
                 
                 {/* <div className="dropdown is-active">
                         <div className="dropdown-trigger">
@@ -55,6 +56,7 @@ function Creator () {
                     
 
                 <div className="columns">
+                    <Wrapper>
                     <div className="column is-one-fifth has-background-white">
                         <aside className="menu has-text-centered">
                             <p className="menu-label">
@@ -166,12 +168,13 @@ function Creator () {
                             </img>
                         </figure>    
                     </div>
+                    </Wrapper>
                 </div>
             
             
             
             
-            </Hero>     
+                
         </>
     )   
 }
