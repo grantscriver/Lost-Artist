@@ -18,6 +18,8 @@ import LoginButton from "./components/Buttons/LoginButton";
 import LogoutButton from "./components/Buttons/LogoutButton";
 import Creator from "./pages/Creators/creatorshomepage";
 import ItemDetails from "./pages/Shop/itemdetails"
+import Profile from "./components/Profiles/Profile";
+import PrivateRoute from "./components/Routes/PrivateRoute";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -42,7 +44,7 @@ function App() {
         <Route exact path="/shop/shirts" component={Shirts} />
         <Route exact path="/shop/hoodies" component={Hoodies} />
         <Route exact path="/shop/shoes" component={Shoes} />
-        {/* <Route exact path="/shop/itemdetails" component={ItemDetails} /> */}
+        <PrivateRoute path="/profile" component={Profile} />
         <Route path={`/shop/item/:id`} component={ItemDetails} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />

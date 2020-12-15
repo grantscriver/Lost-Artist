@@ -70,6 +70,10 @@ function Navbar({ children }) {
               Creators
             </NavLink>
 
+            <NavLink className="navbar-item" to="/profile">
+              Profile
+            </NavLink>
+
             <div className="navbar-item has-dropdown is-hoverable">
               <NavLink className="navbar-link" exact to="/shop">
                 Shop
