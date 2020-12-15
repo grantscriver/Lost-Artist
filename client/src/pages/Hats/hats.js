@@ -1,8 +1,8 @@
 import React from "react";
-import Hero from "../../components/Hero/Hero";
 import { NavLink } from "react-router-dom";
 import ShopDropDowns from "../../components/ShopDropDowns/ShopDropDowns";
 import Menu from "../../components/Menu/Menu";
+import Wrapper from "../../components/Wrapper/Wrapper";
 
 function Hats() {
     return (
@@ -24,34 +24,33 @@ function Hats() {
                         <li><NavLink to="/shop/shoes">Shoes</NavLink></li>
                     </Menu>
                 </div>
-                <div className="column is-four-fifths">
-                    <div className="columns">
-                        <div className="column">
-                            <p className="title">This is Hats</p>
-                            <p className="subtitle">With an image</p>
-                            <figure className="image is-4by3" alt="placeholder">
-                                <img src="https://bulma.io/images/placeholders/640x480.png">
-                                </img>
-                            </figure>
-                        </div>
-                        <div className="column">
-                            <p className="title">This is Hats</p>
-                            <p className="subtitle">With an image</p>
-                            <figure className="image is-4by3" alt="placeholder">
-                                <img src="https://bulma.io/images/placeholders/640x480.png">
-                                </img>
-                            </figure>
-                        </div>
-                        <div className="column">
-                            <p className="title">This is Hats</p>
-                            <p className="subtitle">With an image</p>
-                            <figure className="image is-4by3" alt="placeholder">
-                                <img src="https://bulma.io/images/placeholders/640x480.png">
-                                </img>
-                            </figure>
-                        </div>
+                <Wrapper>
+                    <div className="column">
+                        <p className="title">This is Hats</p>
+                        <p className="subtitle">With an image</p>
+                        <figure className="image is-4by3" alt="placeholder">
+                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            </img>
+                        </figure>
                     </div>
-                </div>
+                    <div className="column">
+                        <p className="title">This is Hats</p>
+                        <p className="subtitle">With an image</p>
+                        <figure className="image is-4by3" alt="placeholder">
+                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            </img>
+                        </figure>
+                    </div>
+                    <div className="column">
+                        <p className="title">This is Hats</p>
+                        <p className="subtitle">With an image</p>
+                        <figure className="image is-4by3" alt="placeholder">
+                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            </img>
+                        </figure>
+                    </div>
+                </Wrapper>
+
             </div>
         </>
     )
