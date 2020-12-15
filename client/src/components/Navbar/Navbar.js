@@ -36,11 +36,12 @@ function Navbar({ children }) {
           id="navbar"
           className={`navbar-menu ${activeStatus ? "is-active" : ""}`}
         >
-          <div className="navbar-start">
+          <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
               <NavLink className="navbar-link" exact to="/state">
                 State
               </NavLink>
+              
 
               <div className="navbar-dropdown">
                 <NavLink className="dropdown-item" to="/state/iowa">
@@ -63,9 +64,11 @@ function Navbar({ children }) {
                 </NavLink>
               </div>
             </div>
+
             <NavLink className="navbar-item" exact to="/creatorshomepage">
               Creators
             </NavLink>
+
             <div className="navbar-item has-dropdown is-hoverable">
               <NavLink className="navbar-link" exact to="/shop">
                 Shop
@@ -88,6 +91,7 @@ function Navbar({ children }) {
                 </NavLink>
               </div>
             </div>
+            
             <NavLink className="navbar-item" exact to="/add-item">
               Add Item
             </NavLink>
@@ -122,7 +126,7 @@ function Navbar({ children }) {
                             </div>
                         </div> */}
 
-            <div className="navbar-end">
+            {/* <div className="navbar-end"> */}
               <div className="navbar-item">
                 <div className="buttons">
                   {children}
@@ -153,7 +157,8 @@ function Navbar({ children }) {
               </div>
             </div>
           </div>
-        </div>
+        
+        
       </nav>
     </div>
   );
