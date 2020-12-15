@@ -13,6 +13,7 @@ function Navbar({ children }) {
           <NavLink className="navbar-item" exact to="/">
             <h1>Lost Artist</h1>
             <h3>Clothing Collaborative</h3>
+            {/* <img src=/> */}
           </NavLink>
 
           <a
@@ -144,7 +145,7 @@ function Navbar({ children }) {
                 </span>
               </NavLink>
 
-              <div className="navbar-dropdown">
+              <div className="navbar-dropdown is-right">
                 <NavLink className="dropdown-item" to="/addtocart">
                   Add to cart
                 </NavLink>
