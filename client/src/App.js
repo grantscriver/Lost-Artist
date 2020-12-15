@@ -42,7 +42,8 @@ function App() {
         <Route exact path="/shop/shirts" component={Shirts} />
         <Route exact path="/shop/hoodies" component={Hoodies} />
         <Route exact path="/shop/shoes" component={Shoes} />
-        <Route exact path="/shop/itemdetails" component={ItemDetails} />
+        {/* <Route exact path="/shop/itemdetails" component={ItemDetails} /> */}
+        <Route path={`/shop/item/:id`} component={ItemDetails} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/state" component={State} />
