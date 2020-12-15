@@ -89,8 +89,9 @@ module.exports = function(app) {
                 id: idParam
             }
         })
-        .then(dbItems => {
-            console.log(dbItems);
+        .then(dbItem => {
+            console.log(dbItem);
+            res.send(dbItem)
         });
     });
 
