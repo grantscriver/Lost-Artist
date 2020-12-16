@@ -1,5 +1,5 @@
 import React from "react";
-
+//test
 const CartItems = () => {
   console.log(localStorage.shopItems);
   if (!localStorage.shopItems || localStorage.shopItems === "[]") {

@@ -3,7 +3,6 @@ import CartItem from "../../components/CartItems/CartItems;";
 import "./cart.css";
 
 function Cart() {
-  //test
   return (
     <>
       <div className="container">

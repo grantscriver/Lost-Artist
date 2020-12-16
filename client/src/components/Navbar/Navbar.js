@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import AuthNav from "./AuthNath";
 import CartDropDown from "../../components/CartDropDown/CartDropDown";
-
+//test
 function Navbar() {
   const [activeStatus, setStatus] = useState(false);
 
