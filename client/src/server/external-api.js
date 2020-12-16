@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Loading from "../components/Routes/Loading";
+import Loading from "../auth/Loading";
 import { withAuthenticationRequired, useAuth0 } from "@auth0/auth0-react";
 import { Button } from "react-bulma-components";
 
@@ -43,7 +43,7 @@ export const ExternalApi = () => {
                 Get Public Message
             </Button>
 
-            <Button onClick={callSecureApi} color="secondary" className="mt-5">
+            <Button onClick={callSecureApi} color="light" className="mt-5">
                 Get Private Message
             </Button>
 

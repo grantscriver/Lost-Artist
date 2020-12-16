@@ -14,11 +14,11 @@ const Auth0ProviderWithHistory =({ children }) => {
 
     return (
         <Auth0Provider
-        domain={domain}
-        clientId={clientId}
-        redirectUri={window.location.origin}
-        onRedirectCallback={onRedirectCallback}
-        audience={audience}
+            domain={domain}
+            clientId={clientId}
+            redirectUri={window.location.origin}
+            onRedirectCallback={onRedirectCallback}
+            audience={audience}
         >
             {children}
 
