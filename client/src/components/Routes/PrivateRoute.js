@@ -6,7 +6,7 @@ import Loading from "./Loading";
 const PrivateRoute = ({ component, ...args }) =>   ( 
     <Route
         component={withAuthenticationRequired(component, {
-            onRedirecting: () => {<Loading />},
+            onRedirecting: () => <Loading />,
         })}
         {...args}
     />
