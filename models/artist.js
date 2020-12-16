@@ -4,19 +4,15 @@ module.exports = function (sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNull: false
       },
-      artist_state_id: {
-        type: DataTypes.INTEGER,
+      state_abbr: {
+        type: DataTypes.STRING,
         allowNull: false
     },
 
-      artist_state: {
-          type: DataTypes.STRING,
-          allowNull: false
-      },
       artist_email: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          isEmail: true
+        type: DataTypes.STRING,
+        allowNull: false,
+        isEmail: true
       },
       artist_instagram: {
           type: DataTypes.STRING,
