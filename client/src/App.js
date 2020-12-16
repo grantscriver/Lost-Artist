@@ -20,6 +20,7 @@ import Creator from "./pages/Creators/creatorshomepage";
 import ItemDetails from "./pages/Shop/itemdetails"
 import Profile from "./components/Profiles/Profile";
 import PrivateRoute from "./components/Routes/PrivateRoute";
+import ExternalApi from "./utils/external-api";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -45,6 +46,7 @@ function App() {
         <Route exact path="/shop/hoodies" component={Hoodies} />
         <Route exact path="/shop/shoes" component={Shoes} />
         <PrivateRoute path="/profile" component={Profile} />
+        <Route path="/external-api" component={ExternalApi} />
         <Route path={`/shop/item/:id`} component={ItemDetails} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
