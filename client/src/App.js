@@ -19,6 +19,7 @@ import ItemDetails from "./pages/Shop/itemdetails";
 import Profile from "./components/Profiles/Profile";
 import PrivateRoute from "./auth/PrivateRoute";
 import ExternalApi from "./server/external-api";
+import LoggedInProfile from "./pages/Creators/loggedinprofile"
 
 function App() {
   // If page is loading/transitioning, display "Loading..."
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/shop/shirts" component={Shirts} />
         <Route exact path="/shop/hoodies" component={Hoodies} />
         <Route exact path="/shop/shoes" component={Shoes} />
+        <Route exact path="/shop/itemdetails" component={LoggedInProfile} />
         <PrivateRoute path="/profile" component={Profile} />
         <PrivateRoute path="/external-api" component={ExternalApi} />
         <Route path={`/shop/item/:id`} component={ItemDetails} />
