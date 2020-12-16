@@ -1,29 +1,25 @@
 module.exports = function (sequelize, DataTypes) {
   var Item = sequelize.define("items", {
-      style: {
-          type: DataTypes.STRING,
-          allowNull: false
-      },
       style_name: {
           type: DataTypes.STRING,
           allowNull: false
       },
-      item_id: {
-          type: DataTypes.NUMERIC,
+      style_desc: {
+          type: DataTypes.STRING,
+          allowNull: false
+      },
+          
+      cat_desc: {
+          type: DataTypes.STRING,
           allowNull: false,
           
       },
-      cat_id: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          
-      },
-      color_code: {
-        type: DataTypes.INTEGER,
+      color_desc: {
+        type: DataTypes.STRING,
         allowNull: false,
         
     },
-      size_code: {
+      size_desc: {
         type: DataTypes.INTEGER,
         allowNull: false,
         
@@ -36,8 +32,8 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
 },
-      state_id: {
-        type: DataTypes.INTEGER,
+      state_abbr: {
+        type: DataTypes.STRING,
         allowNull: false,
 },
       selling_retail: {
