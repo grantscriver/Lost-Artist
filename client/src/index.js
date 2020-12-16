@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import Auth0ProviderWithHistory from './auth0-provider-with-history';
+import Auth0ProviderWithHistory from './auth/auth0-provider-with-history';
 
 ReactDOM.render(
   <BrowserRouter>
