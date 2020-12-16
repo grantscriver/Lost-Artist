@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-// import LoginButton from "../Buttons/LoginButton";
-// import LogoutButton from "../Buttons/LogoutButton";
+import AuthNav from "./AuthNath";
 
-function Navbar({ children }) {
+function Navbar() {
   const [activeStatus, setStatus] = useState(false);
 
   return (
@@ -42,8 +41,6 @@ function Navbar({ children }) {
               <NavLink className="navbar-link" exact to="/state">
                 State
               </NavLink>
-              
-
               <div className="navbar-dropdown">
                 <NavLink className="dropdown-item" to="/state/iowa">
                   IA
@@ -101,72 +98,62 @@ function Navbar({ children }) {
               Add Item
             </NavLink>
 
-            {/* <div className="navbar-item has-dropdown is-hoverable">
-                            
-
-                            <div className="navbar-dropdown">
-                                <a className="field">
-                                    <p className="control">
-                                        <input className="input" type="username" placeholder="Username"></input>
-                                    </p>
-                                </a>
-
-                                <a className="field">
-                                    <p className="control">
-                                        <input className="input" type="password" placeholder="Password"></input>
-                                    </p>
-                                </a>
-
-                                <a className="field">
-                                    <p className="control">
-                                        <button className="button is-link"> Login </button>
-                                    </p>
-                                </a>
-
-                                <a href="/register" className="field">
-                                    <p className="control">
-                                        <button className="button is-link" > Register </button>
-                                    </p>
-                                </a>
-                            </div>
-                        </div> */}
-
-            {/* <div className="navbar-end"> */}
-              <div className="navbar-item">
-                <div className="buttons">
-                  {children}
-                  {/* <LoginButton />
-                                    <LogoutButton /> */}
-                  {/* <a className="button is-success" href="http://localhost:8080/login"> Login </a>
-                                    <a className="button is-danger" href="http://localhost:8080/logout"> Logout </a> */}
-                </div>
-              </div>
-            </div>
+            <AuthNav />
             <div className="navbar-item has-dropdown is-hoverable">
-              <NavLink className="navbar-link" exact to="/cart">
-                <span className="icon">
-                  <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                </span>
-              </NavLink>
+                <NavLink className="navbar-link" exact to="/cart">
+                  <span className="icon">
+                    <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                  </span>
+                </NavLink>
 
-              <div className="navbar-dropdown is-right">
-                <NavLink className="dropdown-item" to="/addtocart">
-                  Add to cart
-                </NavLink>
-                <NavLink className="dropdown-item" to="/item1">
-                  Item 1
-                </NavLink>
-                <NavLink className="dropdown-item" to="item2">
-                  Item 2
-                </NavLink>
-              </div>
-            </div>
+                <div className="navbar-dropdown is-right">
+                  <NavLink className="dropdown-item" to="/addtocart">
+                    Add to cart
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/item1">
+                    Item 1
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="item2">
+                    Item 2
+                  </NavLink>
+                </div>
+            </div>            
           </div>
-        
-        
+        </div>
       </nav>
     </div>
   );
 }
 
 export default Navbar;
+
+
+
+//<div className="navbar-item has-dropdown is-hoverable">
+                            
+//     <div className="navbar-dropdown">
+//         <a className="field">
+//             <p className="control">
+//                 <input className="input" type="username" placeholder="Username"></input>
+//             </p>
+//         </a>
+
+//         <a className="field">
+//             <p className="control">
+//                 <input className="input" type="password" placeholder="Password"></input>
+//             </p>
+//         </a>
+
+//         <a className="field">
+//             <p className="control">
+//                 <button className="button is-link"> Login </button>
+//             </p>
+//         </a>
+
+//         <a href="/register" className="field">
+//             <p className="control">
+//                 <button className="button is-link" > Register </button>
+//             </p>
+//         </a>
+//     </div>
+// </div> 
