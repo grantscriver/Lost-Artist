@@ -9,7 +9,7 @@ export function TextArea(props) {
   );
   }
 
-  export function DropDown(props) {
+  export function CatDropDown(props) {
     return (
         <div className="form-group">
          <select name = 'category' id = 'catselect'>
@@ -22,7 +22,7 @@ export function TextArea(props) {
   );
   }
 
-  export function DropDown(props) {
+  export function ColorDropDown(props) {
     return (
         <div className="form-group">
          <select name = 'color' id = 'colorselect'>

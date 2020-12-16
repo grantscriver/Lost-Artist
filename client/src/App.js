@@ -12,6 +12,7 @@ import Shirts from "./pages/Shirts/shirts";
 import Hoodies from "./pages/Hoodies/hoodies";
 import Shoes from "./pages/Shoes/shoes";
 import Creators from "./pages/Creators/newitemcreator";
+import Creators from "./pages/Creators/editcreator";
 import State from "./pages/State/state";
 import AddItem from "./pages/Add-Item/add-item";
 import LoginButton from "./components/Buttons/LoginButton";
