@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, Link, Route } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
 // import axios from "axios";
+//test
 
 import { app } from "../../base";
 
@@ -50,6 +51,7 @@ function ItemDetails() {
     }
     let shopItem = {
       id: item[0].id + sizeValue,
+      urlId: item[0].id,
       pic: item[0].pic,
       name: item[0].name,
       size: sizeValue,
