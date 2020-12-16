@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import AuthNav from "./AuthNath";
+import CartDropDown from "../../components/CartDropDown/CartDropDown";
 
 function Navbar() {
   const [activeStatus, setStatus] = useState(false);
@@ -20,8 +21,9 @@ function Navbar() {
               setStatus(!activeStatus);
             }}
             role="button"
-            className={`navbar-burger burger ${activeStatus ? "is-active" : ""
-              }`}
+            className={`navbar-burger burger ${
+              activeStatus ? "is-active" : ""
+            }`}
             aria-label="menu"
             aria-expanded="false"
             data-target="navbar"
@@ -93,31 +95,26 @@ function Navbar() {
                 </NavLink>
               </div>
             </div>
-            
+
             <NavLink className="navbar-item" exact to="/add-item">
               Add Item
             </NavLink>
 
             <AuthNav />
             <div className="navbar-item has-dropdown is-hoverable">
-                <NavLink className="navbar-link" exact to="/cart">
-                  <span className="icon">
-                    <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                  </span>
-                </NavLink>
+              <NavLink className="navbar-link" exact to="/cart">
+                <span className="icon">
+                  <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                </span>
+              </NavLink>
 
-                <div className="navbar-dropdown is-right">
-                  <NavLink className="dropdown-item" to="/addtocart">
-                    Add to cart
-                  </NavLink>
-                  <NavLink className="dropdown-item" to="/item1">
-                    Item 1
-                  </NavLink>
-                  <NavLink className="dropdown-item" to="item2">
-                    Item 2
-                  </NavLink>
-                </div>
-            </div>            
+              <div className="navbar-dropdown is-right">
+                <CartDropDown />
+                <Link className="title is-5" to="/cart">
+                  <button className="button is-dark">GO TO CART</button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -127,10 +124,8 @@ function Navbar() {
 
 export default Navbar;
 
-
-
 //<div className="navbar-item has-dropdown is-hoverable">
-                            
+
 //     <div className="navbar-dropdown">
 //         <a className="field">
 //             <p className="control">
@@ -156,4 +151,4 @@ export default Navbar;
 //             </p>
 //         </a>
 //     </div>
-// </div> 
+// </div>
