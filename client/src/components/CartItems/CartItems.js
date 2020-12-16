@@ -1,6 +1,6 @@
 import React from "react";
 //test
-const CartItems = () => {
+const CartItem = () => {
   console.log(localStorage.shopItems);
   if (!localStorage.shopItems || localStorage.shopItems === "[]") {
     return <div>Currently you have no items in the cart</div>;
@@ -71,4 +71,4 @@ const CartItems = () => {
   );
 };
 
-export default CartItems;
+export default CartItem;
