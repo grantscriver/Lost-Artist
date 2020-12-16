@@ -1,41 +1,50 @@
-import React, { useState } from "react";
-import Loading from "../auth/Loading";
-import { withAuthenticationRequired, useAuth0 } from "@auth0/auth0-react";
+import React, { useState } from 'react';
+import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { Button } from "react-bulma-components";
+import axios from "axios";
+import Loading from "../auth/Loading";
 
-export const ExternalApi = () => {
-    const [message, setMessage] = useState("");
+const ExternalApi = () => {
+    const [message, setMessage] = useState('');
+    const serverUrl = process.env.REACT_APP_SERVER_URL;
 
-    const { getAccessTokenSilently } = useAuth0;
+    const { getAccessTokenSilently } = useAuth0();
 
     const callApi = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/public-message");
+            const response = await fetch(
+                `${serverUrl}/api/messages/public-message`
+            );
+
             const responseData = await response.json();
 
-            setMessage(responseData);
+            setMessage(responseData.message);
         } catch (error) {
             setMessage(error.message);
         }
-    }
+    };
 
     const callSecureApi = async () => {
         try {
             const token = await getAccessTokenSilently();
-            const response = await fetch("http://localhost:8080/api/private-message", {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-            });
+            console.log(serverUrl);
+            const response = await fetch(
+                    `${serverUrl}/api/messages/protected-message`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
 
             const responseData = await response.json();
 
-            setMessage(responseData);
+            setMessage(responseData.message);
         } catch (error) {
             setMessage(error.message);
         }
-    }
-
+    };
+    
 
     return (
         <div className="container">
@@ -58,6 +67,7 @@ export const ExternalApi = () => {
     )
 }
 
-export default withAuthenticationRequired(ExternalApi, {
-    onRedirecting: () => <Loading />,
-});
+export default ExternalApi;
+// export default withAuthenticationRequired(ExternalApi, {
+//     onRedirecting: () => <Loading />,
+// });
