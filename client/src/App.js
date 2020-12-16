@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import Home from "./pages/Home/home";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
@@ -14,29 +13,21 @@ import Shoes from "./pages/Shoes/shoes";
 import Creators from "./pages/Creators/newitemcreator";
 import State from "./pages/State/state";
 import AddItem from "./pages/Add-Item/add-item";
-import LoginButton from "./components/Buttons/LoginButton";
-import LogoutButton from "./components/Buttons/LogoutButton";
 import Creator from "./pages/Creators/creatorshomepage";
 import ItemDetails from "./pages/Shop/itemdetails"
 import Profile from "./components/Profiles/Profile";
-import PrivateRoute from "./components/Routes/PrivateRoute";
-import ExternalApi from "./utils/external-api";
+import PrivateRoute from "./auth/PrivateRoute";
+import ExternalApi from "./server/external-api";
 
 function App() {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+
 
 
   // If page is loading/transitioning, display "Loading..."
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
+ 
   return (
-    <BrowserRouter>
-      <Navbar>
-        {/* If user is logged in, Logout button will display, else Login Button */}
-        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
-      </Navbar>
+    <>
+      <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/newitemcreator" component={Creators} />
@@ -46,7 +37,7 @@ function App() {
         <Route exact path="/shop/hoodies" component={Hoodies} />
         <Route exact path="/shop/shoes" component={Shoes} />
         <PrivateRoute path="/profile" component={Profile} />
-        <Route path="/external-api" component={ExternalApi} />
+        <PrivateRoute path="/external-api" component={ExternalApi} />
         <Route path={`/shop/item/:id`} component={ItemDetails} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
@@ -54,7 +45,7 @@ function App() {
         <Route exact path="/add-item" component={AddItem} />
         <Route exact path="/creatorshomepage" component={Creator} />
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 
