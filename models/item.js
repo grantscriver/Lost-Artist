@@ -12,13 +12,20 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      size: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      on_hand: {
+      small_qty: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
+        defaultValue: 0
+      },
+      med_qty: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0
+      },
+      large_qty: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0
       },
       state_abbr: {
         type: DataTypes.STRING,
