@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
-.navbar, button {
+.navbar {
+  font-family: 'Russo One', sans-serif;
+}
+
+.button {
   font-family: 'Russo One', sans-serif;
 }
 
