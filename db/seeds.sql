@@ -1,13 +1,22 @@
-INSERT INTO states (state_id, state_desc) VALUES ('MN','Minnesota');
+use artistdb;
 
-insert into artists (artist_name, artist_state_id, artist_state, artist_email, artist_instagram) 
-values ('Jared Harms', '1', 'MN', 'jaren@hotmail.com','@Jaredharms');
+INSERT INTO states (state_abbr, state_desc)
+VALUES("IA", "Iowa"),
+("MN", "Minnesota"),
+("MI", "Michigan"),
+("ND", "North Dakota"),
+("SD", "South Dakota"),
+("WI", "Wisconsin");
 
-insert into categories (cat_id, cat_desc) values ('1','HATS');
 
-insert into colors (color_code, clr_desc) values ('RD','Red');
+INSERT INTO artists (artist_name, artist_email, artist_instagram, stateId)
+VALUES ("Mal Ludwig", "mal_ludwig4@email.com", "@ludiwgmal", 3),
+("Joe Johnson", "joeyjohnson@email.com", "@joesclothes", 1),
+("Monica Haverford", "haverford_m@email.com", "@stylehaverford", 2);
 
-insert into sizes (size_code, size_desc) values ('M','Medium');
 
-insert into items (style, style_name, item_id, cat_id, color_code, size_code, on_hand, artist_name, state_id, selling_retail, about_item, artistId, categoryId, colorId, sizeId)
-values ('Snapback', 'Snapback Hat', '12345', '1', '1', '1', '4', 'Jared Harms', '1', '35', 'Handmade using recycled fabrics.', '1', '1', '1', '1');
+
+INSERT INTO items (style_name, category, color, size, on_hand, state_abbr, price, description, artistId)
+VALUES ("Henley", "Shirt", "White", "Medium", 4, "MN", "20", "Medium white henley.", 3),
+("Never Again Graphic", "Shirt", "Black", "Small",  1, "MN", "15", "Small Never Again Black Graphic Shirt", 2),
+("Knit", "Hoodie", "Green", "Large", 5,  "MI", "25", "Knit Green Hoodie", 1);

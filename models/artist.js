@@ -4,11 +4,6 @@ module.exports = function (sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNull: false
       },
-      state_abbr: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-
       artist_email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -24,11 +19,7 @@ module.exports = function (sequelize, DataTypes) {
   Artist.associate = function(models) {
     // We're saying that a Arstist should belong to a STATE
     // An Artist can't be created without a STATE due to the foreign key constraint
-    Artist.belongsTo(models.State, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    Artist.belongsTo(models.State);
   };
 
   Artist.associate = function(models) {
