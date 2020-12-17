@@ -56,7 +56,7 @@ function Creator () {
                     
 
                 <div className="columns">
-                    <Wrapper>
+                    
                     <div className="column is-one-fifth has-background-white">
                         <aside className="menu has-text-centered">
                             <p className="menu-label">
@@ -116,6 +116,7 @@ function Creator () {
                                 </ul>
                             </aside>
                     </div>
+                    <Wrapper>
                     {creators.length > 0 && 
                         creators.map((creator, i) => {
                             console.log(creator);
