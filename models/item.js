@@ -3,74 +3,44 @@ module.exports = function (sequelize, DataTypes) {
       style_name: {
           type: DataTypes.STRING,
           allowNull: false
-      },
-      style_desc: {
+      },          
+      category: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false,          
       },
-          
-      cat_desc: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          
-      },
-      color_desc: {
+      color: {
         type: DataTypes.STRING,
         allowNull: false,
-        
-    },
-      size_desc: {
-        type: DataTypes.INTEGER,
+      },
+      size: {
+        type: DataTypes.STRING,
         allowNull: false,
-        
-  },
+      },
       on_hand: {
         type: DataTypes.INTEGER,
         allowNull: false,
-  },
-      artist_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-},
+      },
       state_abbr: {
         type: DataTypes.STRING,
         allowNull: false,
-},
-      selling_retail: {
+      },
+      price: {
         type: DataTypes.INTEGER,
         allowNull: false,
-},
-     about_item: {
-      type: DataTypes.STRING,
-      allowNull: false,
-},
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      }
 });
 
 Item.associate = function(models) {
-  Item.belongsTo(models.categories, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
 
-  Item.belongsTo(models.colors, {
-    foreignKey: {
-      allowNull: false
-    }
-  });
-
-  Item.belongsTo(models.sizes, {
-    foreignKey: {
-      allowNull: false
-    }
-  });
-
-  Item.belongsTo(models.artists, {
-    foreignKey: {
-      allowNull: false
-    }
-  });
-
+  Item.belongsTo(models.artists);
 
 };
 
