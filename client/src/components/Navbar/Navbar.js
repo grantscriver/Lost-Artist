@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import AuthNav from "./AuthNath";
 import CartDropDown from "../../components/CartDropDown/CartDropDown";
+import "./Navbar.css"
 //test
 function Navbar() {
   const [activeStatus, setStatus] = useState(false);
@@ -10,10 +11,10 @@ function Navbar() {
     <div>
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <NavLink className="navbar-item" exact to="/">
-            <h1>Lost Artist</h1>
-            <h3>Clothing Collaborative</h3>
-            {/* <img src=/> */}
+          <NavLink className="navbar-item-img-max-height" exact to="/">
+            {/* <h1>Lost Artist</h1>
+            <h3>Clothing Collaborative</h3> */}
+            <img className="logo" src="/assets/LACC_logo.png"      />
           </NavLink>
 
           <a
@@ -40,7 +41,7 @@ function Navbar() {
         >
           <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
-              <NavLink className="navbar-link" exact to="/state">
+              <NavLink className="navbar-link is-arrowless" exact to="/state">
                 State
               </NavLink>
               <div className="navbar-dropdown">
@@ -74,7 +75,7 @@ function Navbar() {
             </NavLink>
 
             <div className="navbar-item has-dropdown is-hoverable">
-              <NavLink className="navbar-link" exact to="/shop">
+              <NavLink className="navbar-link is-arrowless" exact to="/shop">
                 Shop
               </NavLink>
               <div className="navbar-dropdown">
@@ -102,8 +103,8 @@ function Navbar() {
 
             <AuthNav />
             <div className="navbar-item has-dropdown is-hoverable">
-              <NavLink className="navbar-link" exact to="/cart">
-                <span className="icon">
+              <NavLink className="navbar-link is-arrowless" exact to="/cart">
+                <span className="icon is-dark">
                   <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 </span>
               </NavLink>
