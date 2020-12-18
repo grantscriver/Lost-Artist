@@ -50,7 +50,7 @@ function Loggedinprofile() {
         const callSecureApi = async() => {
             try {
                 const token = await getAccessTokenSilently();
-                console.log(user.email);
+                
                 axios.get(`${serverUrl}/api/creators/${user.email}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ function Loggedinprofile() {
                 })
                 .then(res => {
                 
-                    console.log(res.data);
+                    
                     setCreator(res.data);
                     transitionIdToState(res.data.stateId)
                 })
@@ -152,10 +152,6 @@ function Loggedinprofile() {
                         <Link to={`/private/profile/edit/${id}`}><button className="button is-black">Edit</button></Link>
                         <div >
                         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 19f898b402b5a91b3fc5b820cc5a8d0da4d38264
                     </div>
                 </div>
             </div>
@@ -163,6 +159,7 @@ function Loggedinprofile() {
             <div className="level"></div>
             <div className="columns">
                 <div className="space-left column is-two-thirds">
+                    
                     <Link to="/private/profile/add-item">
                         <button class="button is-black">Add</button>
                     </Link>
@@ -171,10 +168,6 @@ function Loggedinprofile() {
 
                     <CategorySelect />
                     <ColorSelect spacing={"space-left"}/>
-<<<<<<< HEAD
-
-=======
->>>>>>> 19f898b402b5a91b3fc5b820cc5a8d0da4d38264
                 </div>
             </div>
             <div className="level"></div>

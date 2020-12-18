@@ -47,7 +47,7 @@ function App() {
         <Route exact path="/state" component={State} />
         <Route exact path="/private/profile/add-item" component={AddItem} />
         <Route exact path="/creatorshomepage" component={Creator} />
-        <Route exact path="/private/profile/:id" component={EditCreator} />
+        <Route exact path="/private/profile/edit/:id" component={EditCreator} />
       </Switch>
     </>
   );
