@@ -38,7 +38,7 @@ function Editcreator() {
         setUserMetadata(user_metadata);
       } catch (e) {
 
-        console.log(e.message, " hello");
+        console.log(e.message);
       }
     };
     getUserMetadata();
@@ -50,53 +50,46 @@ function Editcreator() {
 
   function handleInputChange(event) {
     let {name, value} = event.target;
-    console.log(form);
+    
     setForm(form => ({...form, [name]: value}))
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log(event.target.elements);
-    setCreator({...creator, 
-      artist_name: event.target.elements.name,
-      artist_email: event.target.elements.email,
-      artist_instagram: event.target.elements.instagram,
-      stateId: event.target.elements.state.value
-    })
-    setForm(form => ({ ...form,
-      name: "",
-      city: "",
-      state: "",
-      about: "",
-      email: "",
-      instagram: ""
-    }))
+    
 
-    // callSecureApi();
+    let formData = {
+      artist_name: event.target.elements.name.value,
+      artist_email: event.target.elements.email.value,
+      artist_instagram: event.target.elements.instagram.value,
+      artist_city: event.target.elements.city.value,
+      artist_about: event.target.elements.about.value,
+      stateId: event.target.elements.state.value
+    }
+    console.log(formData);
+    setCreator({...creator, formData })
+    axios.post("/api/creators", formData)
+    .then(res => {
+      console.log(res);
+      setForm(form => ({ ...form,
+        name: "",
+        city: "",
+        state: "",
+        about: "",
+        email: "",
+        instagram: ""
+      }))
+    })
+    
 
   }
 
-//   const callSecureApi = async() => {
-
-//     try {
-//         const token = await getAccessTokenSilently();
-        
-//         axios.get(`${serverUrl}/api/creators/${user.email}`, {
-//             headers: {
-//                 Authorization: `Bearer ${token}`,
-//             },
-//         })
-//         .then(res => {
-        
-            
-//             setCreator(res.data);
-//             transitionIdToState(res.data.stateId)
-//         })
-//     } catch (e) {
-//         console.log(e);
-//     }
-
-// }
+  function createUser(data) {
+    axios.post("/api/creators", {
+      data: {...data}
+    })
+    .then()
+  }
 
   return (
     <section className="hero has-background-grey-light is-fullheight">

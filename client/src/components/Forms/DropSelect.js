@@ -38,7 +38,6 @@ function CategorySelect() {
 
 
 function ColorSelect(props) {
-    console.log(props);
     return (
         <div className={`dropdown is-hoverable ${props.spacing}`}>
             <div className="dropdown-trigger">
