@@ -152,7 +152,10 @@ function Loggedinprofile() {
                         <Link to={`/private/profile/edit/${id}`}><button className="button is-black">Edit</button></Link>
                         <div >
                         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 19f898b402b5a91b3fc5b820cc5a8d0da4d38264
                     </div>
                 </div>
             </div>
@@ -168,7 +171,10 @@ function Loggedinprofile() {
 
                     <CategorySelect />
                     <ColorSelect spacing={"space-left"}/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 19f898b402b5a91b3fc5b820cc5a8d0da4d38264
                 </div>
             </div>
             <div className="level"></div>
