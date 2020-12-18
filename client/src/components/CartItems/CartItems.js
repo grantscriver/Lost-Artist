@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 //test
 const CartItem = () => {
-  console.log(localStorage.shopItems);
+  const itemStore = JSON.parse(localStorage.shopItems);
+  const [cart, setCart] = useState([]);
+  useEffect(() => {
+    setCart(itemStore);
+  }, []);
   if (!localStorage.shopItems || localStorage.shopItems === "[]") {
     return <div>Currently you have no items in the cart</div>;
   }
-  let itemStore = JSON.parse(localStorage.shopItems);
 
   const deleteItem = (e) => {
     let delButtonId = e.target.name;
@@ -13,6 +16,7 @@ const CartItem = () => {
     itemStore.splice(findItemDel, 1);
     let updatedItemStoreDel = [...itemStore];
     localStorage.setItem("shopItems", JSON.stringify(updatedItemStoreDel));
+    setCart(updatedItemStoreDel);
   };
 
   const editQty = (e) => {
@@ -22,12 +26,13 @@ const CartItem = () => {
     findItemEdit.quantity = qtyDrop;
     let updatedItemStoreEdit = [...itemStore];
     localStorage.setItem("shopItems", JSON.stringify(updatedItemStoreEdit));
+    setCart(updatedItemStoreEdit);
   };
 
   return (
     <>
-      {itemStore.length > 0 &&
-        itemStore.map((itemCart) => {
+      {cart.length > 0 &&
+        cart.map((itemCart) => {
           return (
             <div className="card" key={itemCart.id}>
               <div className="columns">
