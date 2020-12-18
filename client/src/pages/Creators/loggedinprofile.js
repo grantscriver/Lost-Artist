@@ -58,9 +58,9 @@ function Loggedinprofile() {
                         </div>
                     </div>
                     <div className="column is-3">
-                        <button class="button is-black">Edit</button>
-                        <div >
-                        </div>
+                        <Link to="/private/profile/editcreator">
+                            <button class="button is-black">Edit</button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -68,8 +68,9 @@ function Loggedinprofile() {
             <div className="level"></div>
             <div className="columns">
                 <div className="space-left column is-two-thirds">
-    
-                    <button className="button is-black">Add</button>
+                    <Link to="/private/profile/add-item">
+                        <button class="button is-black">Add</button>
+                    </Link>
                 </div>
                 <div className="column is-justify-content-space-around">
                     <div className="dropdown  is-hoverable">
@@ -110,7 +111,7 @@ function Loggedinprofile() {
                                 </span>
                             </button>
                         </div>
-                    
+
                         <div className="dropdown-menu" id="dropdown-menu" role="menu">
                             <div className="dropdown-content">
                                 <a href="#" className="dropdown-item">
