@@ -14,6 +14,14 @@ module.exports = function (sequelize, DataTypes) {
           allowNull: true,
           isURL: true
       },
+      artist_city: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      artist_about: {
+        type: DataTypes.STRING,
+        allowNull: true
+      }
   });
 
   Artist.associate = function(models) {
