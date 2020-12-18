@@ -70,7 +70,7 @@ function Navbar() {
               Creators
             </NavLink>
 
-            <NavLink className="navbar-item" to="/profile">
+            <NavLink className="navbar-item" to="/private/profile">
               Profile
             </NavLink>
 
