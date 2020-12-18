@@ -149,9 +149,15 @@ function Loggedinprofile() {
                         </div>
                     )}
                     <div className="column is-3">
+<<<<<<< HEAD
                         <Link to={`/private/profile/edit/${id}`}><button className="button is-black">Edit</button></Link>
                         <div >
                         </div>
+=======
+                        <Link to="/private/profile/editcreator">
+                            <button class="button is-black">Edit</button>
+                        </Link>
+>>>>>>> 67b010cba18b73ed0740f55d837cafa858ef5509
                     </div>
                 </div>
             </div>
@@ -159,12 +165,72 @@ function Loggedinprofile() {
             <div className="level"></div>
             <div className="columns">
                 <div className="space-left column is-two-thirds">
-    
-                    <button className="button is-black">Add</button>
+                    <Link to="/private/profile/add-item">
+                        <button class="button is-black">Add</button>
+                    </Link>
                 </div>
                 <div className="column is-justify-content-space-around">
+<<<<<<< HEAD
                     <CategorySelect />
                     <ColorSelect spacing={"space-left"}/>
+=======
+                    <div className="dropdown  is-hoverable">
+                        <div className="dropdown-trigger">
+                            <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                <span>Category</span>
+                                <span className="icon is-small">
+                                    <i className="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div className="dropdown-content">
+                                <a href="#" className="dropdown-item">
+                                    All
+                                    </a>
+                                <a href="#" className="dropdown-item">
+                                    Hats
+                                    </a>
+                                <a href="#" className="dropdown-item">
+                                    Shirts
+                                    </a>
+                                <a href="#" className="dropdown-item">
+                                    Hoodies
+                                    </a>
+                                <a href="#" className="dropdown-item">
+                                    Shoes
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="space-left dropdown is-hoverable">
+                        <div className="dropdown-trigger">
+                            <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                <span>Color</span>
+                                <span className="icon is-small">
+                                    <i className="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>
+
+                        <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div className="dropdown-content">
+                                <a href="#" className="dropdown-item">
+                                    White
+                                        </a>
+                                <a href="#" className="dropdown-item">
+                                    Black
+                                        </a>
+                                <a href="#" className="dropdown-item">
+                                    Grey
+                                        </a>
+                                <a href="#" className="dropdown-item">
+                                    Beige
+                                        </a>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> 67b010cba18b73ed0740f55d837cafa858ef5509
                 </div>
             </div>
             <div className="level"></div>
