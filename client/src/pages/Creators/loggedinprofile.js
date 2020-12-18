@@ -159,10 +159,12 @@ function Loggedinprofile() {
             <div className="level"></div>
             <div className="columns">
                 <div className="space-left column is-two-thirds">
-    
-                    <button className="button is-black">Add</button>
+                    <Link to="/private/profile/add-item">
+                        <button class="button is-black">Add</button>
+                    </Link>
                 </div>
                 <div className="column is-justify-content-space-around">
+
                     <CategorySelect />
                     <ColorSelect spacing={"space-left"}/>
                 </div>
