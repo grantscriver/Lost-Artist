@@ -35,7 +35,7 @@ function App() {
         <Route exact path="/shop/shirts" component={Shirts} />
         <Route exact path="/shop/hoodies" component={Hoodies} />
         <Route exact path="/shop/shoes" component={Shoes} />
-        <Route exact path="/shop/itemdetails" component={LoggedInProfile} />
+        <Route exact path="/shop/itemdetails" component={Register} />
         <PrivateRoute path="/profile" component={Profile} />
         <PrivateRoute path="/external-api" component={ExternalApi} />
         <Route path={`/shop/item/:id`} component={ItemDetails} />
