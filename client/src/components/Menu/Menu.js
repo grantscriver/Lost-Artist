@@ -1,8 +1,6 @@
 import React from "react";
 
 function Menu({children}) {
-    
-    
     return (
        
            <aside className="menu">
@@ -20,3 +18,10 @@ function Menu({children}) {
 }
 
 export default Menu;
+
+
+// Example of use:
+// <Menu>
+//     <li>IA</li>
+//     <li>MN</li>
+// </Menu>

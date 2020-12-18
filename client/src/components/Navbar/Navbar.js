@@ -41,9 +41,6 @@ function Navbar() {
         >
           <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
-              <NavLink className="navbar-link is-arrowless" exact to="/state">
-                State
-              </NavLink>
               <div className="navbar-dropdown">
                 <NavLink className="dropdown-item" to="/state/iowa">
                   IA
@@ -70,7 +67,7 @@ function Navbar() {
               Creators
             </NavLink>
 
-            <NavLink className="navbar-item" to="/profile">
+            <NavLink className="navbar-item" to="/private/profile">
               Profile
             </NavLink>
 

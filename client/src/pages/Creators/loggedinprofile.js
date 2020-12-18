@@ -6,7 +6,7 @@ import { app } from "../../base";
 const db = app.firestore();
 
 function Loggedinprofile() {
-    const [item, setItem] = React.useState([]);
+    const [item, setItem] = useState([]);
 
     useEffect(() => {
         const fetchItem = async () => {
@@ -66,10 +66,12 @@ function Loggedinprofile() {
             </div>
             <div className="level"></div>
             <div className="level"></div>
-            <div columns="columns">
-                <div className="column is-one-third">
-                    <div className="level"></div>
-                    <button class="button is-black">Add</button>
+            <div className="columns">
+                <div className="space-left column is-two-thirds">
+    
+                    <button className="button is-black">Add</button>
+                </div>
+                <div className="column is-justify-content-space-around">
                     <div className="dropdown  is-hoverable">
                         <div className="dropdown-trigger">
                             <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -99,7 +101,7 @@ function Loggedinprofile() {
                             </div>
                         </div>
                     </div>
-                    <div className="dropdown is-hoverable">
+                    <div className="space-left dropdown is-hoverable">
                         <div className="dropdown-trigger">
                             <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                 <span>Color</span>
@@ -108,54 +110,57 @@ function Loggedinprofile() {
                                 </span>
                             </button>
                         </div>
-                    </div>
-                    <div className="dropdown-menu" id="dropdown-menu" role="menu">
-                        <div className="dropdown-content">
-                            <a href="#" className="dropdown-item">
-                                White
-                                    </a>
-                            <a href="#" className="dropdown-item">
-                                Black
-                                    </a>
-                            <a href="#" className="dropdown-item">
-                                Grey
-                                    </a>
-                            <a href="#" className="dropdown-item">
-                                Beige
-                                    </a>
+                    
+                        <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div className="dropdown-content">
+                                <a href="#" className="dropdown-item">
+                                    White
+                                        </a>
+                                <a href="#" className="dropdown-item">
+                                    Black
+                                        </a>
+                                <a href="#" className="dropdown-item">
+                                    Grey
+                                        </a>
+                                <a href="#" className="dropdown-item">
+                                    Beige
+                                        </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="level"></div>
             <div className="level"></div>
-            <div className="columns">
-                <Wrapper>
-                    {item.length > 0 &&
-                        item.map((item) => {
-                            return (
-                                <div className="column is-3" key={item.id}>
-                                    <div className="card">
-                                        <Link to={`/shop/item/${item.id}`}>
-                                            <div className="card-image">
-                                                <figure className="image is-3by4">
-                                                    <img src={item.pic} alt={item.name} />
-                                                </figure>
-                                            </div>
-                                            <div className="card-content">
-                                                <div className="media">
-                                                    <div className="media-content">
-                                                        <p className="title is-4">{item.name}</p>
+            <section className="space-left">
+                <div className="columns">
+                    <Wrapper>
+                        {item.length > 0 &&
+                            item.map((item) => {
+                                return (
+                                    <div className="column is-3" key={item.id}>
+                                        <div className="card">
+                                            <Link to={`/shop/item/${item.id}`}>
+                                                <div className="card-image">
+                                                    <figure className="image is-3by4">
+                                                        <img src={item.pic} alt={item.name} />
+                                                    </figure>
+                                                </div>
+                                                <div className="card-content">
+                                                    <div className="media">
+                                                        <div className="media-content">
+                                                            <p className="title is-4">{item.name}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </Link>
+                                            </Link>
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        })}
-                </Wrapper>
-            </div>
+                                );
+                            })}
+                    </Wrapper>
+                </div>
+            </section>
         </>
     )
 }

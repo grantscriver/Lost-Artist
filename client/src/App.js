@@ -20,6 +20,7 @@ import Profile from "./components/Profiles/Profile";
 import PrivateRoute from "./auth/PrivateRoute";
 import ExternalApi from "./server/external-api";
 import LoggedInProfile from "./pages/Creators/loggedinprofile"
+import PublicProfile from "./pages/Creators/publicprofile";
 
 function App() {
   // If page is loading/transitioning, display "Loading..."
@@ -35,8 +36,9 @@ function App() {
         <Route exact path="/shop/shirts" component={Shirts} />
         <Route exact path="/shop/hoodies" component={Hoodies} />
         <Route exact path="/shop/shoes" component={Shoes} />
-        <Route exact path="/shop/itemdetails" component={LoggedInProfile} />
-        <PrivateRoute path="/profile" component={Profile} />
+        {/* will need to update path for public/profile to pick up a ID parameter (ex: /public/profile/:id) */}
+        <Route exact path="/creators/:id" component={PublicProfile} /> 
+        <PrivateRoute path="/private/profile" component={LoggedInProfile} />
         <PrivateRoute path="/external-api" component={ExternalApi} />
         <Route path={`/shop/item/:id`} component={ItemDetails} />
         <Route exact path="/cart" component={Cart} />

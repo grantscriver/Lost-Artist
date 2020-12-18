@@ -19,7 +19,7 @@ function Creator () {
         <>
             
                 
-                {/* <div className="dropdown is-active">
+                <div className="dropdown is-hoverable">
                         <div className="dropdown-trigger">
                             <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                 <span>State</span>
@@ -52,7 +52,7 @@ function Creator () {
                                 </div>
                             </div>
                         </div>
-                </div> */}
+                </div>
                     
 
                 <div className="columns">
@@ -60,58 +60,75 @@ function Creator () {
                     <div className="column is-one-fifth has-background-white">
                         <aside className="menu has-text-centered">
                             <p className="menu-label">
+                                IA
+                            </p>
+                                <ul className="menu-list">
+                                {creators.length > 0 &&
+                                     creators.map((creator, i) => {
+                                         if(creator.stateId === 1) {
+                                            return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                         }
+                                    })
+                                }
+                                </ul>
+                            <p className="menu-label">
                                 MN
                             </p>
                                 <ul className="menu-list">
-                                {creators.artist_state === 'MN' 
-                                ? creators.map((creator, i) => {
-                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                {creators.length > 0 &&
+                                     creators.map((creator, i) => {
+                                         if(creator.stateId === 2) {
+                                            return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                         }
                                     })
-                                : null  
+                                }
+                                </ul>
+                            <p className="menu-label">
+                                MI
+                            </p>
+                                <ul className="menu-list">
+                                {creators.length > 0 &&
+                                     creators.map((creator, i) => {
+                                         if(creator.stateId === 3) {
+                                            return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                         }
+                                    })
                                 }
                                 </ul>
                             <p className="menu-label">
                                 ND
                             </p>
                                 <ul className="menu-list">
-                                {creators.artist_state === 'ND' 
-                                ? creators.map((creator, i) => {
-                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                {creators.length > 0 &&
+                                     creators.map((creator, i) => {
+                                         if(creator.stateId === 4) {
+                                            return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                         }
                                     })
-                                : null  
                                 }
                                 </ul>
                             <p className="menu-label">
                                 SD
                             </p>
                                 <ul className="menu-list">
-                                {creators.artist_state === 'SD' 
-                                ? creators.map((creator, i) => {
-                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                {creators.length > 0 &&
+                                     creators.map((creator, i) => {
+                                         if(creator.stateId === 5) {
+                                            return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                         }
                                     })
-                                : null  
                                 }
                                 </ul>
                             <p className="menu-label">
                                 WI
                             </p>
                                 <ul className="menu-list">
-                                {creators.artist_state === 'WI' 
-                                ? creators.map((creator, i) => {
-                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                {creators.length > 0 &&
+                                     creators.map((creator, i) => {
+                                         if(creator.stateId === 6) {
+                                            return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
+                                         }
                                     })
-                                : null  
-                                }
-                                </ul>
-                            <p className="menu-label">
-                                IA
-                            </p>
-                                <ul className="menu-list">
-                                {creators.artist_state === 'IA' 
-                                ? creators.map((creator, i) => {
-                                        return <li><a href={`/creators/${creator.id}`}>{creator.artist_name}</a></li>
-                                    })
-                                : null  
                                 }
                                 </ul>
                             </aside>
@@ -123,52 +140,6 @@ function Creator () {
                             return <CreatorColumn {...creator} />
                         })
                     }
-
-                    {/* <div className="column">
-                    <p className="title">Creator Name</p>
-                        <p className="subtitle">State</p>
-                        <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
-                            </img>
-                        </figure>
-                        <br></br>
-                        <p className="title">Creator Name</p>
-                        <p className="subtitle">State</p>
-                        <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
-                            </img>
-                        </figure>
-                    </div> */}
-                    <div className="column">
-                    <p className="title">Creator Name</p>
-                        <p className="subtitle">State</p>
-                        <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
-                            </img>
-                        </figure>
-                        <br></br>
-                        <p className="title">Creator Name</p>
-                        <p className="subtitle">State</p>
-                        <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
-                            </img>
-                        </figure>
-                    </div>
-                    <div className="column">
-                    <p className="title">Creator Name</p>
-                        <p className="subtitle">State</p>
-                        <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
-                            </img>
-                        </figure>
-                        <br></br>
-                        <p className="title">Creator Name</p>
-                        <p className="subtitle">State</p>
-                        <figure className="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
-                            </img>
-                        </figure>    
-                    </div>
                     </Wrapper>
                 </div>
             
