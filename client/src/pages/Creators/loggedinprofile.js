@@ -50,7 +50,7 @@ function Loggedinprofile() {
         const callSecureApi = async() => {
             try {
                 const token = await getAccessTokenSilently();
-                console.log(user.email);
+                
                 axios.get(`${serverUrl}/api/creators/${user.email}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ function Loggedinprofile() {
                 })
                 .then(res => {
                 
-                    console.log(res.data);
+                    
                     setCreator(res.data);
                     transitionIdToState(res.data.stateId)
                 })
@@ -159,6 +159,7 @@ function Loggedinprofile() {
             <div className="level"></div>
             <div className="columns">
                 <div className="space-left column is-two-thirds">
+                    
                     <Link to="/private/profile/add-item">
                         <button class="button is-black">Add</button>
                     </Link>

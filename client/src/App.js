@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/home";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
@@ -47,7 +47,7 @@ function App() {
         <Route exact path="/state" component={State} />
         <Route exact path="/private/profile/add-item" component={AddItem} />
         <Route exact path="/creatorshomepage" component={Creator} />
-        <Route exact path="/private/profile/editcreator" component={EditCreator} />
+        <Route exact path="/private/profile/edit/:id" component={EditCreator} />
       </Switch>
     </>
   );

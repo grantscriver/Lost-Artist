@@ -1,42 +1,62 @@
 import React from "react";
 
-export function Input(props) {
+export function Input({name, children, onChange}) {
   return (
-    <div className="form-group">
-      <input type='text' className="form-control" {...props} />
+    <div className="field">
+      <label>{children}</label>
+      <div className="control">
+        <input type='text' className="input" name={name} onChange={onChange}> 
+         
+        </input>
+      </div>
     </div>
+    
   );
   }
 
-export function TextArea(props) {
+export function AboutTextArea({onChange}) {
   return (
-      <div className="form-group">
-        <textarea className="form-control" rows="50" {...props} />
+    <div className="field">
+      <label>About:</label>
+      <div className="control">
+        <textarea className="textarea" name="about" rows="10" onChange={onChange}/>
+      </div>
+    </div>
+      
+  );
+  }
+
+  export function StateDropDown({onChange}) {
+    return (
+      <div className="field">
+        <label>State:</label>
+        <div className="control">
+          <div className="select">
+            <select name='state' id='stateselect' onChange={onChange}>
+              <option selected value='hat'>- -</option>
+              <option value='1'>IA</option>
+              <option value='3'>MI</option>
+              <option value='2'>MN</option>
+              <option value='4'>ND</option>
+              <option value='5'>SD</option>
+              <option value='6'>WI</option>
+            </select>
+          </div>
+        </div>
       </div>
   );
   }
 
-  export function DropDown(props) {
+  export function FormBtn({children}) {
     return (
-        <div className="form-group">
-         <select name = 'state' id = 'stateselect'>
-             <option selected value='hat'>HATS</option>
-             <option value='mn'>MN</option>
-             <option value='wi'>WI</option>
-             <option value='nd'>ND</option>
-             <option value='sd'>SD</option>
-             <option value='ia'>IA</option>
-             <option value='il'>MI</option>
-          </select>
-          </div>
-  );
-  }
-
-  export function FormBtn(props) {
-    return (
-      <button {...props} className="btn btn-success">
-        {props.children}
-      </button>
+      <div className="field is-grouped">
+        <div className="control">
+          <button className="button is-dark">
+            {children}
+          </button>
+        </div>
+      </div>
+      
     );
   }
   

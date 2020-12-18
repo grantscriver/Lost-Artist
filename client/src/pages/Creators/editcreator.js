@@ -1,6 +1,103 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
+import { Input, AboutTextArea, StateDropDown, FormBtn } from "../../components/Forms/EditCreatorfile";
+import axios from "axios";
+import { createPoolCluster } from 'mysql2';
 
 function Editcreator() {
+  // db
+  const [creator, setCreator] = useState([]);
+  // auth0
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const [userMetadata, setUserMetadata] = useState(null);
+  //form
+  const [form, setForm] = useState({});
+  // env
+  const serverUrl = process.env.REACT_APP_SERVER_URL;
+  
+  useEffect(() => {
+    const getUserMetadata = async () => {
+      const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+  
+      try {
+        const accessToken = await getAccessTokenSilently({
+          audience: `https://${domain}/api/v2/`,
+          scope: "read:current_user",
+        });
+  
+        const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+  
+        const metadataResponse = await fetch(userDetailsByIdUrl, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+  
+        const { user_metadata } = await metadataResponse.json();
+  
+        setUserMetadata(user_metadata);
+      } catch (e) {
+
+        console.log(e.message, " hello");
+      }
+    };
+    getUserMetadata();
+
+    
+
+  }, [form]);
+
+
+  function handleInputChange(event) {
+    let {name, value} = event.target;
+    console.log(form);
+    setForm(form => ({...form, [name]: value}))
+  }
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log(event.target.elements);
+    setCreator({...creator, 
+      artist_name: event.target.elements.name,
+      artist_email: event.target.elements.email,
+      artist_instagram: event.target.elements.instagram,
+      stateId: event.target.elements.state.value
+    })
+    setForm(form => ({ ...form,
+      name: "",
+      city: "",
+      state: "",
+      about: "",
+      email: "",
+      instagram: ""
+    }))
+
+    // callSecureApi();
+
+  }
+
+//   const callSecureApi = async() => {
+
+//     try {
+//         const token = await getAccessTokenSilently();
+        
+//         axios.get(`${serverUrl}/api/creators/${user.email}`, {
+//             headers: {
+//                 Authorization: `Bearer ${token}`,
+//             },
+//         })
+//         .then(res => {
+        
+            
+//             setCreator(res.data);
+//             transitionIdToState(res.data.stateId)
+//         })
+//     } catch (e) {
+//         console.log(e);
+//     }
+
+// }
+
   return (
     <section className="hero has-background-grey-light is-fullheight">
       <div className="hero-body">
@@ -9,18 +106,18 @@ function Editcreator() {
             <div className="column is-1">
             </div>
             <div className="column is-3">
-              <div class="card">
-                <div class="card-content has-text-centered">
+              <div className="card">
+                <div className="card-content has-text-centered">
                   <div className="level"></div>
                   <div className="level"></div>
                   <div className="level"></div>
                   <div className="level"></div>
                   <div className="level"></div>
-                  <p class="title is-4">
+                  <p className="title is-4">
                     Click here
                   </p>
                   <div className="level"></div>
-                  <p class="title is-4">
+                  <p className="title is-4">
                     to add photo
                   </p>
                   <div className="level"></div>
@@ -29,8 +126,8 @@ function Editcreator() {
                   <div className="level"></div>
                   <div className="level"></div>
                 </div>
-                <footer class="card-footer">
-                  <p class="card-footer-item has-background-grey-light">
+                <footer className="card-footer">
+                  <p className="card-footer-item has-background-grey-light">
                     <span>
                       Recommended Size: 400x600
                     </span>
@@ -41,53 +138,15 @@ function Editcreator() {
             <div className="column is-1">
             </div>
             <div className="column is-6">
-              <div class="field">
-                <div class="control">
-                  <input class="input" type="text" placeholder="Name" value=""></input>
-                </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <input class="input" type="text" placeholder="City" value=""></input>
-                </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <div class="select">
-                    <select>
-                      <option>State</option>
-                      <option>IA</option>
-                      <option>MI</option>
-                      <option>MN</option>
-                      <option>ND</option>
-                      <option>SD</option>
-                      <option>WI</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">About:</label>
-                <div class="control">
-                  <textarea class="textarea" placeholder=""></textarea>
-                </div>
-              </div>
-              <label class="label">Contact:</label>
-              <div class="field">
-                <div class="control">
-                  <input class="input" type="text" placeholder="email" value="" ></input>
-                </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <input class="input" type="text" placeholder="instagram" value=""></input>
-                </div>
-              </div>
-              <div class="field is-grouped">
-                <div class="control">
-                  <button class="button is-black">Save</button>
-                </div>
-              </div>
+              <form onSubmit={handleFormSubmit}>
+                <Input name="name" value={form.name} onChange={handleInputChange}>Name:</Input>
+                <Input name="city" value={form.city} onChange={handleInputChange}>City:</Input>
+                <StateDropDown value={form.state} onChange={handleInputChange}/>
+                <AboutTextArea value={form.about} onChange={handleInputChange}/>
+                <Input name="email" value={form.email} onChange={handleInputChange}>Email:</Input>                
+                <Input name="instagram" value={form.instagram} onChange={handleInputChange}>Instagram:</Input>
+                <FormBtn>Save</FormBtn>
+              </form>
             </div>
           </div>
         </div>
@@ -95,4 +154,4 @@ function Editcreator() {
     </section>
   )
 }
-export default Editcreator
+export default Editcreator;
