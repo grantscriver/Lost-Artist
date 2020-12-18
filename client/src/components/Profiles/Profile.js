@@ -42,7 +42,7 @@ const Profile = () => {
         <h2>{name}</h2>
         <p>{email}</p>
         <h3>User Metadata</h3>
-        {console.log(user)}
+        {console.log(user.sub)}
         {userMetadata ? (
           <pre>{JSON.stringify(userMetadata, null, 2)}</pre>
         ) : (

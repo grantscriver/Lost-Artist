@@ -28,32 +28,6 @@ require("./routes/api")(app);
 app.use("/api", apiRouter);
 apiRouter.use("/messages", messagesRouter);
 
-
-
-
-app.get('/api/public', function(req, res) {
-  res.json({
-    message: 'Hello from a public endpoint! You don\'t need to be authenticated to see this.'
-  });
-});
-
-// This route needs authentication
-
-app.get('/', (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out')
-});
-
-app.get('/api/log', (req, res)=> {
-  console.log("hello :)")
-  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out')
-
-});
-
-// app.get('/profile', requiresAuth(), (req, res) => {
-//   res.send(JSON.stringify(req.oidc.user));
-// });
-
-
 db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);

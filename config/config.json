@@ -1,10 +1,13 @@
 {
   "development": {
-    "username": "",
-    "password": null,
-    "database": "database_development",
+    "username": "potato",
+    "password": "1pass2word3",
+    "database": "artistdb",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "define": {
+      "timestamps": false
+    }
   },
   "test": {
     "username": "",
