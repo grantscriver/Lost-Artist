@@ -13,12 +13,13 @@ export function TextArea(props) {
     return (
         <div className="form-group">
          <select name = 'category' id = 'catselect'>
+             <option selected value='hat'>All</option>
              <option value='hat'>HATS</option>
              <option value='shirt'>SHIRTS</option>
              <option value='hoodies'>HOODIES</option>
              <option value='shoes'>SHOES</option>
           </select>
-          </div>
+        </div>
   );
   }
 

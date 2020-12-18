@@ -1,5 +1,5 @@
 const db = require("../models");
-
+const { checkJwt } = require("../authz/check-jwt");
 
 module.exports = function(app) {
     
@@ -12,15 +12,15 @@ module.exports = function(app) {
     });
 
     //Get one Artist by ID
-    app.get("/api/creators/:id", (req, res) => {
-        let idParam = req.params.id;
+    app.get("/api/creators/:email", checkJwt, (req, res) => {
+        let emailParam = req.params.email;
         db.artists.findOne({
             where: {
-                id: idParam
+                artist_email: emailParam
             }
         })
         .then(dbArtist => {
-            console.log(dbArtist);
+            res.status(200).send(dbArtist);
         });
     });
 
