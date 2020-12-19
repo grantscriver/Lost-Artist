@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+
 import "./HomeLanding.css";
 
 //change to class component
