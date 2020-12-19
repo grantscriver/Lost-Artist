@@ -128,7 +128,7 @@ function ItemDetails() {
                   <label htmlFor="large"> Large </label>
                   {/* className="title is-5 */}
                   <br />
-                  <button>
+                  <button className="font">
                     {/* <Link className="title is-5" to="/cart"> */}
                     Add to Cart
                     {/* </Link> */}
