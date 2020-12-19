@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Input, AboutTextArea, StateDropDown, FormBtn } from "../../components/Forms/EditCreatorfile";
 import axios from "axios";
-import { createPoolCluster } from 'mysql2';
+
 
 function Editcreator() {
   // db
