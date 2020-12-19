@@ -108,8 +108,10 @@ module.exports = function(app) {
     });
 
     //Create New Artist
-    app.post("/api/creators", (req, res) => {
-        db.artists.create(req.body.data)
+    app.post("/api/create/creators", (req, res) => {
+        console.log("😒");
+        console.log(req.body);
+        db.artists.create(req.body)
         .then(dbArtist => {
             console.log(dbArtist);
             res.status(200).send(dbArtist);

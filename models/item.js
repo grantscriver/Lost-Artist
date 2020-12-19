@@ -27,8 +27,8 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: true,
         defaultValue: 0
       },
-      state_abbr: {
-        type: DataTypes.STRING,
+      state_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       price: {

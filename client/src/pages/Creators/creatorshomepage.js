@@ -7,13 +7,15 @@ import Wrapper from '../../components/Wrapper/Wrapper';
 
 function Creator () {
     const [creators, setCreators] = useState([]);
-    const [filter, setFilter] = useState([creators]);
+    const [filter, setFilter] = useState([]);
 
     useEffect(() => {
         axios.get("/api/creators")
         .then(res => {
             setCreators(res.data);
+            
         })
+        setFilter(creators);
     }, [])
 
 
@@ -125,7 +127,7 @@ function Creator () {
             
  
             <Wrapper>
-                {filter.length > 0 && 
+                {filter.length >= 0 && 
                     filter.map((creator, i) => {
                         return (
                     <Link key={creator.id} to={`/creators/${creator.id}`}> 
