@@ -26,9 +26,7 @@ function Hero({ children }) {
           </div>
           <div className="columns">
             <p className="font">
-              Lost Artist Clothing Collaboration is a place where fashion designers from the upper midwest states - locations typically overlooked in the fashion community - can feature and sell their work.
-              We give designers the ability to create profiles to share who they are, their experience, and a platform for shoppers to connect with them for potentially commissioned work and exposure. This
-              site is also for people who want to buy and support local designers to directly impact their community.
+              Lost Artist Clothing Collaboration is a place where fashion designers from the upper midwest states - locations typically overlooked in the fashion community - can feature and sell their work. We give designers the ability to create profiles to share who they are, their experience, and a platform for shoppers to connect with them for potentially commissioned work, exposure, and a place to show support for their local designers and community.
             </p>
           </div>
         </div>
