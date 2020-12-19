@@ -18,7 +18,7 @@ import ItemDetails from "./pages/Shop/itemdetails";
 import Profile from "./components/Profiles/Profile";
 import PrivateRoute from "./auth/PrivateRoute";
 import ExternalApi from "./server/external-api";
-import LoggedInProfile from "./pages/Creators/loggedinprofile"
+import LoggedInProfile from "./pages/Creators/loggedinprofile";
 import PublicProfile from "./pages/Creators/publicprofile";
 import EditCreator from "./pages/Creators/editcreator";
 import AddItem from "./pages/Creators/newitemcreator";
@@ -39,15 +39,27 @@ function App() {
         <Route exact path="/shop/shoes" component={Shoes} />
         {/* will need to update path for public/profile to pick up a ID parameter (ex: /public/profile/:id) */}
         <Route exact path="/creators/:id" component={PublicProfile} />
-        <PrivateRoute exact path="/private/profile" component={LoggedInProfile} />
+        <PrivateRoute
+          exact
+          path="/private/profile"
+          component={LoggedInProfile}
+        />
         <PrivateRoute path="/external-api" component={ExternalApi} />
         <Route path={`/shop/item/:id`} component={ItemDetails} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/state" component={State} />
-        <Route exact path="/private/profile/add-item" component={AddItem} />
+        <PrivateRoute
+          exact
+          path="/private/profile/add-item/"
+          component={AddItem}
+        />
         <Route exact path="/creatorshomepage" component={Creator} />
-        <Route exact path="/private/profile/edit/:id" component={EditCreator} />
+        <PrivateRoute
+          exact
+          path="/private/profile/edit/:id"
+          component={EditCreator}
+        />
       </Switch>
     </>
   );

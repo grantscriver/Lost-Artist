@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import AuthNav from "./AuthNath";
 import CartDropDown from "../../components/CartDropDown/CartDropDown";
-import "./Navbar.css"
+import "./Navbar.css";
 //test
 function Navbar() {
   const [activeStatus, setStatus] = useState(false);
@@ -14,7 +14,7 @@ function Navbar() {
           <NavLink className="navbar-item-img-max-height" exact to="/">
             {/* <h1>Lost Artist</h1>
             <h3>Clothing Collaborative</h3> */}
-            <img className="logo" src="/assets/LACC_logo.png"      />
+            <img className="logo" src="/assets/LACC_logo.png" />
           </NavLink>
 
           <a
@@ -94,7 +94,11 @@ function Navbar() {
               </div>
             </div>
 
-            <NavLink className="navbar-item" exact to="/add-item">
+            <NavLink
+              className="navbar-item"
+              exact
+              to="/private/profile/add-item/"
+            >
               Add Item
             </NavLink>
 
