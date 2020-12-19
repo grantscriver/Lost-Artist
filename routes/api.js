@@ -151,8 +151,9 @@ module.exports = function (app) {
 
 
   //Update Artist
-  app.put("/api/creators/:id", (req, res) => {
+  app.put("/api/edit/creators/:id", (req, res) => {
     let idParam = req.params.id;
+    console.log(req.body);
     db.artists
       .update(req.body, {
         where: {

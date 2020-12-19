@@ -7,13 +7,20 @@ import Wrapper from "../../components/Wrapper/Wrapper"
 import ItemDetails from "./itemdetails";
 
 import { app } from "../../base";
+import axios from "axios";
 
 const db = app.firestore();
 
 function Shop() {
   const [item, setItem] = React.useState([]);
+  const [dbItems, setDbItems] = useState([]);
 
   useEffect(() => {
+    axios.get("/api/items")
+    .then(res => {
+      console.log(res.data);
+    })
+
     const fetchItem = async () => {
       const itemCollection = await db.collection("item").get();
       setItem(
@@ -108,21 +115,11 @@ function Shop() {
       <div className="columns">
         <div className="column is-one-fifth">
           <Menu>
-            <li>
-              <NavLink to="/shop">All</NavLink>
-            </li>
-            <li>
-              <NavLink to="/shop/hats">Hats</NavLink>
-            </li>
-            <li>
-              <NavLink to="/shop/shirts">Shirts</NavLink>
-            </li>
-            <li>
-              <NavLink to="/shop/hoodies">Hoodies</NavLink>
-            </li>
-            <li>
-              <NavLink to="/shop/shoes">Shoes</NavLink>
-            </li>
+            <li><NavLink to="/shop">All</NavLink></li>
+            <li><NavLink to="/shop/hats">Hats</NavLink></li>
+            <li><NavLink to="/shop/shirts">Shirts</NavLink></li>
+            <li><NavLink to="/shop/hoodies">Hoodies</NavLink></li>
+            <li><NavLink to="/shop/shoes">Shoes</NavLink></li>
           </Menu>
         </div>
         <Wrapper>

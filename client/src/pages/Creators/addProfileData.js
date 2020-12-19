@@ -14,10 +14,6 @@ function Editcreator() {
   const [form, setForm] = useState({});
   // env
   const serverUrl = process.env.REACT_APP_SERVER_URL;
-  let URL = window.location.pathname;
-    let search = URL.lastIndexOf("/");
-    let resultId = URL.substring(search + 1);
-    console.log(resultId);
   
   useEffect(() => {
     const getUserMetadata = async () => {
@@ -72,7 +68,7 @@ function Editcreator() {
     }
     console.log(formData);
     setCreator({...creator, formData })
-    axios.put(`/api/edit/creators/${resultId}`, formData)
+    axios.post("/api/create/creators", formData)
     .then(res => {
       console.log(res);
       setForm(form => ({ ...form,
