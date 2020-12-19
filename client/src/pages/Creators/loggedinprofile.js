@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import Wrapper from "../../components/Wrapper/Wrapper";
-import {CategorySelect, ColorSelect} from "../../components/Forms/DropSelect";
+import { CategorySelect, ColorSelect } from "../../components/Forms/DropSelect";
 import { CreatorInfo, NoCreatorInfo } from "../../components/column/CreatorAbout";
 import ItemCard from "../../components/Card/ItemCard";
+import Wrapper from "../../components/Wrapper/Wrapper";
 import axios from "axios";
 
-import { app } from "../../base";
+
 
 
 function Loggedinprofile() {
@@ -15,8 +15,6 @@ function Loggedinprofile() {
     const [userMetadata, setUserMetadata] = useState(null);
     const [items, setItems] = useState([]);
     const [creator, setCreator] = useState({});
-    // const [render, setRender] = useState([])
-    const db = app.firestore();
     const serverUrl = process.env.REACT_APP_SERVER_URL;
 
     const { id } = creator;
@@ -73,7 +71,8 @@ function Loggedinprofile() {
                 console.log(e);
             }
 
-        }
+        };
+
         callSecureApi();
 
       }, []);
