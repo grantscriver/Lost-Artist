@@ -17,24 +17,24 @@ function ShopDropDowns() {
                             </div>
                             <div className="dropdown-menu" id="dropdown-menu" role="menu">
                                 <div className="dropdown-content">
-                                    <a href="#" className="dropdown-item">
+                                    <p className="dropdown-item">
                                         IA
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         MI
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         MN
-                                     </a>
-                                    <a href="#" className="dropdown-item">
+                                     </p>
+                                    <p className="dropdown-item">
                                         ND
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         SD
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         WI
-                                    </a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -51,18 +51,18 @@ function ShopDropDowns() {
                             </div>
                             <div className="dropdown-menu" id="dropdown-menu" role="menu">
                                 <div className="dropdown-content">
-                                    <a href="#" className="dropdown-item">
+                                    <p className="dropdown-item">
                                         Creator Name 1
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         Creator Name 2
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         Creator Name 3
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         ...
-                                    </a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -79,18 +79,18 @@ function ShopDropDowns() {
                             </div>
                             <div className="dropdown-menu" id="dropdown-menu" role="menu">
                                 <div className="dropdown-content">
-                                    <a href="#" className="dropdown-item">
+                                    <p className="dropdown-item">
                                         Black
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         White
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         Grey
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         Beige
-                                    </a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -107,18 +107,18 @@ function ShopDropDowns() {
                             </div>
                             <div className="dropdown-menu" id="dropdown-menu" role="menu">
                                 <div className="dropdown-content">
-                                    <a href="#" className="dropdown-item">
+                                    <p className="dropdown-item">
                                         X-Large
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         Large
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         Medium
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </p>
+                                    <p className="dropdown-item">
                                         Small
-                                    </a>
+                                    </p>
                                 </div>
                             </div>
                         </div>

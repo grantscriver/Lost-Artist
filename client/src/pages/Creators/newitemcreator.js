@@ -117,7 +117,7 @@ function Creators() {
               <div className="card-image">
                 <figure className="image is-3by4">
                   <img
-                    src="https://lh3.googleusercontent.com/proxy/SWlwDH5-HLu36StmvClNXNwN12494WEXMmzO4h006m7kZB4hX2azI_S3wf0IG-6Z65gVHF8KmWpszBx7I99k7WvBNFp9OjhwznwlblAgh55bYU2nqZwQhJnhk9WKP2jYedP8MQ"
+                    src="https://lh3.googleusercontent.com/proxy/KTL88Exe7RKumSLxbWn5cSp13MZX6ukIMM-bosF9sdHqsDSAheMQwUH--mBeSAP0X51KmkrlWnfK1NGuqd2F_DyYnjqt0r9_h5cCy6b7e_xquK6BCcaniVvPdtP9rKnUILPsIA"
                     alt="placeholder"
                   />
                 </figure>
