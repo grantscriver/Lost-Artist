@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Input({name, children, onChange}) {
+function Input({name, children, onChange}) {
   return (
     <div className="field">
       <label>{children}</label>
@@ -14,7 +14,7 @@ export function Input({name, children, onChange}) {
   );
   }
 
-export function AboutTextArea({onChange}) {
+function AboutTextArea({onChange}) {
   return (
     <div className="field">
       <label>About:</label>
@@ -26,7 +26,7 @@ export function AboutTextArea({onChange}) {
   );
   }
 
-  export function StateDropDown({onChange}) {
+  function StateDropDown({onChange}) {
     return (
       <div className="field">
         <label>State:</label>
@@ -47,7 +47,7 @@ export function AboutTextArea({onChange}) {
   );
   }
 
-  export function FormBtn({children}) {
+  function FormBtn({children}) {
     return (
       <div className="field is-grouped">
         <div className="control">
@@ -59,5 +59,12 @@ export function AboutTextArea({onChange}) {
       
     );
   }
+
+  export {
+    Input,
+    AboutTextArea,
+    StateDropDown,
+    FormBtn
+  };
   
 
