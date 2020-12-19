@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
@@ -17,49 +17,51 @@ function Creators() {
   const serverUrl = process.env.REACT_APP_SERVER_URL;
   const { register, handleSubmit, errors } = useForm();
 
-  const getUserMetadata = async () => {
-    const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-    try {
-      const accessToken = await getAccessTokenSilently({
-        audience: `https://${domain}/api/v2/`,
-        scope: "read:current_user",
-      });
-      const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
-      const metadataResponse = await fetch(userDetailsByIdUrl, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      const { user_metadata } = await metadataResponse.json();
-      setUserMetadata(user_metadata);
-    } catch (e) {
-      console.log(e.message, " hello");
-    }
-  };
-  getUserMetadata();
-  const callSecureApi = async () => {
-    try {
-      const token = await getAccessTokenSilently();
-      axios
-        .get(`${serverUrl}/api/creators/${user.email}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          if (res.data.length === 0) {
-            console.log("length is zero");
-          } else {
-            console.log("length is greater than zero");
-            setCreator(res.data);
-          }
-          setCreator(res.data);
+  useEffect(() => {
+    const getUserMetadata = async () => {
+      const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+      try {
+        const accessToken = await getAccessTokenSilently({
+          audience: `https://${domain}/api/v2/`,
+          scope: "read:current_user",
         });
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  callSecureApi();
+        const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+        const metadataResponse = await fetch(userDetailsByIdUrl, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        const { user_metadata } = await metadataResponse.json();
+        setUserMetadata(user_metadata);
+      } catch (e) {
+        console.log(e.message, " hello");
+      }
+    };
+    getUserMetadata();
+    const callSecureApi = async () => {
+      try {
+        const token = await getAccessTokenSilently();
+        axios
+          .get(`${serverUrl}/api/creators/${user.email}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((res) => {
+            if (res.data.length === 0) {
+              console.log("length is zero");
+            } else {
+              console.log("length is greater than zero");
+              setCreator(res.data);
+            }
+            setCreator(res.data);
+          });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    callSecureApi();
+  }, []);
 
   const onFileChange = async (e) => {
     const file = e.target.files[0];
@@ -95,7 +97,7 @@ function Creators() {
       large_qty: data.large_qty,
       price: data.price,
       description: data.about,
-      state_id: creator.site_id,
+      state_id: creator.stateId,
       artistId: creator.id,
       image: photo.pic,
     };
