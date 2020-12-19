@@ -24,6 +24,18 @@ module.exports = function(app) {
         });
     });
 
+    app.get("/api/public/creator/:id", (req, res) => {
+        let idParam = req.params.id;
+        db.artists.findOne({
+            where: {
+                id: idParam
+            }
+        })
+        .then(dbArtist => {
+            res.status(200).send(dbArtist);
+        });
+    });
+
 
     //Get all States from States table
     app.get("/api/states", (req, res) => {
