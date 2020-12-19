@@ -15,14 +15,13 @@ import Shoes from "./pages/Shoes/shoes";
 import State from "./pages/State/state";
 import Creator from "./pages/Creators/creatorshomepage";
 import ItemDetails from "./pages/Shop/itemdetails";
-import Profile from "./components/Profiles/Profile";
 import PrivateRoute from "./auth/PrivateRoute";
 import ExternalApi from "./server/external-api";
 import LoggedInProfile from "./pages/Creators/loggedinprofile";
 import PublicProfile from "./pages/Creators/publicprofile";
 import EditCreator from "./pages/Creators/editcreator";
 import AddItem from "./pages/Creators/newitemcreator";
-
+import AddProfileData from "./pages/Creators/addProfileData";
 function App() {
   // If page is loading/transitioning, display "Loading..."
   //test
@@ -60,6 +59,7 @@ function App() {
           path="/private/profile/edit/:id"
           component={EditCreator}
         />
+        <PrivateRoute exact path="/private/profile/create" component={AddProfileData} />
       </Switch>
     </>
   );
