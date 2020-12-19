@@ -1,0 +1,104 @@
+import React, {useState} from 'react';
+import {Input, DropDown, TextArea, FormBtn} from '../../components/Forms/Creatorfile'
+
+
+const [formObject, setFormObject] = useState({});
+
+function handleInputChange(event) {
+  const { name, value } = event.target;
+  setFormObject({...formObject, [name]: value})
+};
+
+// When the form is submitted, use the API.saveBook method to save the book data
+// Then reload books from the database
+function handleFormSubmit(event) {
+  event.preventDefault();
+  console.log(event)
+  
+};
+
+function Creators() {
+ 
+    
+ 
+    return (
+      
+  <div class="columns is-multiline is-mobile">
+  <div class="column is-two-fifths">
+    SUNNY
+  </div>
+  <div class="column">
+    REST OF STUFF
+  </div>
+
+<div class="field">
+  <label class="label">Item_name</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-success" type="text" placeholder="Text input" value="bulma"></input>
+    <span class="icon is-small is-left">
+     </span>
+    </div>
+  </div>
+
+
+
+      {/* //<form/>
+                         
+        //       <Input */}
+        {/* //         onChange={handleInputChange}
+        //         name="ItemName"
+        //         placeholder="ITEM NAME"
+        //         value={formObject.itemname}
+        //       />
+             
+        //       <TextArea */}
+        {/* //         onChange={handleInputChange}
+        //         name="AboutItem"
+        //         placeholder="ABOUT THE ITEM"
+        //         value={formObject.aboutitem}
+        //       />
+        //       <label for='category'>CATEGORY</label>
+
+        //       <DropDown
+        //         onChange={handleInputChange}
+        //         name="category"
+        //         value={formObject.category}
+        //       />
+
+        //      <label for='small_qty'>QTY OF SIZE SMALL</label>   
+        //       <Input
+        //         onChange={handleInputChange}
+        //         name="small_qty"
+        //         placeholder="0"
+        //         value={formObject.small_qty}
+        //       />
+        //       <label for='medium_qty'>QTY OF SIZE MEDIUM</label>  
+        //       <Input
+        //         onChange={handleInputChange}
+        //         name="medium_qty"
+        //         placeholder="0"
+        //         value={formObject.medium_qty}
+        //       />
+        //       <label for='large_qty'>QTY OF SIZE LARGE</label> 
+        //       <Input
+        //         onChange={handleInputChange}
+        //         name="large_qty"
+        //         placeholder="0"
+        //         value={formObject.large_qty}
+        //       />
+
+              <FormBtn
+                disabled={!(formObject.itemname && formObject.category)}
+                onClick={handleFormSubmit}
+              >
+                Submit Item
+
+              </FormBtn>
+          </form> */}
+    )
+    };
+
+export default Creators
+
+
+

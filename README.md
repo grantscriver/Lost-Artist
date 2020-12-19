@@ -2,7 +2,9 @@
 #### Table of Contents
   * [Description](#Description)
   * [Installation](#Installation)
-  * [Screenshots](#Screenshots)
+  * [Technologies Used](#Technologies-Used)
+  * [Steps](#Steps)
+  * [Screenshot](#Screenshot)
   * [Credits](#Credits)
   * [License](#License)
 
@@ -17,7 +19,11 @@ Click [Here](/url/here) to view the deployed site.
 * [React](https://reactjs.org/)
 * [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/package/npm)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [cmder](https://cmder.net/)
+* [auth0](https://auth0.com)
+* [firebase](https://firebase.google.com/)
+* [mySQL](https://www.mysql.com/)
+* [Bulma](https://bulma.io/)
+* [Stripe](https://stripe.com/)
 
 #### Steps
 1. * Start by entering the following in your terminal: `Git clone `
@@ -32,11 +38,11 @@ Click [Here](/url/here) to view the deployed site.
 
 ## Screenshot
 
-![Home](/path/to/screenshots)
+![Home](./client/public/assets/LA_Homepage.JPG)
 
-![Creators](/path/to/screenshots)
+![Creators](./client/public/assets/LA_Creator.JPG)
 
-![Shop](/path/to/screenshots)
+![Shop](./client/public/assets/LA_Shop.JPG)
 
 
 
