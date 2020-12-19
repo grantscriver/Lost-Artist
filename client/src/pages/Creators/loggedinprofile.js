@@ -162,7 +162,11 @@ function Loggedinprofile() {
                         
                     }
                     <div className="column is-3">
-                        <Link to={`/private/profile/edit/${id}`}><button className="button is-black">Edit</button></Link>
+                        {creator.id 
+                            ?   <Link to={`/private/profile/edit/${id}`}><button className="button is-black">Edit</button></Link>
+                            :   <Link to={`/private/profile/create`}><button className="button is-black">Add My Info</button></Link>
+                        }
+                        
                         <div >
                         </div>
                     </div>
