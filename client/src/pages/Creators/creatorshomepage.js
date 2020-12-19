@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Hero from "../../components/Hero/Hero";
 import CreatorColumn from "../../components/column/CreatorColumn";
 import axios from 'axios';
@@ -137,7 +137,12 @@ function Creator () {
                     {creators.length > 0 && 
                         creators.map((creator, i) => {
                             console.log(creator);
-                            return <CreatorColumn {...creator} />
+                            return (
+                        <Link to={`/creators/${creator.id}`}> 
+                                             
+                            <CreatorColumn {...creator} />
+                        </Link>
+                            )
                         })
                     }
                     </Wrapper>
