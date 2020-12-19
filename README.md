@@ -26,13 +26,13 @@ Click [Here](/url/here) to view the deployed site.
 * [Stripe](https://stripe.com/)
 
 #### Steps
-1. * Start by entering the following in your terminal: `Git clone `
+1.  Start by entering the following in your terminal: `Git clone `
 
-2. * Change directory to `Lost-Artist` and enter `npm install` into your terminal. This will install all package dependencies.
+2.  Change directory to `Lost-Artist` and enter `npm install` into your terminal. This will install all package dependencies.
 
-3. * Add node_modules to .gitignore.
+3.  Add node_modules to .gitignore.
 
-4. * Start the application by running `npm start`
+4.  Start the application by running `npm start`
 
 
 
