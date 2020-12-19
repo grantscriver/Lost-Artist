@@ -1,11 +1,11 @@
 import React from "react";
 
-function Input({name, children, onChange}) {
+function Input({name, children, onChange, placeholder}) {
   return (
     <div className="field">
       <label>{children}</label>
       <div className="control">
-        <input type="text" className="input" name={name} onChange={onChange}> 
+        <input type="text" className="input" placeholder={placeholder} name={name} onChange={onChange}> 
          
         </input>
       </div>
