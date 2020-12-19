@@ -13,31 +13,39 @@ function Creator () {
     })
 
     useEffect(() => {
-        axios.get("/api/creators")
-        .then(res => {
-            setCreators(res.data);
-            setFilter(creators);
-            setRender(true);
-        })
+        getAllCreators()
         
-    }, [render])
+    }, [])
 
     
     function handleInputChange(event) {
         let value = event.target.value;
         let numVal = parseInt(value);
-        setFilter([])
+        
         if (numVal > 0) {
-            creators.filter(creator => creator.stateId === numVal).map(filteredCreator => (
-                setFilter(filter => [...filter, filteredCreator])
-            ))
+            getCreatorsByState(numVal);
         } else {
-            setFilter(creators)
+            getAllCreators();
+           
         }
-        
-        
     }
-    console.log(filter.length);
+
+    function getCreatorsByState(id) {
+        axios.get(`/api/creators/?stateId=${id}`)
+            .then(res => {
+                
+                console.log(res.data);
+                setCreators(res.data);
+                // console.log("/api/creators/filter/?state=MN&color=Red")
+            })
+    }
+    
+    function getAllCreators() {
+        axios.get("/api/creators")
+        .then(res => {
+            setCreators(res.data)
+        })
+    }
 
     return (
         <>
@@ -131,8 +139,8 @@ function Creator () {
             
  
             <Wrapper>
-                {filter && 
-                    filter.map((creator, i) => {
+                {creators.length > 0 && 
+                    creators.map((creator, i) => {
                         return (
                     <Link key={creator.id} to={`/creators/${creator.id}`}> 
                                             

@@ -11,8 +11,9 @@ import { app } from "../../base";
 function Loggedinprofile() {
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
     const [userMetadata, setUserMetadata] = useState(null);
-    const [item, setItem] = useState([]);
+    const [items, setItems] = useState([]);
     const [creator, setCreator] = useState({});
+    // const [render, setRender] = useState([])
     const db = app.firestore();
     const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -41,7 +42,7 @@ function Loggedinprofile() {
             setUserMetadata(user_metadata);
           } catch (e) {
 
-            console.log(e.message, " hello");
+            console.log(e.message);
           }
         };
 
@@ -58,14 +59,15 @@ function Loggedinprofile() {
                 })
                 .then(res => {
                     if(res.data.length === 0) {
-                        console.log("length is zero")
+                        console.log("No match found in database.")
                     } else {
-                        console.log("length is greater than zero")
+                        
                         setCreator(res.data);
                     }
-
+                    
                     setCreator(res.data);
-                    transitionIdToState(res.data.stateId)
+                    transitionIdToState(res.data.stateId);
+                    getItemsByUser(res.data.id);
                 })
             } catch (e) {
                 console.log(e);
@@ -75,19 +77,28 @@ function Loggedinprofile() {
         callSecureApi();
 
         
-        const fetchItem = async () => {
-            // Change this query to item specific when database is ready            
-            const itemCollection = await db.collection("item").get();
-            setItem(
-                itemCollection.docs.map((doc) => {
-                    return doc.data();
-                })
-            );
-        };
-        fetchItem();
+        // const fetchItem = async () => {
+        //     // Change this query to item specific when database is ready            
+        //     const itemCollection = await db.collection("item").get();
+        //     setItem(
+        //         itemCollection.docs.map((doc) => {
+        //             return doc.data();
+        //         })
+        //     );
+        // };
+        // fetchItem();
       }, []);
 
     
+
+      function getItemsByUser(id) {
+        axios.get(`/api/items/:id`)
+        .then(res => {
+            console.log(res.data);
+            setItems(res.data);
+        })
+      }
+
       function transitionIdToState(id) {
             switch (id) {
                 case 1:
@@ -114,7 +125,7 @@ function Loggedinprofile() {
             
       }
 
-     console.log(creator);
+     
 
     return (
         <>
@@ -156,7 +167,7 @@ function Loggedinprofile() {
                         )
                         : (
                             <div className="column is-5">
-                                <p className="title is-4">Please add Profile details with the "Edit" button.</p>
+                                <p className="title is-4">Please add Profile details with the "Add My Info" button.</p>
                             </div>
                         )
                         
@@ -178,7 +189,7 @@ function Loggedinprofile() {
                 <div className="space-left column is-two-thirds">
                     
                     <Link to="/private/profile/add-item">
-                        <button class="button is-black">Add</button>
+                        <button class="button is-black">Add Item to Collection</button>
                     </Link>
                 </div>
                 <div className="column is-justify-content-space-around">
@@ -192,8 +203,8 @@ function Loggedinprofile() {
             <section className="space-left">
                 <div className="columns">
                     <Wrapper>
-                        {item.length > 0 &&
-                            item.map((item) => {
+                        {items.length > 0 
+                            ?  items.map((item) => {
                                 return (
                                     <div className="column is-3" key={item.id}>
                                         <div className="card">
@@ -214,7 +225,12 @@ function Loggedinprofile() {
                                         </div>
                                     </div>
                                 );
-                            })}
+                            })
+                            : <div className="column">
+                                <p>There are no items in your collection yet.</p>
+                                <p> Click "Add Item to Collection" to add an item.</p>  
+                            </div>
+                        }
                     </Wrapper>
                 </div>
             </section>

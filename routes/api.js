@@ -3,11 +3,11 @@ const { checkJwt } = require("../authz/check-jwt");
 
 module.exports = function (app) {
   // Get all Artists from table
-  app.get("/api/creators", (req, res) => {
-    db.artists.findAll({}).then((dbArtists) => {
-      res.send(dbArtists);
-    });
-  });
+  // app.get("/api/creators", (req, res) => {
+  //   db.artists.findAll({}).then((dbArtists) => {
+  //     res.send(dbArtists);
+  //   });
+  // });
 
   //Get one Artist by ID
   app.get("/api/creators/:email", checkJwt, (req, res) => {
@@ -32,16 +32,16 @@ module.exports = function (app) {
 
 
   //Get all Artists where State = param
-  app.get("/api/creators/:state", (req, res) => {
-    let stateParam = req.params.state;
+  app.get("/api/creators", (req, res) => {
+    // let stateParam = req.params.id;
+    console.log(req.query)
     db.artists
       .findAll({
-        where: {
-          artist_state: stateParam,
-        },
+        where: req.query,
       })
       .then((dbArtists) => {
         console.log(dbArtists);
+        res.status(200).send(dbArtists);
       });
   });
 
