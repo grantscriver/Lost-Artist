@@ -1,11 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Permanent+Marker&display=swap');
+
 .navbar {
   font-family: 'Russo One', sans-serif;
 }
 
 .button {
   font-family: 'Russo One', sans-serif;
+}
+
+.menu {
+  font-family: 'Fredoka One', cursive;
+}
+
+.title {
+  font-family: 'Russo One', sans-serif;
+}
+
+.control {
+  font-family: 'Russo One', sans-serif;
+}
+
+.font {
+  font-family: 'Russo One', sans-serif;
+  color: black;
 }
 
 body {

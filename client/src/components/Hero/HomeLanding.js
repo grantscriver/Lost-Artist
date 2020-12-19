@@ -11,7 +11,6 @@ function Hero({ children }) {
           <div className="columns">
             <div className="column">
               <div className="placeholder-four">
-                
               </div>
             </div>
             <div className="column">
@@ -24,12 +23,14 @@ function Hero({ children }) {
               <div className="placeholder-three"></div>
             </div>
           </div>
-
+          <div className="columns">
+            <p className="font">
+              Lost Artist Clothing Collaboration is a place where fashion designers from the upper midwest states - locations typically overlooked in the fashion community - can feature and sell their work.
+              We give designers the ability to create profiles to share who they are, their experience, and a platform for shoppers to connect with them for potentially commissioned work and exposure. This
+              site is also for people who want to buy and support local designers to directly impact their community.
+            </p>
+          </div>
         </div>
-        
-        
-        
-        
       </div>
     </section>
   );
