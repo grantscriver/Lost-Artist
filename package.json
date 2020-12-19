@@ -35,5 +35,8 @@
   },
   "dev-Devependencies": {
     "concurrently": "5^.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   }
 }
