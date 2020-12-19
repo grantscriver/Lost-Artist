@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import {CategorySelect, ColorSelect} from "../../components/Forms/DropSelect";
+import { CreatorInfo, NoCreatorInfo } from "../../components/column/CreatorAbout";
+import ItemCard from "../../components/Card/ItemCard";
 import axios from "axios";
 
 import { app } from "../../base";
@@ -17,7 +19,7 @@ function Loggedinprofile() {
     const db = app.firestore();
     const serverUrl = process.env.REACT_APP_SERVER_URL;
 
-    const { id, artist_name, artist_email, artist_instagram, artist_about, artist_city, artist_state } = creator;
+    const { id } = creator;
 
     useEffect(() => {
         const getUserMetadata = async () => {
@@ -61,13 +63,11 @@ function Loggedinprofile() {
                     if(res.data.length === 0) {
                         console.log("No match found in database.")
                     } else {
-                        
                         setCreator(res.data);
-                    }
-                    
-                    setCreator(res.data);
-                    transitionIdToState(res.data.stateId);
-                    getItemsByUser(res.data.id);
+                        transitionIdToState(res.data.stateId);
+                        getItemsByUser(res.data.id);    
+                        console.log(res.data);
+                    }  
                 })
             } catch (e) {
                 console.log(e);
@@ -76,23 +76,12 @@ function Loggedinprofile() {
         }
         callSecureApi();
 
-        
-        // const fetchItem = async () => {
-        //     // Change this query to item specific when database is ready            
-        //     const itemCollection = await db.collection("item").get();
-        //     setItem(
-        //         itemCollection.docs.map((doc) => {
-        //             return doc.data();
-        //         })
-        //     );
-        // };
-        // fetchItem();
       }, []);
 
     
 
       function getItemsByUser(id) {
-        axios.get(`/api/items/:id`)
+        axios.get(`/api/items/?artistId=${id}`)
         .then(res => {
             console.log(res.data);
             setItems(res.data);
@@ -129,111 +118,59 @@ function Loggedinprofile() {
 
     return (
         <>
-            
-            <div className="card" >
-                <div className="columns">
-                    <div className="column is-3 is-offset-1">
-                        <img src="https://bulma.io/images/placeholders/480x640.png" alt="placeholder" />
-                    </div>
-                    {isAuthenticated && creator.artist_name
-                        ? (
-                            <div className="column is-5">
-                                <p className="title is-4">{artist_name}</p>
-                                <p className="title is-5">{artist_city},{artist_state}</p>
-                                <br></br>
-                                <p>
-                                    {artist_about}
-                                </p>
-                                    
-                                <div className="level"></div>
-                                <div className="level"></div>
-                                <div className="level"></div>
-                                <div className="level"></div>
-                                <div className="columns">
-                                    <div className="column is-one-quarter">
-                                        <h1 className="title is-4">Contact:</h1>
-                                    </div>
-                                    <div className="column is-one-quarter is-offset-one-half">
-                                        <a className="icon" href={`https://instagram.com/${artist_instagram}`} >
-                                            <i className="fab fa-instagram fa-3x"></i>
-                                        </a>
-
-                                        <a className="icon is-pulled-right" href={`mailto:${artist_email}`}>
-                                            <i className="far fa-envelope fa-3x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                        : (
-                            <div className="column is-5">
-                                <p className="title is-4">Please add Profile details with the "Add My Info" button.</p>
-                            </div>
-                        )
-                        
-                    }
-                    <div className="column is-3">
-                        {creator.id 
-                            ?   <Link to={`/private/profile/edit/${id}`}><button className="button is-black">Edit</button></Link>
-                            :   <Link to={`/private/profile/create`}><button className="button is-black">Add My Info</button></Link>
-                        }
-                        
-                        <div >
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="level"></div>
-            <div className="level"></div>
+        <div className="card" >
             <div className="columns">
-                <div className="space-left column is-two-thirds">
-                    
-                    <Link to="/private/profile/add-item">
-                        <button class="button is-black">Add Item to Collection</button>
-                    </Link>
+                <div className="column is-3 is-offset-1">
+                    <img src="https://bulma.io/images/placeholders/480x640.png" alt="placeholder" />
                 </div>
-                <div className="column is-justify-content-space-around">
-
-                    <CategorySelect />
-                    <ColorSelect spacing={"space-left"}/>
+                {isAuthenticated && creator.artist_name
+                    ? <CreatorInfo {...creator} />
+                    : <NoCreatorInfo />
+                }
+                <div className="column is-3">
+                    {creator.id 
+                        ?   <Link to={`/private/profile/edit/${id}`}><button className="button is-black">Edit</button></Link>
+                        :   <Link to={`/private/profile/create`}><button className="button is-black">Add My Info</button></Link>
+                    }
+                    
+                    
                 </div>
             </div>
-            <div className="level"></div>
-            <div className="level"></div>
-            <section className="space-left">
-                <div className="columns">
-                    <Wrapper>
-                        {items.length > 0 
-                            ?  items.map((item) => {
-                                return (
-                                    <div className="column is-3" key={item.id}>
-                                        <div className="card">
-                                            <Link to={`/shop/item/${item.id}`}>
-                                                <div className="card-image">
-                                                    <figure className="image is-3by4">
-                                                        <img src={item.pic} alt={item.name} />
-                                                    </figure>
-                                                </div>
-                                                <div className="card-content">
-                                                    <div className="media">
-                                                        <div className="media-content">
-                                                            <p className="title is-4">{item.name}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                );
-                            })
-                            : <div className="column">
-                                <p>There are no items in your collection yet.</p>
-                                <p> Click "Add Item to Collection" to add an item.</p>  
-                            </div>
-                        }
-                    </Wrapper>
-                </div>
-            </section>
+        </div>
+
+        <div className="level"></div>
+        <div className="level"></div>
+
+        <div className="columns">
+            <div className="space-left column is-two-thirds">
+                <Link to="/private/profile/add-item">
+                    <button className="button is-black">Add Item to Collection</button>
+                </Link>
+            </div>
+            <div className="column is-justify-content-space-around">
+                <CategorySelect />
+                <ColorSelect spacing={"space-left"}/>
+            </div>
+        </div>
+
+        <div className="level"></div>
+        <div className="level"></div>
+
+        <section className="space-left">
+            <div className="columns">
+                <Wrapper>
+                    {items.length > 0 
+                        ?  items.map((item) => {
+                            return <ItemCard key={item.id}{...item} />
+                        })
+                        : <div className="column">
+                            <p>There are no items in your collection yet.</p>
+                            <p> Click "Add Item to Collection" to add an item.</p>  
+                        </div>
+                    }
+                </Wrapper>
+            </div>
+        </section>
         
         </>
     )

@@ -60,39 +60,14 @@ module.exports = function (app) {
 
   //Get all Items from table
   app.get("/api/items", (req, res) => {
-    db.items.findAll({}).then((dbItems) => {
+    db.items.findAll({
+      where: req.query
+    }).then((dbItems) => {
       console.log(dbItems);
       res.send(dbItems);
     });
   });
 
-  //Get all Items where color = param
-  app.get("/api/items/:color", (req, res) => {
-    let colorParam = req.params.color;
-    db.items
-      .findAll({
-        where: {
-          color_code: colorParam,
-        },
-      })
-      .then((dbItems) => {
-        console.log(dbItems);
-      });
-  });
-
-  //Get all Items where size = param
-  app.get("/api/items/:size", (req, res) => {
-    let sizeParam = req.params.size;
-    db.items
-      .findAll({
-        where: {
-          size_code: sizeParam,
-        },
-      })
-      .then((dbItems) => {
-        console.log(dbItems);
-      });
-  });
 
   //Get One Item where id = param
   app.get("/api/items/:id", (req, res) => {
