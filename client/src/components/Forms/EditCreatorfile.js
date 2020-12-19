@@ -5,7 +5,7 @@ function Input({name, children, onChange}) {
     <div className="field">
       <label>{children}</label>
       <div className="control">
-        <input type='text' className="input" name={name} onChange={onChange}> 
+        <input type="text" className="input" name={name} onChange={onChange}> 
          
         </input>
       </div>
@@ -32,14 +32,14 @@ function AboutTextArea({onChange}) {
         <label>State:</label>
         <div className="control">
           <div className="select">
-            <select name='state' id='stateselect' onChange={onChange}>
-              <option selected>- -</option>
-              <option value='1'>IA</option>
-              <option value='3'>MI</option>
-              <option value='2'>MN</option>
-              <option value='4'>ND</option>
-              <option value='5'>SD</option>
-              <option value='6'>WI</option>
+            <select name="state" id="stateselect" onChange={onChange}>
+              <option selected value="0">All</option>
+              <option value="1">IA</option>
+              <option value="3">MI</option>
+              <option value="2">MN</option>
+              <option value="4">ND</option>
+              <option value="5">SD</option>
+              <option value="6">WI</option>
             </select>
           </div>
         </div>
