@@ -100,7 +100,7 @@ function Navbar() {
               to="/private/profile/add-item/"
             >
               Add Item
-            </NavLink>
+             </NavLink> 
 
             <AuthNav />
             <div className="navbar-item has-dropdown is-hoverable">

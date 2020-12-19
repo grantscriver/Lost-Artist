@@ -9,7 +9,7 @@
   * [License](#License)
 
 ## Description
-
+Lost Artist Clothing Collaboration is a place where fashion designers from the upper midwest states - locations typically overlooked in the fashion community - can feature and sell their work. We give designers the ability to create profiles to share who they are, their experience, and a platform for shoppers to connect with them for potentially commissioned work, exposure, and a place to show support for their local designers and community.
 
 Click [Here](/url/here) to view the deployed site.
  
@@ -26,7 +26,7 @@ Click [Here](/url/here) to view the deployed site.
 * [Stripe](https://stripe.com/)
 
 #### Steps
-1.  Start by entering the following in your terminal: `Git clone `
+1.  Start by entering the following in your terminal: `Git clone`
 
 2.  Change directory to `Lost-Artist` and enter `npm install` into your terminal. This will install all package dependencies.
 
