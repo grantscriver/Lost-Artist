@@ -30,6 +30,7 @@ module.exports = function (app) {
     });
   });
 
+
   //Get all Artists where State = param
   app.get("/api/creators/:state", (req, res) => {
     let stateParam = req.params.state;
@@ -43,6 +44,19 @@ module.exports = function (app) {
         console.log(dbArtists);
       });
   });
+
+    app.get("/api/public/creator/:id", (req, res) => {
+        let idParam = req.params.id;
+        db.artists.findOne({
+            where: {
+                id: idParam
+            }
+        })
+        .then(dbArtist => {
+            res.status(200).send(dbArtist);
+        });
+    });
+
 
   //Get all Items from table
   app.get("/api/items", (req, res) => {
@@ -123,6 +137,18 @@ module.exports = function (app) {
         console.log(dbItem);
       });
   });
+
+    //Create New Artist
+    app.post("/api/create/creators", (req, res) => {
+        console.log("😒");
+        console.log(req.body);
+        db.artists.create(req.body)
+        .then(dbArtist => {
+            console.log(dbArtist);
+            res.status(200).send(dbArtist);
+        });
+    }); 
+
 
   //Update Artist
   app.put("/api/creators/:id", (req, res) => {

@@ -1,11 +1,11 @@
 import React from "react";
 
-export function Input({name, children, onChange}) {
+function Input({name, children, onChange}) {
   return (
     <div className="field">
       <label>{children}</label>
       <div className="control">
-        <input type='text' className="input" name={name} onChange={onChange}> 
+        <input type="text" className="input" name={name} onChange={onChange}> 
          
         </input>
       </div>
@@ -14,7 +14,7 @@ export function Input({name, children, onChange}) {
   );
   }
 
-export function AboutTextArea({onChange}) {
+function AboutTextArea({onChange}) {
   return (
     <div className="field">
       <label>About:</label>
@@ -26,20 +26,20 @@ export function AboutTextArea({onChange}) {
   );
   }
 
-  export function StateDropDown({onChange}) {
+  function StateDropDown({onChange}) {
     return (
       <div className="field">
         <label>State:</label>
         <div className="control">
           <div className="select">
-            <select name='state' id='stateselect' onChange={onChange}>
-              <option selected value='hat'>- -</option>
-              <option value='1'>IA</option>
-              <option value='3'>MI</option>
-              <option value='2'>MN</option>
-              <option value='4'>ND</option>
-              <option value='5'>SD</option>
-              <option value='6'>WI</option>
+            <select name="state" id="stateselect" onChange={onChange}>
+              <option selected value="0">All</option>
+              <option value="1">IA</option>
+              <option value="3">MI</option>
+              <option value="2">MN</option>
+              <option value="4">ND</option>
+              <option value="5">SD</option>
+              <option value="6">WI</option>
             </select>
           </div>
         </div>
@@ -47,7 +47,7 @@ export function AboutTextArea({onChange}) {
   );
   }
 
-  export function FormBtn({children}) {
+  function FormBtn({children}) {
     return (
       <div className="field is-grouped">
         <div className="control">
@@ -59,5 +59,12 @@ export function AboutTextArea({onChange}) {
       
     );
   }
+
+  export {
+    Input,
+    AboutTextArea,
+    StateDropDown,
+    FormBtn
+  };
   
 

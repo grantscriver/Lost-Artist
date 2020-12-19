@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Wrapper from "../../components/Wrapper/Wrapper";
+import axios from "axios";
 
 import { app } from "../../base";
+
 const db = app.firestore();
 
 function  PublicProfile() {
+    const [creator, setCreator] = useState({});
     const [item, setItem] = useState([]);
 
+    const { id, artist_name, artist_email, artist_instagram, artist_about, artist_city, artist_state } = creator;
+
+    let URL = window.location.pathname;
+    let search = URL.lastIndexOf("/");
+    let resultId = URL.substring(search + 1);
+    console.log(resultId);
+
     useEffect(() => {
+        axios.get(`/api/public/creator/${resultId}`)
+        .then(res => {
+            console.log("HELLO?")
+            console.log(res.data)
+            setCreator(res.data);
+            transitionIdToState(res.data.stateId);
+        })
         const fetchItem = async () => {
             // Change this query to item specific when database is ready            
             const itemCollection = await db.collection("item").get();
@@ -19,11 +36,44 @@ function  PublicProfile() {
             );
         };
         fetchItem();
+
+        
     }, []);
 
     if (item.length > 0) {
         console.log(item);
     }
+
+    function transitionIdToState(id) {
+        switch (id) {
+            case 1:
+                setCreator(creator => ({...creator, artist_state: "IA"}))
+                break;
+            case 2:
+                setCreator(creator => ({...creator, artist_state: "MN"}))
+                break;
+            case 3:
+                setCreator(creator => ({...creator, artist_state: "MI"}))
+                break;
+            case 4:
+                setCreator(creator => ({...creator, artist_state: "ND"}))
+                break;
+            case 5: 
+                setCreator(creator => ({...creator, artist_state: "SD"}))
+                break;
+            case 6: 
+                setCreator(creator => ({...creator, artist_state: "WI"}))
+                break;
+            default:
+                console.log("No State set.")
+        }
+        
+  }
+
+
+
+
+
     return (
         <>
             <div className="card" >
@@ -31,32 +81,38 @@ function  PublicProfile() {
                     <div className="column is-3 is-offset-1">
                         <img src="https://bulma.io/images/placeholders/480x640.png" alt="placeholder" />
                     </div>
-                    <div className="column is-5">
-                        <p className="title is-4">About: Lizzie Alfaro</p>
-                        <p className="title is-5">Minneapolis, MN </p>
-                        <br></br>
-                        <p>
-                            Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
-                        <div className="level"></div>
-                        <div className="level"></div>
-                        <div className="level"></div>
-                        <div className="level"></div>
-                        <div className="columns ">
-                            <div className="column is-one-quarter">
-                                <h1 className="title is-4">Contact:</h1>
-                            </div>
-                            <div className="column is-one-quarter is-offset-one-half">
-                                <a className="icon " >
-                                    <i class="fab fa-instagram fa-3x"></i>
-                                </a>
+                    {creator.artist_name 
+                        ? (
+                        <div className="column is-5">
+                            <p className="title is-4">{artist_name}</p>
+                            <p className="title is-5">{artist_city}, {artist_state} </p>
+                            <br></br>
 
-                                <a className="icon is-pulled-right">
-                                    <i class="far fa-envelope fa-3x"></i>
-                                </a>
+                            <p>{artist_about}</p>
+
+                            <div className="level"></div>
+                            <div className="level"></div>
+                            <div className="level"></div>
+                            <div className="level"></div>
+                            <div className="columns ">
+                                <div className="column is-one-quarter">
+                                    <h1 className="title is-4">Contact:</h1>
+                                </div>
+                                <div className="column is-one-quarter is-offset-one-half">
+                                    <a className="icon" href={`https://instagram.com/${artist_instagram}`}>
+                                        <i class="fab fa-instagram fa-3x"></i>
+                                    </a>
+
+                                    <a className="icon is-pulled-right" href={`mailto:${artist_email}`}>
+                                        <i class="far fa-envelope fa-3x"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )
+                        : null
+
+                    }
                 </div>
             </div>
             <div className="level"></div>
