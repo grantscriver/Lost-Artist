@@ -4,7 +4,7 @@ import { Input, AboutTextArea, StateDropDown, FormBtn } from "../../components/F
 import axios from "axios";
 
 
-function Editcreator() {
+function AddProfileData() {
   // db
   const [creator, setCreator] = useState([]);
   // auth0
@@ -141,4 +141,4 @@ function Editcreator() {
     </section>
   )
 }
-export default Editcreator;
+export default AddProfileData;

@@ -8,17 +8,21 @@ import Wrapper from '../../components/Wrapper/Wrapper';
 function Creator () {
     const [creators, setCreators] = useState([]);
     const [filter, setFilter] = useState([]);
+    const [render, setRender] = useState({
+        toRender: false
+    })
 
     useEffect(() => {
         axios.get("/api/creators")
         .then(res => {
             setCreators(res.data);
-            
+            setFilter(creators);
+            setRender(true);
         })
-        setFilter(creators);
-    }, [])
+        
+    }, [render])
 
-
+    
     function handleInputChange(event) {
         let value = event.target.value;
         let numVal = parseInt(value);
@@ -127,7 +131,7 @@ function Creator () {
             
  
             <Wrapper>
-                {filter.length >= 0 && 
+                {filter && 
                     filter.map((creator, i) => {
                         return (
                     <Link key={creator.id} to={`/creators/${creator.id}`}> 
