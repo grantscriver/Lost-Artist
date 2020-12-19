@@ -33,7 +33,7 @@ export function AboutTextArea({onChange}) {
         <div className="control">
           <div className="select">
             <select name='state' id='stateselect' onChange={onChange}>
-              <option selected value='hat'>- -</option>
+              <option selected>- -</option>
               <option value='1'>IA</option>
               <option value='3'>MI</option>
               <option value='2'>MN</option>
