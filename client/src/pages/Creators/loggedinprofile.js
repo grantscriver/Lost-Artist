@@ -148,7 +148,7 @@ function Loggedinprofile() {
             </div>
             <div className="column is-justify-content-space-around">
                 <CategorySelect />
-                <ColorSelect spacing={"space-left"}/>
+                
             </div>
         </div>
 
