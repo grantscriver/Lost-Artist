@@ -91,7 +91,7 @@ function Shop() {
                 <option value="DEFAULT">All Creators</option>
                 {creators &&
                   creators.map(creator => {
-                    return <CreatorSelectFilter {...creator}/>
+                    return <CreatorSelectFilter key={creator.id} {...creator}/>
                   })
                 }
                   
