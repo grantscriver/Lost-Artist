@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
-import {CategorySelect, ColorSelect} from "../../components/Forms/DropSelect";
+import { CategorySelect } from "../../components/Forms/DropSelect";
 import { CreatorInfo } from "../../components/column/CreatorAbout";
 import ItemCard from "../../components/Card/ItemCard";
 import axios from "axios";
@@ -17,24 +17,43 @@ function  PublicProfile() {
     let URL = window.location.pathname;
     let search = URL.lastIndexOf("/");
     let resultId = URL.substring(search + 1);
-    console.log(resultId);
+    
 
     useEffect(() => {
-        axios.get(`/api/public/creator/${resultId}`)
-        .then(res => {
-            console.log(res.data)
-            setCreator(res.data);
-            transitionIdToState(res.data.stateId);
-            getItemsByUser(res.data.id);
-        })        
+        if (items.length === 0) {
+            axios.get(`/api/public/creator/${resultId}`)
+            .then(res => {
+                
+                setCreator(res.data);
+                transitionIdToState(res.data.stateId);
+                getAllItems(`?artistId=${res.data.id}`);
+            })   
+        }     
     }, []);
 
-    function getItemsByUser(id) {
-        axios.get(`/api/items/?artistId=${id}`)
-        .then(res => {
-            console.log(res.data);
+    function getAllItems(query){
+        
+        axios.get(`/api/items/${query}`)
+        .then((res) => {
+            
             setItems(res.data);
+           
         })
+    }
+
+    function handleInputChange(event) {
+        let name = event.target.name;
+        let value = event.target.value;
+        
+        if (value === "DEFAULT") {
+            getAllItems(`?artistId=${id}`);
+          }
+      
+        if (name === "category" && value !== "DEFAULT") {
+            
+            getAllItems(`?artistId=${id}&category=${value}`);
+            
+        }
     }
 
     function transitionIdToState(id) {
@@ -73,7 +92,6 @@ function  PublicProfile() {
                     {creator.artist_name 
                         ? <CreatorInfo {...creator} />
                         : <p>This creator has no info to display.</p>
-
                     }
                 </div>
             </div>
@@ -84,7 +102,18 @@ function  PublicProfile() {
                     {/* placeholder column to push Cat & Color dropdowns right */}
                 </div>
                 <div className="column is-justify-content-space-around">
-                    <CategorySelect />
+                    <div className="select">
+                        <select
+                            name="category"
+                            id="categorySelect"
+                            defaultValue={"DEFAULT"}
+                            onChange={handleInputChange}
+                        >
+                            <option value="DEFAULT">All Categories</option>
+                            <CategorySelect />
+                        </select>
+                    </div>
+                    
                     
                 </div>
             </div>
@@ -93,11 +122,18 @@ function  PublicProfile() {
             <section className="space-left">
                 <div className="columns is-flex-justify-content-center">
                     <Wrapper>
-                        {items.length > 0 &&
-                            items.map((item) => {
+                        {items.length > 0 
+                        ?   items.map((item) => {
                                 return <ItemCard key={id}{...item} />
                                 
-                            })}
+                            })
+                        : (
+                            <div className="column">
+                                <p>Creator has no items to display under this category.</p>
+                            </div>
+                            
+                        )
+                        }
                     </Wrapper>
                 </div>
             </section>
