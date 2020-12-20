@@ -62,7 +62,7 @@ function  PublicProfile() {
         }
         
   }
-  
+
     return (
         <>
             <div className="card" >
@@ -85,7 +85,7 @@ function  PublicProfile() {
                 </div>
                 <div className="column is-justify-content-space-around">
                     <CategorySelect />
-                    <ColorSelect spacing={"space-left"}/>
+                    
                 </div>
             </div>
             <div className="level"></div>
