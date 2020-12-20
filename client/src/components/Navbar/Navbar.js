@@ -96,31 +96,3 @@ function Navbar() {
 
 export default Navbar;
 
-//<div className="navbar-item has-dropdown is-hoverable">
-
-//     <div className="navbar-dropdown">
-//         <a className="field">
-//             <p className="control">
-//                 <input className="input" type="username" placeholder="Username"></input>
-//             </p>
-//         </a>
-
-//         <a className="field">
-//             <p className="control">
-//                 <input className="input" type="password" placeholder="Password"></input>
-//             </p>
-//         </a>
-
-//         <a className="field">
-//             <p className="control">
-//                 <button className="button is-link"> Login </button>
-//             </p>
-//         </a>
-
-//         <a href="/register" className="field">
-//             <p className="control">
-//                 <button className="button is-link" > Register </button>
-//             </p>
-//         </a>
-//     </div>
-// </div>

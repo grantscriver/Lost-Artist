@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
 import axios from "axios";
 
@@ -64,19 +64,19 @@ function ItemDetails() {
         <div className="column is-one-fifth has-background-grey-light">
           <Menu>
             <li>
-              <NavLink to="/shop">All</NavLink>
+              <Link to="/shop">All</Link>
             </li>
             <li>
-              <NavLink to="/shop/hats">Hats</NavLink>
+              <Link to="/shop/hats">Hats</Link>
             </li>
             <li>
-              <NavLink to="/shop/shirts">Shirts</NavLink>
+              <Link to="/shop/shirts">Shirts</Link>
             </li>
             <li>
-              <NavLink to="/shop/hoodies">Hoodies</NavLink>
+              <Link to="/shop/hoodies">Hoodies</Link>
             </li>
             <li>
-              <NavLink to="/shop/shoes">Shoes</NavLink>
+              <Link to="/shop/shoes">Shoes</Link>
             </li>
           </Menu>
         </div>

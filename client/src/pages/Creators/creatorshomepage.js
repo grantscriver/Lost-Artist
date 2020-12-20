@@ -7,11 +7,7 @@ import Wrapper from '../../components/Wrapper/Wrapper';
 
 function Creator () {
     const [creators, setCreators] = useState([]);
-    const [filter, setFilter] = useState([]);
-    const [render, setRender] = useState({
-        toRender: false
-    })
-
+  
     useEffect(() => {
         getAllCreators()
         
