@@ -1,17 +1,24 @@
-import React from 'react';
+import React from "react";
 
-function CreatorColumn({id, artist_name, artist_state}) {
-    
-    return (
-        <div className="column" data-id={id}>
-            <p className="title">{artist_name}</p>
-            <p className="subtitle">{artist_state}</p>
-            <figure className="image is-4by3">
-                <img src="https://bulma.io/images/placeholders/640x480.png" alt="placeholder">
-                </img>
-            </figure>
+function CreatorColumn({ id, artist_name, image }) {
+  return (
+    <div className="column" data-id={id}>
+      <div className="card">
+        <div className="card-image">
+          <figure className="image is-3by4">
+            <img src={image} alt={artist_name} />
+          </figure>
         </div>
-    )
+        <div className="card-content">
+          <div className="media">
+            <div className="media-content">
+              <p className="title is-4">{artist_name}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default CreatorColumn;
