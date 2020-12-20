@@ -14,7 +14,11 @@ function Navbar() {
           <NavLink className="navbar-item-img-max-height" exact to="/">
             {/* <h1>Lost Artist</h1>
             <h3>Clothing Collaborative</h3> */}
-            <img className="logo" src="/assets/LACC_logo.png" />
+            <img
+              className="logo"
+              src="/assets/LACC_logo.png"
+              alt="lost artist logo"
+            />
           </NavLink>
 
           <a
@@ -100,7 +104,7 @@ function Navbar() {
               to="/private/profile/add-item/"
             >
               Add Item
-             </NavLink> 
+            </NavLink>
 
             <AuthNav />
             <div className="navbar-item has-dropdown is-hoverable">

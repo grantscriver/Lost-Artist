@@ -1,46 +1,27 @@
 import React, { useState, useEffect } from "react";
-
 import { NavLink, Link, Route } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
-// import axios from "axios";
-//test
-
-import { app } from "../../base";
-
-const db = app.firestore();
+import axios from "axios";
 
 function ItemDetails() {
   const [item, setItem] = useState([]);
-  // let pathItem = window.location.pathname;
+  const [artist, setArtist] = useState([]);
   let URL = window.location.pathname;
   let search = URL.lastIndexOf("/");
   let resultId = URL.substring(search + 1);
 
   // -------- From backend API/database/sequelize -------
-  // useEffect(() => {
-  //     let itemId = props.id;
-  //     axios.get("/api/items/" + itemId)
-  //     .then(res => {
-  //         console.log(res);
-  //         setItem(res);
-  //     })
-  // }, []);
-
-  // -------- from firebase --------
   useEffect(() => {
-    const fetchItem = async () => {
-      const itemCollection = await db
-        .collection("item")
-        .where("id", "==", `${resultId}`)
-        .get();
-      setItem(
-        itemCollection.docs.map((doc) => {
-          return doc.data();
-        })
-      );
-    };
-    fetchItem();
-  }, [resultId]);
+    axios.get("/api/items/?id=" + resultId).then((res) => {
+      console.log(res.data);
+      setItem(res.data);
+      let artId = res.data[0].artistId;
+      axios.get("/api/creators?id=" + artId).then((res) => {
+        console.log(res.data);
+        setArtist(res.data);
+      });
+    });
+  }, []);
 
   const addToCart = async (e) => {
     e.preventDefault();
@@ -50,17 +31,19 @@ function ItemDetails() {
       return;
     }
     let shopItem = {
-      id: item[0].id + sizeValue,
-      urlId: item[0].id,
-      pic: item[0].pic,
-      name: item[0].name,
+      id_size: item[0].id + sizeValue,
+      id: item[0].id,
+      image: item[0].image,
+      style_name: item[0].style_name,
       size: sizeValue,
       quantity: 1,
     };
     let existingCartItems = localStorage.getItem("shopItems") || "[]";
     let existingCartItemsArr = JSON.parse(existingCartItems);
-    if (existingCartItems.includes(shopItem.id)) {
-      let itemExist = existingCartItemsArr.find(({ id }) => id === shopItem.id);
+    if (existingCartItems.includes(shopItem.id_size)) {
+      let itemExist = existingCartItemsArr.find(
+        ({ id_size }) => id_size === shopItem.id_size
+      );
       itemExist.quantity = itemExist.quantity + 1;
       let updatedQtyItem = [...existingCartItemsArr];
       localStorage.setItem("shopItems", JSON.stringify(updatedQtyItem));
@@ -71,13 +54,7 @@ function ItemDetails() {
       alert("the item has been added to the cart");
     }
   };
-  // handleInputChange() {
-  //LocalStorage Fun
-  // }
 
-  // handleFormSubmit() {
-
-  // }
   return (
     <div className="container-fluid has-background-grey-light full">
       <div className="columns">
@@ -105,18 +82,18 @@ function ItemDetails() {
             <div className="column is-one-quarter">
               {item.length > 0 && (
                 <img
-                  alt={item[0].name}
+                  alt={item[0].style_name}
                   className="item-image"
-                  src={item[0].pic}
-                  key={item[0].id}
+                  src={item[0].image}
+                  key={item[0].id_size}
                 />
               )}
             </div>
             <div className="column is-three-quarters has-background-grey">
               <ul>
                 {item.length > 0 && (
-                  <li className="title is-4" key={item[0].id}>
-                    {item[0].name}
+                  <li className="title is-4" key={item[0].id_size}>
+                    {item[0].style_name}
                   </li>
                 )}
                 <form className="control" onSubmit={addToCart}>
@@ -137,8 +114,18 @@ function ItemDetails() {
 
                 <div className="level"></div>
                 <div className="level"></div>
-                <li className="title is-4">Creator Info:</li>
-                <li className="title is-4">About item:</li>
+                {artist.length > 0 && (
+                  <div>
+                    <li className="title is-4">Creator Info:</li>
+                    <p>{artist[0].artist_about}</p>
+                  </div>
+                )}
+                {item.length > 0 && (
+                  <div>
+                    <li className="title is-4">About item:</li>
+                    <p>{item[0].description}</p>
+                  </div>
+                )}
               </ul>
             </div>
           </div>
