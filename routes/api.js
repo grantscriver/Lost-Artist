@@ -1,5 +1,7 @@
 const db = require("../models");
 const { checkJwt } = require("../authz/check-jwt");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const uuid = require("uuid");
 
 module.exports = function (app) {
   // Get all Artists from table
@@ -30,11 +32,10 @@ module.exports = function (app) {
     });
   });
 
-
   //Get all Artists where State = param
   app.get("/api/creators", (req, res) => {
     // let stateParam = req.params.id;
-    console.log(req.query)
+    console.log(req.query);
     db.artists
       .findAll({
         where: req.query,
@@ -45,29 +46,30 @@ module.exports = function (app) {
       });
   });
 
-    app.get("/api/public/creator/:id", (req, res) => {
-        let idParam = req.params.id;
-        db.artists.findOne({
-            where: {
-                id: idParam
-            }
-        })
-        .then(dbArtist => {
-            res.status(200).send(dbArtist);
-        });
-    });
-
+  app.get("/api/public/creator/:id", (req, res) => {
+    let idParam = req.params.id;
+    db.artists
+      .findOne({
+        where: {
+          id: idParam,
+        },
+      })
+      .then((dbArtist) => {
+        res.status(200).send(dbArtist);
+      });
+  });
 
   //Get all Items from table
   app.get("/api/items", (req, res) => {
-    db.items.findAll({
-      where: req.query
-    }).then((dbItems) => {
-      console.log(dbItems);
-      res.send(dbItems);
-    });
+    db.items
+      .findAll({
+        where: req.query,
+      })
+      .then((dbItems) => {
+        console.log(dbItems);
+        res.send(dbItems);
+      });
   });
-
 
   //Get One Item where id = param
   app.get("/api/items/:id", (req, res) => {
@@ -113,17 +115,15 @@ module.exports = function (app) {
       });
   });
 
-    //Create New Artist
-    app.post("/api/create/creators", (req, res) => {
-        console.log("😒");
-        console.log(req.body);
-        db.artists.create(req.body)
-        .then(dbArtist => {
-            console.log(dbArtist);
-            res.status(200).send(dbArtist);
-        });
-    }); 
-
+  //Create New Artist
+  app.post("/api/create/creators", (req, res) => {
+    console.log("😒");
+    console.log(req.body);
+    db.artists.create(req.body).then((dbArtist) => {
+      console.log(dbArtist);
+      res.status(200).send(dbArtist);
+    });
+  });
 
   //Update Artist
   app.put("/api/edit/creators/:id", (req, res) => {
@@ -166,5 +166,58 @@ module.exports = function (app) {
       .then((dbItem) => {
         console.log(dbItem);
       });
+  });
+
+  // Stripe API
+
+  app.get("/cart", (req, res) => {
+    res.send("Add your Stripe Secret Key to the .require('stripe') statement!");
+  });
+
+  app.post("/checkout", async (req, res) => {
+    console.log("Request: ", req.body);
+
+    let error;
+    let status;
+
+    try {
+      const { cart, token } = req.body;
+
+      const customer = await stripe.customers.create({
+        email: token.email,
+        source: token.id,
+      });
+
+      const idempotency_key = uuid();
+      const charge = await stripe.charges.create(
+        {
+          amount: total * 100,
+          currency: "usd",
+          customer: customer.id,
+          receipt_email: token.email,
+          description: `Purchased the ${cart.style_name}`,
+          shipping: {
+            name: token.card.name,
+            address: {
+              line1: token.card.address_line1,
+              line2: token.card.address_line2,
+              city: token.card.address_city,
+              country: token.card.address_country,
+              postal_code: token.card.address_zip,
+            },
+          },
+        },
+        {
+          idempotency_key,
+        }
+      );
+      console.log("Charge: ", { charge });
+      status = "success";
+    } catch (err) {
+      console.error("Error:", err);
+      status = "failure";
+    }
+
+    res.json({ error, status });
   });
 };
