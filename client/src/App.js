@@ -59,7 +59,11 @@ function App() {
           path="/private/profile/edit/:id"
           component={EditCreator}
         />
-        <PrivateRoute exact path="/private/profile/create" component={AddProfileData} />
+        <PrivateRoute
+          exact
+          path="/private/profile/create"
+          component={AddProfileData}
+        />
       </Switch>
     </>
   );

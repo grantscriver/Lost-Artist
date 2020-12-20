@@ -92,19 +92,8 @@ function Navbar() {
                 <NavLink className="dropdown-item" to="/shop/shoes">
                   Shoes
                 </NavLink>
-                <NavLink className="dropdown-item" to="/shop/itemdetails">
-                  Item Details
-                </NavLink>
               </div>
             </div>
-
-            <NavLink
-              className="navbar-item"
-              exact
-              to="/private/profile/add-item/"
-            >
-              Add Item
-            </NavLink>
 
             <AuthNav />
             <div className="navbar-item has-dropdown is-hoverable">
