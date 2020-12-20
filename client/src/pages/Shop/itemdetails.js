@@ -37,6 +37,7 @@ function ItemDetails() {
       style_name: item[0].style_name,
       size: sizeValue,
       quantity: 1,
+      price: item[0].price,
     };
     let existingCartItems = localStorage.getItem("shopItems") || "[]";
     let existingCartItemsArr = JSON.parse(existingCartItems);
@@ -44,7 +45,9 @@ function ItemDetails() {
       let itemExist = existingCartItemsArr.find(
         ({ id_size }) => id_size === shopItem.id_size
       );
+      let totalPrice = itemExist.price;
       itemExist.quantity = itemExist.quantity + 1;
+      itemExist.price = itemExist.quantity * totalPrice;
       let updatedQtyItem = [...existingCartItemsArr];
       localStorage.setItem("shopItems", JSON.stringify(updatedQtyItem));
       alert("this item quanity has been updated cart");

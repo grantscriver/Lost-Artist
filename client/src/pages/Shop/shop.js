@@ -5,96 +5,94 @@ import Wrapper from "../../components/Wrapper/Wrapper";
 import ItemDetails from "./itemdetails";
 import axios from "axios";
 
-
-function CreatorSelectFilter({artist_name, id}) {
-  return <option value={id}>{artist_name}</option>
+function CreatorSelectFilter({ artist_name, id }) {
+  return <option value={id}>{artist_name}</option>;
 }
 
 function StateSelectFilter() {
   return (
     <>
-    <option value="1">IA</option>
-    <option value="3">MI</option>
-    <option value="2">MN</option>
-    <option value="4">ND</option>
-    <option value="5">SD</option>
-    <option value="6">WI</option>
+      <option value="1">IA</option>
+      <option value="3">MI</option>
+      <option value="2">MN</option>
+      <option value="4">ND</option>
+      <option value="5">SD</option>
+      <option value="6">WI</option>
     </>
-  )
+  );
 }
-
 
 function Shop() {
   const [dbItems, setDbItems] = useState([]);
   const [creators, setCreators] = useState([]);
   let queryString = window.location.search;
-  
-  useEffect(() => {
 
+  useEffect(() => {
     if (queryString) {
-      getAllItems(queryString)
-    } else{
-      axios.get(`/api/items`).then(res => setDbItems(res.data))
+      getAllItems(queryString);
+    } else {
+      axios.get(`/api/items`).then((res) => setDbItems(res.data));
     }
 
     getAllItems(queryString);
     getAllCreators();
-
   }, [queryString]);
 
-
   function getAllItems(query) {
-       axios.get(`/api/items/${query}`)
-      .then(res => setDbItems(res.data))
+    axios.get(`/api/items/${query}`).then((res) => setDbItems(res.data));
   }
 
-  function getAllCreators(){
-    axios.get("/api/creators")
-    .then(res => setCreators(res.data))
+  function getAllCreators() {
+    axios.get("/api/creators").then((res) => setCreators(res.data));
   }
 
   function handleInputChange(event) {
     console.log(event.target.name);
-    let name = event.target.name
+    let name = event.target.name;
     let value = event.target.value;
     if (value === "DEFAULT") {
-      return dbItems
+      return dbItems;
     }
 
     if (name === "state" && value !== "DEFAULT") {
-      getAllItems(`?state_id=${value}`)
+      getAllItems(`?state_id=${value}`);
     }
 
     if (name === "creator" && value !== "DEFAULT") {
-      getAllItems(`?artistId=${value}`)
+      getAllItems(`?artistId=${value}`);
     }
-
   }
-
-
 
   return (
     <>
       <div className="column  is-full is-offset-3 is-9 ">
         <div className="columns">
           <div className="column has-text-centered">
-          <div className="select">            
-              <select name="state" id="creatorSelect" defaultValue={'DEFAULT'} onChange={handleInputChange}>
+            <div className="select">
+              <select
+                name="state"
+                id="creatorSelect"
+                defaultValue={"DEFAULT"}
+                onChange={handleInputChange}
+              >
                 <option value="DEFAULT">All States</option>
-                  <StateSelectFilter />
+                <StateSelectFilter />
               </select>
             </div>
-          
-          
-            <div className="select space-left" >            
-              <select name="creator" id="creatorSelect" defaultValue={'DEFAULT'} onChange={handleInputChange}>
+
+            <div className="select space-left">
+              <select
+                name="creator"
+                id="creatorSelect"
+                defaultValue={"DEFAULT"}
+                onChange={handleInputChange}
+              >
                 <option value="DEFAULT">All Creators</option>
                 {creators &&
                   creators.map(creator => {
                     return <CreatorSelectFilter key={creator.id} {...creator}/>
                   })
                 }
-                  
               </select>
             </div>
           </div>
@@ -104,19 +102,19 @@ function Shop() {
       <div className="columns">
         <div className="column is-one-fifth">
           <Menu>
-            <li>
+            <li key="all">
               <NavLink to="/shop">All</NavLink>
             </li>
-            <li>
+            <li key="hats">
               <NavLink to="/shop/?category=hats">Hats</NavLink>
             </li>
-            <li>
+            <li key="shirts">
               <NavLink to="/shop/?category=shirts">Shirts</NavLink>
             </li>
-            <li>
+            <li key="hoddies">
               <NavLink to="/shop/?category=hoodies">Hoodies</NavLink>
             </li>
-            <li>
+            <li key="shoes">
               <NavLink to="/shop/?category=shoes">Shoes</NavLink>
             </li>
           </Menu>
