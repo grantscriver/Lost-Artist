@@ -127,7 +127,7 @@ function Editcreator() {
                 <div className="card-image">
                   <figure className="image is-3by4">
                     <img
-                      src="https://lh3.googleusercontent.com/proxy/KTL88Exe7RKumSLxbWn5cSp13MZX6ukIMM-bosF9sdHqsDSAheMQwUH--mBeSAP0X51KmkrlWnfK1NGuqd2F_DyYnjqt0r9_h5cCy6b7e_xquK6BCcaniVvPdtP9rKnUILPsIA"
+                      src={process.env.PUBLIC_URL + "/assets/placeholder.png"}
                       alt="placeholder"
                     />
                   </figure>

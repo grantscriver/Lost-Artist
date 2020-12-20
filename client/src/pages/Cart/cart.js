@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import CartItem from "../../components/CartItems/CartItems";
+import StripeCheckout from "react-stripe-checkout";
+import { toast } from "react-toastify";
+import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
 import "./cart.css";
 
 function Cart() {
   const itemStore = useRef(localStorage.shopItems);
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState();
+  const [total, setTotal] = useState(0);
   let findSum = (a, v) => a + v;
 
   useEffect(() => {
@@ -25,24 +29,50 @@ function Cart() {
     let findItemDel = cart.findIndex(({ id_size }) => id_size === delButtonId);
     cart.splice(findItemDel, 1);
     let updatedItemStoreDel = [...cart];
-    let cartPrice = updatedItemStoreDel.map((item) => item.price);
-    let cartTotal = cartPrice.reduce(findSum);
     localStorage.setItem("shopItems", JSON.stringify(updatedItemStoreDel));
     setCart(updatedItemStoreDel);
-    setTotal(cartTotal);
+    if (!localStorage.shopItems || localStorage.shopItems === "[]") {
+      setTotal(0);
+    } else {
+      let cartPrice = updatedItemStoreDel.map((item) => item.price);
+      let cartTotal = cartPrice.reduce(findSum);
+      setTotal(cartTotal);
+    }
   };
 
-  const editQty = (e) => {
+  const editQty = async (e) => {
     let qtyDrop = e.target.value;
     let qtyId = e.target.name;
     let findItemEdit = cart.find(({ id_size }) => id_size === qtyId);
-    let totalPrice = findItemEdit.price;
+    let getItemById = findItemEdit.id;
+    let getItem = await axios
+      .get(`/api/items/?id=${getItemById}`)
+      .then((res) => res.data);
+    let getItemPrice = getItem[0].price;
     findItemEdit.quantity = qtyDrop;
-    findItemEdit.price = qtyDrop * totalPrice;
+    findItemEdit.price = qtyDrop * getItemPrice;
     let updatedItemStoreEdit = [...cart];
     localStorage.setItem("shopItems", JSON.stringify(updatedItemStoreEdit));
     setCart(updatedItemStoreEdit);
+    let cartPrice = updatedItemStoreEdit.map((item) => item.price);
+    let cartTotal = cartPrice.reduce(findSum);
+    setTotal(cartTotal);
   };
+
+  const handleToken = async (token, addresses) => {
+    const response = await axios.post("/checkout", { token, ...cart });
+    const { status } = response.data;
+    console.log("Response:", response.data);
+    setCart([]);
+    setTotal(0);
+    localStorage.setItem("shopItems", "[]");
+    if (status === "success") {
+      toast("Success! Check email for details", { type: "success" });
+    } else {
+      toast("Something went wrong", { type: "error" });
+    }
+  };
+
   return (
     <>
       <div className="container">
@@ -56,7 +86,7 @@ function Cart() {
             cart.map((item) => {
               return (
                 <CartItem
-                  key={item.id}
+                  key={item.id_size}
                   deleteItem={deleteItem}
                   editQty={editQty}
                   {...item}
@@ -70,7 +100,13 @@ function Cart() {
         <div className="column">
           <div>
             TOTAL: ${total}
-            <button>Checkout</button>
+            <StripeCheckout
+              stripeKey="pk_test_51I0KPoKLsfdtr6IvmO29xVxXdWI9HXoreKI30ARaDXdvXOnXxpMiVrMXQMBxGIdmq2XnJXOeIHLJzj9oBxkNFaYD00JgnIa6YJ"
+              token={handleToken}
+              amount={total * 100}
+              billingAddress
+              shippingAddress
+            />
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ const CartItem = ({
   style_name,
   size,
   quantity,
+  id,
 }) => {
   return (
     <>
@@ -27,6 +28,7 @@ const CartItem = ({
               <select
                 className="dropdown"
                 name={id_size}
+                datatype={id}
                 defaultValue={quantity}
               >
                 <option value="1">1</option>
