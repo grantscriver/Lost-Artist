@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-
+import { useHistory } from "react-router-dom";
 import { app } from "../../base";
 
 const db = app.firestore();
@@ -14,6 +14,7 @@ function Creators() {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
   const [creator, setCreator] = useState({});
+  const history = useHistory();
   const serverUrl = process.env.REACT_APP_SERVER_URL;
   const { register, handleSubmit, errors } = useForm();
 
@@ -34,7 +35,7 @@ function Creators() {
         const { user_metadata } = await metadataResponse.json();
         setUserMetadata(user_metadata);
       } catch (e) {
-        console.log(e.message, " hello");
+        console.log(e.message);
       }
     };
     getUserMetadata();
@@ -51,7 +52,6 @@ function Creators() {
             if (res.data.length === 0) {
               console.log("length is zero");
             } else {
-              console.log("length is greater than zero");
               setCreator(res.data);
             }
             setCreator(res.data);
@@ -101,11 +101,10 @@ function Creators() {
       artistId: creator.id,
       image: photo.pic,
     };
-    console.log(item);
     axios.post("/api/items", item).then((res) => {
       console.log(res);
     });
-    console.log("hello");
+    history.push("/private/profile");
   }
 
   return (
