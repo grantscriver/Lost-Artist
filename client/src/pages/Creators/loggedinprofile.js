@@ -153,6 +153,7 @@ function Loggedinprofile() {
 
       <section className="space-left">
         <div className="columns">
+
           <Wrapper>
             {items.length > 0 ? (
               items.map((item) => {
@@ -164,7 +165,17 @@ function Loggedinprofile() {
                 <p> Click "Add Item to Collection" to add an item.</p>
               </div>
             )}
-          </Wrapper>
+
+            <div className="space-left column is-two-thirds">
+                <Link to="/private/profile/add-item">
+                    <button className="button is-black">Add Item to Collection</button>
+                </Link>
+            </div>
+            <div className="column is-justify-content-space-around">
+                <CategorySelect />
+                
+            </div>
+
         </div>
       </section>
     </>

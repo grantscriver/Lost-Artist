@@ -32,10 +32,10 @@ function App() {
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/newitemcreator" component={Creators} /> */}
         <Route exact path="/shop" component={Shop} />
-        <Route exact path="/shop/hats" component={Hats} />
+        {/* <Route exact path="/shop/hats" component={Hats} />
         <Route exact path="/shop/shirts" component={Shirts} />
         <Route exact path="/shop/hoodies" component={Hoodies} />
-        <Route exact path="/shop/shoes" component={Shoes} />
+        <Route exact path="/shop/shoes" component={Shoes} /> */}
         {/* will need to update path for public/profile to pick up a ID parameter (ex: /public/profile/:id) */}
         <Route exact path="/creators/:id" component={PublicProfile} />
         <PrivateRoute
@@ -46,8 +46,8 @@ function App() {
         <PrivateRoute path="/external-api" component={ExternalApi} />
         <Route path={`/shop/item/:id`} component={ItemDetails} />
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/state" component={State} />
+        {/* <Route exact path="/register" component={Register} /> */}
+        {/* <Route exact path="/state" component={State} /> */}
         <PrivateRoute
           exact
           path="/private/profile/add-item/"
