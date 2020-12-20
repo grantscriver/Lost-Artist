@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { CategorySelect, ColorSelect } from "../../components/Forms/DropSelect";
+import { CategorySelect } from "../../components/Forms/DropSelect";
 import {
   CreatorInfo,
   NoCreatorInfo,
@@ -50,7 +50,7 @@ function Loggedinprofile() {
     const callSecureApi = async () => {
       try {
         const token = await getAccessTokenSilently();
-
+        
         axios
           .get(`${serverUrl}/api/creators/${user.email}`, {
             headers: {
@@ -63,8 +63,10 @@ function Loggedinprofile() {
             } else {
               setCreator(res.data);
               transitionIdToState(res.data.stateId);
-              getItemsByUser(res.data.id);
-              console.log(res.data);
+              if (items.length === 0) {
+                getAllItems(`?artistId=${res.data.id}`);
+              }
+              
             }
           });
       } catch (e) {
@@ -75,11 +77,30 @@ function Loggedinprofile() {
     callSecureApi();
   }, []);
 
-  function getItemsByUser(id) {
-    axios.get(`/api/items/?artistId=${id}`).then((res) => {
-      console.log(res.data);
-      setItems(res.data);
-    });
+  
+  function getAllItems(query){
+    
+    axios.get(`/api/items/${query}`)
+    .then((res) => {
+        
+        setItems(res.data);
+        
+    })
+  }
+
+  function handleInputChange(event) {
+      let name = event.target.name;
+      let value = event.target.value;
+      
+      if (value === "DEFAULT") {
+          getAllItems(`?artistId=${id}`);
+        }
+    
+      if (name === "category" && value !== "DEFAULT") {
+          
+          getAllItems(`?artistId=${id}&category=${value}`);
+          
+      }
   }
 
   function transitionIdToState(id) {
@@ -143,8 +164,18 @@ function Loggedinprofile() {
           </Link>
         </div>
         <div className="column is-justify-content-space-around">
-          <CategorySelect />
-          <ColorSelect spacing={"space-left"} />
+            <div className="select">
+              <select
+                name="category"
+                id="categorySelect"
+                defaultValue={"DEFAULT"}
+                onChange={handleInputChange}
+              >
+                  <option value="DEFAULT">All Categories</option>
+                  <CategorySelect />
+              </select>
+            </div>
+          
         </div>
       </div>
 
