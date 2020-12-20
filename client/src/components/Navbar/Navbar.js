@@ -44,29 +44,6 @@ function Navbar() {
           className={`navbar-menu ${activeStatus ? "is-active" : ""}`}
         >
           <div className="navbar-end">
-            <div className="navbar-item has-dropdown is-hoverable">
-              <div className="navbar-dropdown">
-                <NavLink className="dropdown-item" to="/state/iowa">
-                  IA
-                </NavLink>
-                <NavLink className="dropdown-item" to="/state/michigan">
-                  MI
-                </NavLink>
-                <NavLink className="dropdown-item" to="/state/minnesota">
-                  MN
-                </NavLink>
-                <NavLink className="dropdown-item" to="/state/north-dakota">
-                  ND
-                </NavLink>
-                <NavLink className="dropdown-item" to="/state/south-dakota">
-                  SD
-                </NavLink>
-                <NavLink className="dropdown-item" to="/state/wisconsin">
-                  WI
-                </NavLink>
-              </div>
-            </div>
-
             <NavLink className="navbar-item" exact to="/creatorshomepage">
               Creators
             </NavLink>
@@ -80,16 +57,16 @@ function Navbar() {
                 Shop
               </NavLink>
               <div className="navbar-dropdown">
-                <NavLink className="dropdown-item" to="/shop/hats">
+                <NavLink className="dropdown-item" to="/shop/?category=hats">
                   Hats
                 </NavLink>
-                <NavLink className="dropdown-item" to="/shop/shirts">
+                <NavLink className="dropdown-item" to="/shop/?category=shirts">
                   Shirts
                 </NavLink>
-                <NavLink className="dropdown-item" to="/shop/hoodies">
+                <NavLink className="dropdown-item" to="/shop/?category=hoodies">
                   Hoodies
                 </NavLink>
-                <NavLink className="dropdown-item" to="/shop/shoes">
+                <NavLink className="dropdown-item" to="/shop/?category=shoes">
                   Shoes
                 </NavLink>
               </div>
