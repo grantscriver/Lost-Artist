@@ -1,18 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 //test
 const CartItem = () => {
-  const itemStore = JSON.parse(localStorage.shopItems);
+  const itemStore = useRef(localStorage.shopItems);
   const [cart, setCart] = useState([]);
+
   useEffect(() => {
-    setCart(itemStore);
+    if (!localStorage.shopItems || localStorage.shopItems === "[]") {
+      return <div>Currently you have no items in the cart</div>;
+    } else {
+      itemStore.current = JSON.parse(localStorage.shopItems);
+      console.log(itemStore.current);
+      setCart(itemStore.current);
+    }
   }, []);
-  if (!localStorage.shopItems || localStorage.shopItems === "[]") {
-    return <div>Currently you have no items in the cart</div>;
-  }
 
   const deleteItem = (e) => {
     let delButtonId = e.target.name;
-    let findItemDel = itemStore.findIndex(({ id }) => id === delButtonId);
+    let findItemDel = itemStore.findIndex(
+      ({ id_size }) => id_size === delButtonId
+    );
     itemStore.splice(findItemDel, 1);
     let updatedItemStoreDel = [...itemStore];
     localStorage.setItem("shopItems", JSON.stringify(updatedItemStoreDel));
@@ -22,7 +28,7 @@ const CartItem = () => {
   const editQty = (e) => {
     let qtyDrop = e.target.value;
     let qtyId = e.target.name;
-    let findItemEdit = itemStore.find(({ id }) => id === qtyId);
+    let findItemEdit = itemStore.find(({ id_size }) => id_size === qtyId);
     findItemEdit.quantity = qtyDrop;
     let updatedItemStoreEdit = [...itemStore];
     localStorage.setItem("shopItems", JSON.stringify(updatedItemStoreEdit));
@@ -31,16 +37,16 @@ const CartItem = () => {
 
   return (
     <>
-      {cart.length > 0 &&
+      {cart.length > 0 ? (
         cart.map((itemCart) => {
           return (
-            <div className="card" key={itemCart.id}>
+            <div className="card" key={itemCart.id_size}>
               <div className="columns">
                 <div className="column">
-                  <img src={itemCart.pic} alt={itemCart.name} />
+                  <img src={itemCart.image} alt={itemCart.style_name} />
                 </div>
                 <div className="column">
-                  <h1>{itemCart.name}</h1>
+                  <h1>{itemCart.style_name}</h1>
                   <h1>Size: {itemCart.size}</h1>
                 </div>
                 <div className="column">
@@ -49,7 +55,7 @@ const CartItem = () => {
                   <div className="select" onChange={editQty}>
                     <select
                       className="dropdown"
-                      name={itemCart.id}
+                      name={itemCart.id_size}
                       defaultValue={itemCart.quantity}
                     >
                       <option value="1">1</option>
@@ -63,7 +69,10 @@ const CartItem = () => {
                 </div>
                 <div className="column">
                   <div onClick={deleteItem}>
-                    <button className="deleteButton icon" name={itemCart.id}>
+                    <button
+                      className="deleteButton icon"
+                      name={itemCart.id_size}
+                    >
                       X
                     </button>
                   </div>
@@ -71,7 +80,10 @@ const CartItem = () => {
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div>You currently have no items in your cart</div>
+      )}
     </>
   );
 };

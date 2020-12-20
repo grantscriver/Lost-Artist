@@ -16,13 +16,13 @@ const CartDropDown = () => {
     <>
       {itemStore.map((item) => {
         return (
-          <div className="dropdown-item" key={item.id}>
-            <Link to={`/shop/item/${item.urlId}`}>
+          <div className="dropdown-item" key={item.id_size}>
+            <Link to={`/shop/item/${item.id}`}>
               <div className="columns">
                 <div className="column">
-                  <img src={item.pic} alt={item.name} />
+                  <img src={item.image} alt={item.style_name} />
                 </div>
-                <div className="column">{item.name}</div>
+                <div className="column">{item.style_name}</div>
               </div>
             </Link>
           </div>

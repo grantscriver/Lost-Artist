@@ -1,40 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Link, Route } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
-// import axios from "axios";
-// import ItemColumn from "../../components/column/ItemColumn";
-import Wrapper from "../../components/Wrapper/Wrapper"
+import Wrapper from "../../components/Wrapper/Wrapper";
 import ItemDetails from "./itemdetails";
-
-import { app } from "../../base";
 import axios from "axios";
 
-const db = app.firestore();
-
 function Shop() {
-  const [item, setItem] = React.useState([]);
   const [dbItems, setDbItems] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/items")
-    .then(res => {
+    axios.get("/api/items").then((res) => {
       console.log(res.data);
-    })
-
-    const fetchItem = async () => {
-      const itemCollection = await db.collection("item").get();
-      setItem(
-        itemCollection.docs.map((doc) => {
-          return doc.data();
-        })
-      );
-    };
-    fetchItem();
+      setDbItems(res.data);
+    });
   }, []);
 
-  if (item.length > 0) {
-    console.log(item);
-  }
   return (
     <>
       <div className="column  is-full is-offset-3 is-9 ">
@@ -57,22 +37,22 @@ function Shop() {
                 <div className="dropdown-content">
                   <a href="#" className="dropdown-item">
                     IA
-                    </a>
+                  </a>
                   <a href="#" className="dropdown-item">
                     MI
-                    </a>
+                  </a>
                   <a href="#" className="dropdown-item">
                     MN
-                    </a>
+                  </a>
                   <a href="#" className="dropdown-item">
                     ND
-                    </a>
+                  </a>
                   <a href="#" className="dropdown-item">
                     SD
-                    </a>
+                  </a>
                   <a href="#" className="dropdown-item">
                     WI
-                    </a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -95,16 +75,16 @@ function Shop() {
                 <div className="dropdown-content">
                   <a href="#" className="dropdown-item">
                     Creator Name 1
-                    </a>
+                  </a>
                   <a href="#" className="dropdown-item">
                     Creator Name 2
-                    </a>
+                  </a>
                   <a href="#" className="dropdown-item">
                     Creator Name 3
-                    </a>
+                  </a>
                   <a href="#" className="dropdown-item">
                     ...
-                    </a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -115,29 +95,39 @@ function Shop() {
       <div className="columns">
         <div className="column is-one-fifth">
           <Menu>
-            <li><NavLink to="/shop">All</NavLink></li>
-            <li><NavLink to="/shop/hats">Hats</NavLink></li>
-            <li><NavLink to="/shop/shirts">Shirts</NavLink></li>
-            <li><NavLink to="/shop/hoodies">Hoodies</NavLink></li>
-            <li><NavLink to="/shop/shoes">Shoes</NavLink></li>
+            <li>
+              <NavLink to="/shop">All</NavLink>
+            </li>
+            <li>
+              <NavLink to="/shop/hats">Hats</NavLink>
+            </li>
+            <li>
+              <NavLink to="/shop/shirts">Shirts</NavLink>
+            </li>
+            <li>
+              <NavLink to="/shop/hoodies">Hoodies</NavLink>
+            </li>
+            <li>
+              <NavLink to="/shop/shoes">Shoes</NavLink>
+            </li>
           </Menu>
         </div>
         <Wrapper>
-          {item.length > 0 &&
-            item.map((item) => {
+          {dbItems.length > 0 &&
+            dbItems.map((item) => {
               return (
                 <div className="column is-3" key={item.id}>
                   <div className="card">
                     <Link to={`/shop/item/${item.id}`}>
                       <div className="card-image">
                         <figure className="image is-3by4">
-                          <img src={item.pic} alt={item.name} />
+                          <img src={item.image} alt={item.style_name} />
                         </figure>
                       </div>
                       <div className="card-content">
                         <div className="media">
                           <div className="media-content">
-                            <p className="title is-4">{item.name}</p>
+                            <p className="title is-4">{item.style_name}</p>
                           </div>
                         </div>
                       </div>
