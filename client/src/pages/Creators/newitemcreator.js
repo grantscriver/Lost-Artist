@@ -159,10 +159,10 @@ function Creators() {
                   <div className="control">
                     <div className="select is-dark">
                       <select name="category" ref={register}>
-                        <option value="hat">HATS</option>
-                        <option value="shirt">SHIRTS</option>
-                        <option value="hoodie">HOODIES</option>
-                        <option value="shoe">SHOES</option>
+                        <option value="hats">HATS</option>
+                        <option value="shirts">SHIRTS</option>
+                        <option value="hoodies">HOODIES</option>
+                        <option value="shoes">SHOES</option>
                       </select>
                     </div>
                   </div>
