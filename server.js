@@ -10,6 +10,7 @@ const path = require("path");
 
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
+  app.use(express.static("client/build"));
 }
 
 
