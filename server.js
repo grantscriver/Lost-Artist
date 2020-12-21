@@ -14,9 +14,9 @@ const path = require("path");
 // Required Files
 // const auth0Config = require("./config/auth0.config");
 const { messagesRouter } = require("./routes/messages/messages.router");
-const { clientOrigins } = require("./config/env.dev");
+
 let db = require("./models");
-console.log(clientOrigins);
+
 // App/Port
 const app = express();
 app.use(cors({ origin: "http://localhost:3000" }));
