@@ -9,16 +9,18 @@ function Creator () {
     const [creators, setCreators] = useState([]);
   
     useEffect(() => {
-        getAllCreators()
-        
+        getAllCreators();
+        getAllCreatorsByState();
     }, [])
 
     
     function handleInputChange(event) {
         let value = event.target.value;
         let numVal = parseInt(value);
+        console.log(numVal);
         
         if (numVal > 0) {
+            console.log(numVal);
             getCreatorsByState(numVal);
         } else {
             getAllCreators();
