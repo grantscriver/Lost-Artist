@@ -81,7 +81,7 @@ function Navbar() {
               </NavLink>
 
               <div className="navbar-dropdown is-right">
-                <CartDropDown />
+                
                 <Link className="title is-5" to="/cart">
                   <button className="button is-dark">GO TO CART</button>
                 </Link>
