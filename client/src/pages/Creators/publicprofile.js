@@ -109,6 +109,7 @@ function  PublicProfile() {
                 <div className="column is-justify-content-space-around">
                     <div className="select">
                         <select
+                            className="font"
                             name="category"
                             id="categorySelect"
                             defaultValue={"DEFAULT"}
