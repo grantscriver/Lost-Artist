@@ -19,7 +19,7 @@ let db = require("./models");
 
 // App/Port
 const app = express();
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors());
 const PORT = process.env.PORT || 8080;
 const apiRouter = express.Router();
 
