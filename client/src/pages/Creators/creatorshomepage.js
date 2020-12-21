@@ -10,7 +10,7 @@ function Creator () {
   
     useEffect(() => {
         getAllCreators();
-        getCreatorsByState();
+       
     }, [])
 
     
@@ -36,7 +36,7 @@ function Creator () {
               }
         })
             .then(res => {
-                console.log(res.json());
+                
                 console.log(res.data);
                 setCreators(res.data);
                 // console.log("/api/creators/filter/?state=MN&color=Red")
