@@ -21,7 +21,12 @@ function  PublicProfile() {
 
     useEffect(() => {
         if (items.length === 0) {
-            axios.get(`/api/public/creator/${resultId}`)
+            axios.get(`/api/public/creator/${resultId}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                  }
+            })
             .then(res => {
                 
                 setCreator(res.data);

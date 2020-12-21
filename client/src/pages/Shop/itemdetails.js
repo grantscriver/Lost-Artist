@@ -12,11 +12,21 @@ function ItemDetails() {
 
   // -------- From backend API/database/sequelize -------
   useEffect(() => {
-    axios.get("/api/items/?id=" + resultId).then((res) => {
+    axios.get("/api/items/?id=" + resultId,{
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then((res) => {
       console.log(res.data);
       setItem(res.data);
       let artId = res.data[0].artistId;
-      axios.get("/api/creators?id=" + artId).then((res) => {
+      axios.get("/api/creators?id=" + artId,{
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }).then((res) => {
         console.log(res.data);
         setArtist(res.data);
       });
