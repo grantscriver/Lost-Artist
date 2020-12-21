@@ -1,15 +1,15 @@
 import React from "react";
 
 
-function Input({name, children, onChange, placeholder}) {
+function Input({ name, children, onChange, placeholder }) {
 
   return (
     <div className="field">
       <label>{children}</label>
       <div className="control">
 
-        <input type="text" className="input" placeholder={placeholder} name={name} onChange={onChange}> 
-         
+        <input type="text" className="input" placeholder={placeholder} name={name} onChange={onChange}>
+
         </input>
       </div>
     </div>
@@ -35,7 +35,7 @@ function StateDropDown({ onChange }) {
       <label className="font">State:</label>
       <div className="control">
         <div className="select">
-          <select name="state" id="stateselect" onChange={onChange}>
+          <select className="font" name="state" id="stateselect" onChange={onChange}>
             <option selected value="0">All</option>
             <option value="1">IA</option>
             <option value="3">MI</option>

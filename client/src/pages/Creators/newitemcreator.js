@@ -157,7 +157,7 @@ function Creators() {
                 <div className="field">
                   <div className="control">
                     <div className="select is-dark">
-                      <select name="category" ref={register}>
+                      <select className="font" name="category" ref={register}>
                         <option value="hats">HATS</option>
                         <option value="shirts">SHIRTS</option>
                         <option value="hoodies">HOODIES</option>
@@ -170,7 +170,7 @@ function Creators() {
                 <div className="field">
                   <div className="control">
                     <div className="select is-dark">
-                      <select name="color" ref={register}>
+                      <select className="font" name="color" ref={register}>
                         <option value="red">RED</option>
                         <option value="blue">BLUE</option>
                         <option value="green">GREEN</option>
