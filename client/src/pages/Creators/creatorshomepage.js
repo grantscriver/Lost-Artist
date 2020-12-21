@@ -10,7 +10,7 @@ function Creator () {
   
     useEffect(() => {
         getAllCreators();
-        getAllCreatorsByState();
+        getCreatorsByState();
     }, [])
 
     
