@@ -5,6 +5,12 @@ const express = require("express");
 const cors = require("cors");
 const { v4: uuidv4 } = require('uuid');
 const bodyParser = require("body-parser");
+const path = require("path");
+
+
+
+
+
 
 // Required Files
 // const auth0Config = require("./config/auth0.config");
@@ -22,7 +28,15 @@ const apiRouter = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(auth(auth0Config));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
 
 // ROUTES
 require("./routes/api")(app);
