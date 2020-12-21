@@ -1,7 +1,7 @@
 const db = require("../models");
 const { checkJwt } = require("../authz/check-jwt");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const uuid = require("uuid");
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = function (app) {
   // Get all Artists from table
@@ -181,14 +181,14 @@ module.exports = function (app) {
     let status;
 
     try {
-      const { cart, token } = req.body;
+      const { cart, total, token } = req.body;
 
       const customer = await stripe.customers.create({
         email: token.email,
         source: token.id,
       });
 
-      const idempotency_key = uuid();
+      const idempotencyKey = uuidv4();
       const charge = await stripe.charges.create(
         {
           amount: total * 100,
@@ -208,7 +208,7 @@ module.exports = function (app) {
           },
         },
         {
-          idempotency_key,
+          idempotencyKey,
         }
       );
       console.log("Charge: ", { charge });
@@ -219,5 +219,5 @@ module.exports = function (app) {
     }
 
     res.json({ error, status });
-  });
+  })
 };
