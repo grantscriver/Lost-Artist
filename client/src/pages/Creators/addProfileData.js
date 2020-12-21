@@ -6,6 +6,7 @@ import {
   StateDropDown,
   FormBtn,
 } from "../../components/Forms/EditCreatorfile";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import { app } from "../../base";
@@ -28,7 +29,7 @@ function AddProfileData() {
   const crypto = require("crypto");
   const id = crypto.randomBytes(16).toString("hex");
 
-  // env
+  const history = useHistory();
 
   useEffect(() => {
     const getUserMetadata = async () => {
@@ -109,6 +110,7 @@ function AddProfileData() {
         instagram: "",
       }));
       setFileUrl(null);
+      history.push("/private/profile");
     });
   }
 
