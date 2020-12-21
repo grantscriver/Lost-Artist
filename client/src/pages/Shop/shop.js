@@ -65,10 +65,11 @@ function Shop() {
    
     let name = event.target.name;
     let value = event.target.value;
-   
-    if (name === "state" && value !== "DEFAULT") {
+  
+
+    if (name === "state" && value !== 0) {
       getAllItems(`?state_id=${value}`);
-    } else if (name === "creator" && value !== "DEFAULT") {
+    } else if (name === "creator" && value !== 0) {
       getAllItems(`?artistId=${value}`);
     } else {
       getAllItems();
@@ -88,7 +89,7 @@ function Shop() {
                 defaultValue={"DEFAULT"}
                 onChange={handleInputChange}
               >
-                <option value="DEFAULT">All States</option>
+                <option value="0">All States</option>
                 <StateSelectFilter />
               </select>
             </div>
@@ -101,7 +102,7 @@ function Shop() {
                 defaultValue={"DEFAULT"}
                 onChange={handleInputChange}
               >
-                <option value="DEFAULT">All Creators</option>
+                <option value="0">All Creators</option>
                 {creators &&
                   creators.map(creator => {
                     return <CreatorSelectFilter key={creator.id} {...creator} />
