@@ -40,13 +40,13 @@ function AddProfileData() {
           scope: "read:current_user",
         });
 
-        // const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+        const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
 
-        // const metadataResponse = await fetch(userDetailsByIdUrl, {
-        //   headers: {
-        //     Authorization: `Bearer ${accessToken}`,
-        //   },
-        // });
+        const metadataResponse = await fetch(userDetailsByIdUrl, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
       } catch (e) {
         console.log(e.message);
       }

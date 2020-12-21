@@ -60,7 +60,7 @@ function Cart() {
   };
 
   const handleToken = async (token, addresses) => {
-    const response = await axios.post("/checkout", { token, ...cart });
+    const response = await axios.post("/checkout", { token, cart, total });
     const { status } = response.data;
     console.log("Response:", response.data);
     setCart([]);

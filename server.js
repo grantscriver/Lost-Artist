@@ -5,9 +5,12 @@ const express = require("express");
 const cors = require("cors");
 const { v4: uuidv4 } = require('uuid');
 const bodyParser = require("body-parser");
+const mysql = require("mysql");
 const path = require("path");
 
-
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+}
 
 
 
