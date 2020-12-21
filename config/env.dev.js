@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const audience = process.env.AUTH0_AUDIENCE;
 const domain = process.env.AUTH0_DOMAIN;
-const serverPort = process.env.SERVER_PORT;
+const serverPort = process.env.PORT || 8080;
 const clientOriginUrl = process.env.CLIENT_ORIGIN_URL;
 
 if (!audience) {
