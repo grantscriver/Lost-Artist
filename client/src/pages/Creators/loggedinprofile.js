@@ -52,7 +52,7 @@ function Loggedinprofile() {
         const token = await getAccessTokenSilently();
 
         axios
-          .get(`${serverUrl}/api/creators/${user.email}`, {
+          .get(`/api/creators/${user.email}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
