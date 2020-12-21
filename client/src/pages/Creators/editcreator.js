@@ -7,7 +7,7 @@ import {
   FormBtn,
 } from "../../components/Forms/EditCreatorfile";
 import axios from "axios";
-
+import { useHistory } from "react-router-dom";
 import { app } from "../../base";
 
 const db = app.firestore();
@@ -28,7 +28,7 @@ function Editcreator() {
   const crypto = require("crypto");
   const id = crypto.randomBytes(16).toString("hex");
 
-  // env
+  const history = useHistory();
 
   let URL = window.location.pathname;
   let search = URL.lastIndexOf("/");
@@ -113,6 +113,7 @@ function Editcreator() {
         instagram: "",
       }));
       setFileUrl(null);
+      history.push("/private/profile");
     });
   }
 

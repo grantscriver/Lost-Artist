@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { app } from "../../base";
 
 const db = app.firestore();
@@ -14,7 +14,7 @@ function AddItem() {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
   const [creator, setCreator] = useState({});
-  // const history = useHistory();
+  const history = useHistory();
  
   const { register, handleSubmit, errors } = useForm();
 
@@ -107,7 +107,7 @@ function AddItem() {
     axios.post("/api/items", item).then((res) => {
       console.log(res);
     });
-    // history.push("/private/profile");
+    history.push("/private/profile");
   }
 
   return (
