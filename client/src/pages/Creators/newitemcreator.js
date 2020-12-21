@@ -21,6 +21,7 @@ function AddItem() {
   useEffect(() => {
     const getUserMetadata = async () => {
       const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+      console.log("domain ", domain);
       try {
         const accessToken = await getAccessTokenSilently({
           audience: `https://${domain}/api/v2/`,
@@ -43,7 +44,7 @@ function AddItem() {
       try {
         const token = await getAccessTokenSilently();
         axios
-          .get(`/api/creators/${user.email}`, {
+          .get(`/api/private/creators/${user.email}`, {
             headers: {
               Authorization: `Bearer ${token}`,
                 'Accept': 'application/json',

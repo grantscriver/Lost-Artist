@@ -28,6 +28,10 @@ const apiRouter = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// ROUTES
+require("./routes/api")(app);
+app.use("/api", apiRouter);
+apiRouter.use("/messages", messagesRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -41,10 +45,7 @@ if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 }
 
-// ROUTES
-require("./routes/api")(app);
-app.use("/api", apiRouter);
-apiRouter.use("/messages", messagesRouter);
+
 
 
 
