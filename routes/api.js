@@ -21,7 +21,8 @@ module.exports = function (app) {
         },
       })
       .then((dbArtist) => {
-        res.status(200).send(dbArtist);
+        // res.status(200).send(dbArtist);
+        res.json(dbArtist);
       });
   });
 
@@ -42,7 +43,8 @@ module.exports = function (app) {
       })
       .then((dbArtists) => {
         console.log(dbArtists);
-        res.status(200).send(dbArtists);
+        res.json(dbArtists);
+        // res.status(200).send(dbArtists);
       });
   });
 
@@ -55,7 +57,8 @@ module.exports = function (app) {
         },
       })
       .then((dbArtist) => {
-        res.status(200).send(dbArtist);
+        // res.status(200).send(dbArtist);
+        res.json(dbArtist)
       });
   });
 
@@ -67,7 +70,8 @@ module.exports = function (app) {
       })
       .then((dbItems) => {
         console.log(dbItems);
-        res.send(dbItems);
+        // res.send(dbItems);
+        res.json(dbItems);
       });
   });
 
@@ -82,7 +86,8 @@ module.exports = function (app) {
       })
       .then((dbItem) => {
         console.log(dbItem);
-        res.send(dbItem);
+        // res.send(dbItem);
+        res.json(dbItem);
       });
   });
 
