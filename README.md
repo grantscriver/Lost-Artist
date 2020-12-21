@@ -11,9 +11,10 @@
 ## Description
 Lost Artist Clothing Collaboration is a place where fashion designers from the upper midwest states - locations typically overlooked in the fashion community - can feature and sell their work. We give designers the ability to create profiles to share who they are, their experience, and a platform for shoppers to connect with them for potentially commissioned work, exposure, and a place to show support for their local designers and community.
 
-Click [Here](/url/here) to view the deployed site.
+Click [Here](https://shielded-inlet-41475.herokuapp.com) to view the deployed site.
  
 ## Installation
+
 #### Technologies Used
 * HTML/CSS/JavaScript
 * [React](https://reactjs.org/)
@@ -30,9 +31,13 @@ Click [Here](/url/here) to view the deployed site.
 
 2.  Change directory to `Lost-Artist` and enter `npm install` into your terminal. This will install all package dependencies.
 
-3.  Add node_modules to .gitignore.
+3.  Change directory to `Lost-Artist/client`  and enter `npm install` into your terminal. This will install all react package        dependencies.    
 
-4.  Start the application by running `npm start`
+4.  Add node_modules to .gitignore.
+
+5.  Be sure to visit 'Auth0, Firebase & Stripe' and create the API keys there to insert into .env files.  
+
+5.  Start the application by running `npm run dev`
 
 
 
@@ -47,6 +52,16 @@ Click [Here](/url/here) to view the deployed site.
 
 
 ## Credits
+
+1. Andrew Theisen - Back-End, FireBase, Stripe, Framework
+2. Calvin Freese - Back-End, Auth0, MySQL/Sequelize, Routes, Models, Jira-Tasks
+3. Jared harms - Front-End, Bulma, UI
+4. Grant Scriver - Front-End, Bulma, UI
+5. Sunny Babal - Front-End, Models, MySQL, Bulma, UI
+6. Nate Reif-Wenner
+7. Johnny Pane
+8. Phelan O'Neil
+9. Coby Sher
 
 
 ## License
