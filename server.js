@@ -19,35 +19,36 @@ let db = require("./models");
 
 // App/Port
 const app = express();
-app.use(cors());
 const PORT = process.env.PORT || 8080;
+app.use(cors());
+
 const apiRouter = express.Router();
 
 // use
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("client/build"));
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   
   app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
+  });
 }
 
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 }
 
-
-
-
 // ROUTES
 require("./routes/api")(app);
 app.use("/api", apiRouter);
 apiRouter.use("/messages", messagesRouter);
+
+
+
+
 
 db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
