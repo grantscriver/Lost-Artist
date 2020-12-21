@@ -19,7 +19,7 @@ function CreatorInfo({artist_name, artist_city, artist_state, artist_about, arti
                     <h1 className="title is-4">Contact:</h1>
                 </div>
                 <div className="column is-one-quarter is-offset-one-half">
-                    <a className="icon" href={`https://instagram.com/${artist_instagram}`} >
+                    <a className="icon" href={`https://instagram.com/${artist_instagram}`} target="_blank" rel="noreferrer">
                         <i className="fab fa-instagram fa-3x"></i>
                     </a>
 
