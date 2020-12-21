@@ -46,6 +46,8 @@ function Creators() {
           .get(`/api/creators/${user.email}`, {
             headers: {
               Authorization: `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
             },
           })
           .then((res) => {

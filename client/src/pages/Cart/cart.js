@@ -46,7 +46,12 @@ function Cart() {
     let findItemEdit = cart.find(({ id_size }) => id_size === qtyId);
     let getItemById = findItemEdit.id;
     let getItem = await axios
-      .get(`/api/items/?id=${getItemById}`)
+      .get(`/api/items/?id=${getItemById}`,{
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      })
       .then((res) => res.data);
     let getItemPrice = getItem[0].price;
     findItemEdit.quantity = qtyDrop;

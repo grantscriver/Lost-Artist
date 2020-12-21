@@ -31,7 +31,12 @@ function Shop() {
     if (queryString) {
       getAllItems(queryString);
     } else {
-      axios.get(`/api/items`).then((res) => setDbItems(res.data));
+      axios.get(`/api/items`, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }).then((res) => setDbItems(res.data));
     }
 
     getAllItems(queryString);
@@ -39,11 +44,21 @@ function Shop() {
   }, [queryString]);
 
   function getAllItems(query) {
-    axios.get(`/api/items/${query}`).then((res) => setDbItems(res.data));
+    axios.get(`/api/items/${query}`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then((res) => setDbItems(res.data));
   }
 
   function getAllCreators() {
-    axios.get("/api/creators").then((res) => setCreators(res.data));
+    axios.get("/api/creators", {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then((res) => setCreators(res.data));
   }
 
   function handleInputChange(event) {

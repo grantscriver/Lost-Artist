@@ -27,7 +27,12 @@ function Creator () {
     }
 
     function getCreatorsByState(id) {
-        axios.get(`/api/creators/?stateId=${id}`)
+        axios.get(`/api/creators/?stateId=${id}`, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              }
+        })
             .then(res => {
                 
                 console.log(res.data);
@@ -37,8 +42,14 @@ function Creator () {
     }
     
     function getAllCreators() {
-        axios.get("/api/creators")
+        axios.get("/api/creators", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              }
+        })
         .then(res => {
+            console.log(res.data);
             setCreators(res.data)
         })
     }

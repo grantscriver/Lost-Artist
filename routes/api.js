@@ -12,7 +12,7 @@ module.exports = function (app) {
   // });
 
   //Get one Artist by ID
-  app.get("/api/creators/:email", checkJwt, (req, res) => {
+  app.get("/api/private/creators/:email", checkJwt, (req, res) => {
     let emailParam = req.params.email;
     db.artists
       .findOne({
