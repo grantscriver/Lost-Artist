@@ -62,19 +62,16 @@ function Shop() {
   }
 
   function handleInputChange(event) {
-    console.log(event.target.name);
+   
     let name = event.target.name;
     let value = event.target.value;
-    if (value === "DEFAULT") {
-      return dbItems;
-    }
-
+   
     if (name === "state" && value !== "DEFAULT") {
       getAllItems(`?state_id=${value}`);
-    }
-
-    if (name === "creator" && value !== "DEFAULT") {
+    } else if (name === "creator" && value !== "DEFAULT") {
       getAllItems(`?artistId=${value}`);
+    } else {
+      getAllItems();
     }
   }
 

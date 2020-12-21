@@ -35,8 +35,8 @@ function StateDropDown({ onChange }) {
       <label className="font">State:</label>
       <div className="control">
         <div className="select">
-          <select className="font" name="state" id="stateselect" onChange={onChange}>
-            <option selected value="0">All</option>
+          <select className="font" defaultValue={"0"} name="state" id="stateselect" onChange={onChange}>
+            <option value="0">All</option>
             <option value="1">IA</option>
             <option value="3">MI</option>
             <option value="2">MN</option>

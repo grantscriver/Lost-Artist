@@ -130,7 +130,10 @@ function ItemDetails() {
                 {artist.length > 0 && (
                   <div>
                     <li className="title is-4">Creator Info:</li>
-                    <p>{artist[0].artist_about}</p>
+                    <Link className="title is-5" to={`/creators/${artist[0].id}`}>
+                      <img src={artist[0].image} alt={artist[0].artist_name}/>
+                      <p>{artist[0].artist_name}</p>
+                    </Link>
                   </div>
                 )}
                 {item.length > 0 && (
