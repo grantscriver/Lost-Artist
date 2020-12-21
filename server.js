@@ -8,14 +8,6 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const path = require("path");
 
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-  
-}
-
-
-
-
 // Required Files
 // const auth0Config = require("./config/auth0.config");
 const { messagesRouter } = require("./routes/messages/messages.router");
@@ -35,12 +27,18 @@ app.use(express.static("client/build"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  
+  app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+}
+
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
 }
 
 
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
 
 
 // ROUTES
