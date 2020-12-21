@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
 import axios from "axios";
+import "./itemdtails.css";
 
 function ItemDetails() {
   const [item, setItem] = useState([]);
@@ -12,25 +13,29 @@ function ItemDetails() {
 
   // -------- From backend API/database/sequelize -------
   useEffect(() => {
-    axios.get("/api/items/?id=" + resultId,{
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    }).then((res) => {
-      console.log(res.data);
-      setItem(res.data);
-      let artId = res.data[0].artistId;
-      axios.get("/api/creators?id=" + artId,{
+    axios
+      .get("/api/items/?id=" + resultId, {
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        }
-      }).then((res) => {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
         console.log(res.data);
-        setArtist(res.data);
+        setItem(res.data);
+        let artId = res.data[0].artistId;
+        axios
+          .get("/api/creators?id=" + artId, {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => {
+            console.log(res.data);
+            setArtist(res.data);
+          });
       });
-    });
   }, []);
 
   const addToCart = async (e) => {
@@ -130,8 +135,15 @@ function ItemDetails() {
                 {artist.length > 0 && (
                   <div>
                     <li className="title is-4">Creator Info:</li>
-                    <Link className="title is-5" to={`/creators/${artist[0].id}`}>
-                      <img src={artist[0].image} alt={artist[0].artist_name}/>
+                    <Link
+                      className="title is-5"
+                      to={`/creators/${artist[0].id}`}
+                    >
+                      <img
+                        className="creator-image"
+                        src={artist[0].image}
+                        alt={artist[0].artist_name}
+                      />
                       <p>{artist[0].artist_name}</p>
                     </Link>
                   </div>
