@@ -70,6 +70,7 @@ function Shop() {
           <div className="column has-text-centered">
             <div className="select">
               <select
+                className="font"
                 name="state"
                 id="creatorSelect"
                 defaultValue={"DEFAULT"}
@@ -82,6 +83,7 @@ function Shop() {
 
             <div className="select space-left">
               <select
+                className="font"
                 name="creator"
                 id="creatorSelect"
                 defaultValue={"DEFAULT"}
@@ -90,7 +92,7 @@ function Shop() {
                 <option value="DEFAULT">All Creators</option>
                 {creators &&
                   creators.map(creator => {
-                    return <CreatorSelectFilter key={creator.id} {...creator}/>
+                    return <CreatorSelectFilter key={creator.id} {...creator} />
                   })
                 }
               </select>

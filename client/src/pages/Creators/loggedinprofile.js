@@ -50,7 +50,7 @@ function Loggedinprofile() {
     const callSecureApi = async () => {
       try {
         const token = await getAccessTokenSilently();
-        
+
         axios
           .get(`${serverUrl}/api/creators/${user.email}`, {
             headers: {
@@ -66,7 +66,7 @@ function Loggedinprofile() {
               if (items.length === 0) {
                 getAllItems(`?artistId=${res.data.id}`);
               }
-              
+
             }
           });
       } catch (e) {
@@ -77,30 +77,30 @@ function Loggedinprofile() {
     callSecureApi();
   }, []);
 
-  
-  function getAllItems(query){
-    
+
+  function getAllItems(query) {
+
     axios.get(`/api/items/${query}`)
-    .then((res) => {
-        
+      .then((res) => {
+
         setItems(res.data);
-        
-    })
+
+      })
   }
 
   function handleInputChange(event) {
-      let name = event.target.name;
-      let value = event.target.value;
-      
-      if (value === "DEFAULT") {
-          getAllItems(`?artistId=${id}`);
-        }
-    
-      if (name === "category" && value !== "DEFAULT") {
-          
-          getAllItems(`?artistId=${id}&category=${value}`);
-          
-      }
+    let name = event.target.name;
+    let value = event.target.value;
+
+    if (value === "DEFAULT") {
+      getAllItems(`?artistId=${id}`);
+    }
+
+    if (name === "category" && value !== "DEFAULT") {
+
+      getAllItems(`?artistId=${id}&category=${value}`);
+
+    }
   }
 
   function transitionIdToState(id) {
@@ -138,18 +138,18 @@ function Loggedinprofile() {
           {isAuthenticated && creator.artist_name ? (
             <CreatorInfo {...creator} />
           ) : (
-            <NoCreatorInfo />
-          )}
+              <NoCreatorInfo />
+            )}
           <div className="column is-3">
             {creator.id ? (
               <Link to={`/private/profile/edit/${id}`}>
                 <button className="button is-black">Edit</button>
               </Link>
             ) : (
-              <Link to={`/private/profile/create`}>
-                <button className="button is-black">Add My Info</button>
-              </Link>
-            )}
+                <Link to={`/private/profile/create`}>
+                  <button className="button is-black">Add My Info</button>
+                </Link>
+              )}
           </div>
         </div>
       </div>
@@ -164,18 +164,19 @@ function Loggedinprofile() {
           </Link>
         </div>
         <div className="column is-justify-content-space-around">
-            <div className="select">
-              <select
-                name="category"
-                id="categorySelect"
-                defaultValue={"DEFAULT"}
-                onChange={handleInputChange}
-              >
-                  <option value="DEFAULT">All Categories</option>
-                  <CategorySelect />
-              </select>
-            </div>
-          
+          <div className="select">
+            <select
+              className="font"
+              name="category"
+              id="categorySelect"
+              defaultValue={"DEFAULT"}
+              onChange={handleInputChange}
+            >
+              <option value="DEFAULT">All Categories</option>
+              <CategorySelect />
+            </select>
+          </div>
+
         </div>
       </div>
 
@@ -191,12 +192,12 @@ function Loggedinprofile() {
                 return <ItemCard key={item.id} {...item} />;
               })
             ) : (
-              <div className="column">
-                <p>There are no items in your collection yet.</p>
-                <p> Click "Add Item to Collection" to add an item.</p>
-              </div>
-            )}
-            </Wrapper>
+                <div className="column">
+                  <p>There are no items in your collection yet.</p>
+                  <p> Click "Add Item to Collection" to add an item.</p>
+                </div>
+              )}
+          </Wrapper>
         </div>
       </section>
     </>
