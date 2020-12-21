@@ -2,20 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { app } from "../../base";
 
 const db = app.firestore();
 
-function Creators() {
+function AddItem() {
   const crypto = require("crypto");
   const id = crypto.randomBytes(16).toString("hex");
   const [fileUrl, setFileUrl] = useState(null);
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
   const [creator, setCreator] = useState({});
-  const history = useHistory();
-  const serverUrl = process.env.REACT_APP_SERVER_URL;
+  // const history = useHistory();
+ 
   const { register, handleSubmit, errors } = useForm();
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function Creators() {
             } else {
               setCreator(res.data);
             }
-            setCreator(res.data);
+           
           });
       } catch (e) {
         console.log(e);
@@ -106,7 +106,7 @@ function Creators() {
     axios.post("/api/items", item).then((res) => {
       console.log(res);
     });
-    history.push("/private/profile");
+    // history.push("/private/profile");
   }
 
   return (
@@ -270,4 +270,4 @@ function Creators() {
     </div>
   );
 }
-export default Creators;
+export default AddItem;
